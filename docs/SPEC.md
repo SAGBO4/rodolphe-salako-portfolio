@@ -182,3 +182,19 @@ Scenarios: PS-01, PS-06, PS-11, PS-12, PS-15, PS-20
 Data: `public/SALAKO_CV.pdf`, `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts`
 Out of scope: Remplacement des assets visuels existants
 Status: approved
+
+### F-13 Optimisation Complète de la Responsivité Multi-Écrans (Mobile 320px - Desktop)
+Actor: Visiteur ou recruteur naviguant sur mobile (320px à 480px), tablette (640px à 1024px) ou grand écran (>1024px)
+Acceptance:
+  AC1 La barre de navigation (`Nav`) s'ajuste dynamiquement avec un positionnement supérieur compact (`top-3 sm:top-6`), largeur maximale bordée (`max-w-[calc(100vw-1.5rem)]`), espacement compact et liens protégés contre le wrapping ou rognage sur écrans étroits
+  AC2 La section `Hero` et la carte holographique `ProfileCard` s'adaptent avec typographie fluide `clamp`, conteneur réactif (`max-w-[310px] sm:max-w-[360px]`), paddings compacts, et requêtes CSS pour écrans <= 380px évitant tout débordement
+  AC3 Le mur 3D `DriftWall` adapte dynamiquement le nombre de colonnes (3 sur mobile, 4 sur tablette, 5 sur desktop), la dimension des tuiles et la perspective pour une consultation fluide au toucher sans clipping
+  AC4 L'accordéon interactif `AccordionGallery` bascule élégamment en colonne sur mobile avec libellés lisibles, déclenchement tactile direct (`trigger: "click"`), et espacements réduits
+  AC5 Le header de la page projets (`ProjectsHeader`) corrige l'ancien espacement excessif (`sm:pt-100`) par un padding harmonisé (`sm:pt-48 pt-28 pb-10 sm:pb-16`) et une typographie fluide
+  AC6 La page `About` et ses composants (`Experience`, `Education`, `Skills`, `Stack` physique Matter.js) adaptent leurs paddings (`p-4 sm:p-8`), tailles de logos, disposition des boutons d'actions et dimensions du conteneur de simulation
+  AC7 La carte de contact (`ContactCard`) et la modale de détails (`ProjectDetailModal`) adaptent leurs icônes avec retour à la ligne (`flex-wrap`) et leurs boutons d'actions avec inversion de flux sur mobile (`flex-col-reverse sm:flex-row`)
+  AC8 (negative) Aucun défilement horizontal parasite (`overflow-x: hidden`), aucun chevauchement de texte, et préservation totale des 49 tests automatisés
+Scenarios: PS-01, PS-06, PS-11, PS-14, PS-19, PS-20
+Data: Composants de présentation, styles CSS et layouts
+Out of scope: Altération de la palette de couleurs
+Status: approved

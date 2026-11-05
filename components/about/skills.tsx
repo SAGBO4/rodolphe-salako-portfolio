@@ -29,12 +29,12 @@ export function Skills(): ReactNode {
       <h3 className="text-[15px] font-semibold tracking-tight text-foreground">
         {t("about.whatIDo")}
       </h3>
-      <div className="rounded-4xl border border-foreground/5 bg-foreground/2 p-2 sm:p-4 dark:bg-foreground/5">
-        <div className="flex flex-wrap gap-3">
+      <div className="rounded-4xl border border-foreground/5 bg-foreground/2 p-2.5 sm:p-4 dark:bg-foreground/5">
+        <div className="flex flex-wrap gap-2 sm:gap-2.5">
           {skills.map((skill) => (
             <span
               key={skill}
-              className="rounded-full border border-foreground/8 bg-background px-4 py-2 text-[14px] tracking-tight text-foreground/85 sm:text-[15px]"
+              className="rounded-full border border-foreground/8 bg-background px-3 sm:px-4 py-1.5 sm:py-2 text-[12.5px] sm:text-[14px] tracking-tight text-foreground/85"
             >
               {skill}
             </span>

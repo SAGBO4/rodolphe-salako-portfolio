@@ -368,3 +368,43 @@
     filter: var(--pc-press);
   }
 }
+
+@media (max-width: 380px) {
+  .profile-card__info {
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+  }
+
+  .profile-card__name {
+    font-size: 17px;
+  }
+
+  .profile-card__title {
+    font-size: 12px;
+  }
+
+  .profile-card__footer {
+    padding: 6px 10px 8px;
+    gap: 8px;
+  }
+
+  .profile-card__avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .profile-card__handle {
+    font-size: 13px;
+  }
+
+  .profile-card__status {
+    font-size: 11px;
+  }
+
+  .profile-card__contact {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+}

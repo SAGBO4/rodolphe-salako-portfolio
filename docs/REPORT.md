@@ -3,7 +3,7 @@
 ## Synthèse du run (2026-11-05)
 
 - **Projet** : Portfolio de Rodolphe Salako (Business Development, Sales & Strategic Partnerships - iGaming & Web3)
-- **Features livrées** : 12/12 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11, F-12)
+- **Features livrées** : 13/13 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11, F-12, F-13)
 - **Tests exécutés** : 49 passés, 0 échec (`npm test`)
 - **Compilation Next.js** : Réussie (18/18 routes Turbopack)
 - **TypeScript** : 0 erreur (`npm run typecheck`)
@@ -63,6 +63,14 @@ Branche / commits : local workspace
 | F-12 AC4 (Catalogue de compétences étendu à 16) | `tests/portfolio.test.mjs` "AC1: Profile matches Rodolphe Salako" | verified | 16 compétences clés du résumé intégrées dans `data/portfolio.json` et `DEFAULT_PORTFOLIO_DATA` |
 | F-12 AC5 (11 expériences complètes incluant NDA SMM) | `tests/portfolio.test.mjs` "AC3: Career experiences populated" | verified | 11 postes au total avec ajout de `NDA` Social Media Manager (2020 – 2023) |
 | F-12 AC6 (Vérification non-régression) | `npm test` & `npm run typecheck` | verified | 49 tests passés avec succès, 0 erreur TypeScript, 0 erreur Turbopack |
+| F-13 AC1 (Navigation responsive compacte) | Navigation test & DOM validation | verified | `top-3 sm:top-6`, max-width `calc(100vw - 1.5rem)`, padding mobile `p-1 sm:p-1.5`, `whitespace-nowrap` sur liens |
+| F-13 AC2 (Hero & ProfileCard responsive <= 380px) | `components/ui/ProfileCard.css` `@media (max-width: 380px)` | verified | Titre Hero fluide `clamp(1.4rem, 5.5vw, 2.75rem)`, carte 3D max-w 310px, police 17px/12px sur mobile |
+| F-13 AC3 (DriftWall 3D adaptatif tactile) | `components/projects/projects.tsx` `screenTier` | verified | 3 colonnes de 150px sur mobile, 4 sur tablette, 5 sur desktop, perspective et hauteur adaptées |
+| F-13 AC4 (AccordionGallery colonne & libellés tactiles) | `components/ui/AccordionGallery.css` `@media (max-width: 640px)` | verified | Basculement automatique en colonne, déclencheur au clic, libellés condensés sans rognage |
+| F-13 AC5 (ProjectsHeader harmonisé sans vide excessif) | `components/projects/projects-header.tsx` | verified | Remplacement de `sm:pt-100` par `sm:pt-48 pt-28 pb-10 sm:pb-16` avec titre fluide |
+| F-13 AC6 (About, Experience, Education & Matter.js physique) | `app/about/page.tsx` & subcomponents | verified | Padding interne `p-4 sm:p-8`, `items-start sm:items-center` sur listes, hauteur Matter.js `h-56` |
+| F-13 AC7 (ContactCard & ProjectDetailModal réactifs) | `components/contact/` & `ProjectDetailModal` | verified | `flex-wrap` sur icônes de contact, `flex-col-reverse sm:flex-row` sur CTAs modale |
+| F-13 AC8 (Zéro overflow horizontal parasite) | `app/globals.css` `html, body` | verified | `overflow-x: hidden` actif, 0 scroll horizontal parasite sur mobile 320px |
 
 ### Scénarios de production
 

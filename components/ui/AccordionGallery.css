@@ -163,6 +163,20 @@
     width: 100%;
     height: var(--ag-media-size);
   }
+  .ag-panel__label {
+    left: 12px;
+    bottom: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+  .ag-panel__text {
+    font-size: 0.95rem;
+  }
+  .ag-panel__action {
+    padding: 3px 8px;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

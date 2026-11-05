@@ -224,7 +224,7 @@ export function Stack(): ReactNode {
         </div>
       </div>
 
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-48 overflow-hidden rounded-4xl border sm:h-64 md:h-72">
+      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-56 overflow-hidden rounded-4xl border sm:h-64 md:h-72">
         <button
           type="button"
           onClick={() => setResetKey((k) => k + 1)}
@@ -279,7 +279,7 @@ function ChipPill({ chip }: { chip: Chip }): ReactNode {
 
   return (
     <div
-      className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-2 p-1 pr-2.5 text-[15px] font-medium tracking-tight sm:text-[16px]"
+      className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-1.5 sm:gap-2 p-1 pr-2 sm:pr-2.5 text-[13px] sm:text-[15px] font-medium tracking-tight"
       style={{
         backgroundColor: chip.bg,
         color: chip.fg,
@@ -287,7 +287,7 @@ function ChipPill({ chip }: { chip: Chip }): ReactNode {
       }}
     >
       <span
-        className="inline-flex h-8 w-8 items-center justify-center bg-white/95 overflow-hidden"
+        className="inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center bg-white/95 overflow-hidden"
         style={{ borderRadius: `${ICON_RADIUS}px` }}
         aria-hidden="true"
       >

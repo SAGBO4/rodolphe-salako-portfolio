@@ -26,19 +26,19 @@ export function Hero(): ReactNode {
 
   return (
     <section className="relative w-full">
-      <div className="mx-auto w-full max-w-275 px-6 pt-44 pb-24 sm:px-10 sm:pt-56 sm:pb-32">
-        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-8">
+      <div className="mx-auto w-full max-w-275 px-4 pt-28 pb-16 sm:px-10 sm:pt-48 md:pt-56 sm:pb-28 md:pb-32">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-8">
           <FadeIn className="flex flex-col gap-4">
-            <p className="text-[20px] leading-tight tracking-tight font-medium text-foreground">
+            <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-tight tracking-tight font-medium text-foreground">
               {p.heroIntro}
             </p>
 
-            <h1 className="text-[clamp(1.5rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-tight text-foreground">
-              <span className="block whitespace-nowrap">{p.heroTitle1}</span>
-              <span className="block whitespace-nowrap">{p.heroTitle2}</span>
+            <h1 className="text-[clamp(1.4rem,5.5vw,2.75rem)] font-medium leading-[1.14] tracking-tight text-foreground">
+              <span className="block sm:whitespace-nowrap break-words">{p.heroTitle1}</span>
+              <span className="block sm:whitespace-nowrap break-words">{p.heroTitle2}</span>
             </h1>
 
-            <p className="max-w-[36ch] text-[20px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[22px]">
+            <p className="max-w-[36ch] text-[16px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[19px] md:text-[21px]">
               {p.heroDescription}
             </p>
 
@@ -65,7 +65,7 @@ export function Hero(): ReactNode {
               intro={true}
               showUserInfo={true}
               onContactClick={handleContactClick}
-              className="w-full max-w-[360px]"
+              className="w-full max-w-[310px] sm:max-w-[340px] md:max-w-[360px]"
             />
           </ScaleUnblur>
         </div>
