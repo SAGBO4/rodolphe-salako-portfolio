@@ -109,7 +109,17 @@ Branche / commits : local workspace
 * **Conformité documentaire Forge** : `docs_check.py` &rarr; **0 erreur, 0 avertissement**.
 
 ### 4. Déploiement en Production sur Vercel
-* **Build de déploiement** : Optimisation réussie dans `.vercel/output`.
-* **URL en production** : [https://speedy-mandolin-z9y3fqe.tmp.now](https://speedy-mandolin-z9y3fqe.tmp.now) (HTTP 200 vérifié via curl).
-* **Lien de réclamation Vercel** : [Réclamer le déploiement sur Vercel](https://vercel.com/claim-deployment?code=2807d8c2-e77a-4f99-9496-c8b12ad0e69a) pour le lier de façon permanente au compte Vercel de l'utilisateur.
+* **Plateforme de Déploiement** : Vercel Production Deployment (compte authentifié `lesaints-projects`)
+* **Domaines Officiels Permanents** :
+  * Principal : [https://rodolphe-salako.vercel.app](https://rodolphe-salako.vercel.app) (HTTP 200 vérifié)
+  * Alias projet : [https://guy-pearl.vercel.app](https://guy-pearl.vercel.app) (HTTP 200 vérifié)
+* **Configuration d'Environnement Vercel** :
+  * `NEXT_PUBLIC_SUPABASE_URL` = `https://qczocbwemhsgetcurdaa.supabase.co` (injecté sur Production, Preview, Development)
+  * `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` = `sb_publishable_KHvJqcsxB-Cy_PkFPG1Sjw_6y-tbRzb` (injecté sur Production, Preview, Development)
+  * `NEXT_PUBLIC_SUPABASE_ANON_KEY` injecté
+  * `ADMIN_PASSWORD` & `ADMIN_SECRET` configurés
+* **Vérification End-to-End en direct** :
+  * Page d'accueil (`/`) : HTTP 200 (HTML pré-rendu 36.8 KB)
+  * Section Projets (`/projects`) : HTTP 200 (47.2 KB avec AccordionGallery & DriftWall)
+  * Back-office `/ZEKIHUB` : HTTP 200 (19.4 KB avec authentification et éditeurs CRUD)
 

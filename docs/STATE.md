@@ -19,7 +19,7 @@ Dernière mise à jour : 2026-11-05
 - Déploiement du tableau de bord d'administration sous `/ZEKIHUB` (F-11) avec gestion CRUD complète (projets avec réordonnancement ↑/↓, expériences, formations, stack et profil), téléversement de CV PDF et redirection permanente depuis `/HUBGUY`.
 - Initialisation et publication du dépôt distant GitHub sous licence MIT : `SAGBO4/rodolphe-salako-portfolio`.
 - Exécution complète du Git Flow professionnel : branche `main`, branche `dev`, `feature/rodolphe-salako-portfolio`, PR #1 vers `dev`, et PR #2 de release vers `main`.
-- Déploiement de production validé sur Vercel : https://speedy-mandolin-z9y3fqe.tmp.now (HTTP 200).
+- Déploiement de production validé sur Vercel avec domaines permanents : https://rodolphe-salako.vercel.app et https://guy-pearl.vercel.app (HTTP 200).
 - Injection des clés d'environnement Supabase (`NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`) dans `.env` et validation de la connectivité API.
 - Résolution complète des icônes du moteur physique Matter.js avec 12 icônes locales SVG haute fidélité (`public/icons/`).
 - Création et validation de la suite de tests automatisés `tests/portfolio.test.mjs` (49 tests passés avec succès).
