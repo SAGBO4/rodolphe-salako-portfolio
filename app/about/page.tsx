@@ -28,7 +28,7 @@ export default function AboutPage(): ReactNode {
                   {p.role}
                 </div>
 
-                <h1 className="font-serif text-[1.75rem] font-medium leading-[1.15] tracking-tight text-foreground sm:text-[2.15rem] lg:text-[2.35rem] sm:whitespace-nowrap">
+                <h1 className="font-serif text-[1.75rem] font-medium leading-[1.2] tracking-tight text-foreground sm:text-[2.15rem] lg:text-[2.35rem]">
                   {t("about.greeting")} <span className="border-b-2 border-foreground/30 pb-0.5">{p.name}</span>.
                 </h1>
 
@@ -40,12 +40,18 @@ export default function AboutPage(): ReactNode {
                   {p.stats.map((stat, i) => (
                     <div
                       key={i}
-                      className="rounded-2xl border border-foreground/8 bg-background/70 p-4 transition-colors"
+                      className="rounded-2xl border border-foreground/8 bg-background/70 p-4 transition-colors flex flex-col justify-between"
                     >
-                      <span className="block text-[2rem] font-semibold tracking-tight text-foreground sm:text-[2.25rem]">
+                      <span
+                        className={`block font-semibold tracking-tight text-foreground ${
+                          stat.value.length > 6
+                            ? "text-[1.3rem] sm:text-[1.45rem] leading-tight"
+                            : "text-[2rem] sm:text-[2.25rem] leading-none"
+                        }`}
+                      >
                         {stat.value}
                       </span>
-                      <span className="text-[12px] font-medium text-foreground/60 uppercase tracking-wider">
+                      <span className="text-[12px] font-medium text-foreground/60 uppercase tracking-wider mt-1.5 block">
                         {stat.label}
                       </span>
                     </div>

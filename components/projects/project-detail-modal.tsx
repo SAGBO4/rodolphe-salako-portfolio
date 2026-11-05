@@ -75,18 +75,18 @@ export function ProjectDetailModal({
             className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background shadow-2xl"
           >
             {/* Header / Media */}
-            <div className="relative aspect-video w-full overflow-hidden bg-foreground/5">
+            <div className="relative aspect-[16/10] sm:aspect-[16/10] max-h-[380px] sm:max-h-[420px] w-full overflow-hidden bg-foreground/5">
               <Image
                 src={project.image}
                 alt={project.imageAlt || project.title}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 680px"
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"
+                className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none"
               />
 
               {/* Category Pill */}
