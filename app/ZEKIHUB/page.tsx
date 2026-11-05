@@ -148,7 +148,7 @@ export default function ZekiHubDashboardPage(): ReactNode {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 border-b border-foreground/8 bg-background/85 backdrop-blur-md px-6 py-3.5 sm:px-10">
+      <header className="sticky top-0 z-40 border-b border-foreground/8 bg-background/85 backdrop-blur-md px-4 py-3 sm:px-10 sm:py-3.5">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Link
@@ -221,7 +221,7 @@ export default function ZekiHubDashboardPage(): ReactNode {
       )}
 
       {/* Dashboard Body */}
-      <div className="mx-auto w-full max-w-7xl flex-1 px-6 py-8 sm:px-10">
+      <div className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-10 sm:py-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-10 items-start">
           {/* Sidebar Tabs */}
           <aside className="w-full lg:w-60 shrink-0">

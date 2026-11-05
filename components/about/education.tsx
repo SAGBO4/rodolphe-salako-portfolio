@@ -58,16 +58,16 @@ export function Education(): ReactNode {
           {entries.map((entry) => (
             <li
               key={`${entry.school}-${entry.period}`}
-              className="bg-background border-foreground/5 flex items-center gap-3.5 rounded-3xl border p-3 sm:p-3.5"
+              className="bg-background border-foreground/5 flex items-start sm:items-center gap-3 sm:gap-3.5 rounded-3xl border p-3 sm:p-3.5"
             >
               <SchoolLogo entry={entry} />
               <div className="flex min-w-0 flex-col">
-                <span className="text-foreground text-[16px] font-semibold tracking-tight sm:text-[17px]">
+                <span className="text-foreground text-[15px] font-semibold tracking-tight sm:text-[17px]">
                   {entry.school}
                 </span>
-                <span className="text-foreground/65 mt-0.5 text-[13.5px] tracking-tight sm:text-[14px]">
+                <span className="text-foreground/65 mt-0.5 text-[13px] tracking-tight sm:text-[14px]">
                   {entry.degree}
-                  <span className="text-foreground/30 mx-2">•</span>
+                  <span className="text-foreground/30 mx-1.5 sm:mx-2">•</span>
                   <span className="text-foreground/55 font-medium">{entry.period}</span>
                 </span>
               </div>
@@ -82,7 +82,7 @@ export function Education(): ReactNode {
 function SchoolLogo({ entry }: { entry: Entry }): ReactNode {
   return (
     <span
-      className="inline-flex h-11 w-11 shrink-0 items-center justify-center text-white text-[12px] font-bold tracking-tight shadow-xs"
+      className="inline-flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center text-white text-[11px] sm:text-[12px] font-bold tracking-tight shadow-xs"
       aria-hidden="true"
       style={{ borderRadius: 14, backgroundColor: entry.brand }}
     >

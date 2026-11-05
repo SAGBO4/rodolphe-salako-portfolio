@@ -53,7 +53,7 @@ export function ProjectDetailModal({
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-project-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6"
         >
           {/* Backdrop */}
           <motion.div
@@ -72,10 +72,10 @@ export function ProjectDetailModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background shadow-2xl"
+            className="relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background shadow-2xl"
           >
             {/* Header / Media */}
-            <div className="relative aspect-[16/10] sm:aspect-[16/10] max-h-[380px] sm:max-h-[420px] w-full overflow-hidden bg-foreground/5">
+            <div className="relative aspect-[16/10] max-h-[320px] sm:max-h-[420px] w-full overflow-hidden bg-foreground/5">
               <Image
                 src={project.image}
                 alt={project.imageAlt || project.title}
@@ -90,8 +90,8 @@ export function ProjectDetailModal({
               />
 
               {/* Category Pill */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-3.5 py-1 text-xs font-mono font-medium uppercase tracking-wider text-white backdrop-blur-md">
+              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-3 py-1 sm:px-3.5 text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-white backdrop-blur-md">
                   <Sparkles className="h-3 w-3 text-amber-400" />
                   {project.category || labels.categoryFallback}
                 </span>
@@ -102,33 +102,33 @@ export function ProjectDetailModal({
                 type="button"
                 onClick={onClose}
                 aria-label={labels.close}
-                className="focus-ring absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white transition-transform hover:scale-105 hover:bg-black/80 backdrop-blur-md cursor-pointer"
+                className="focus-ring absolute top-3 right-3 sm:top-4 sm:right-4 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white transition-transform hover:scale-105 hover:bg-black/80 backdrop-blur-md cursor-pointer"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             {/* Scrollable Content */}
-            <div className="overflow-y-auto p-6 sm:p-8 space-y-6">
+            <div className="overflow-y-auto p-4 sm:p-8 space-y-5 sm:space-y-6">
               <div>
                 <h3
                   id="modal-project-title"
-                  className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-foreground leading-snug"
+                  className="font-serif text-xl sm:text-3xl font-medium tracking-tight text-foreground leading-snug"
                 >
                   {project.title}
                 </h3>
               </div>
 
               {project.meta && (
-                <div className="rounded-2xl border border-foreground/8 bg-foreground/3 p-4 sm:p-5">
+                <div className="rounded-2xl border border-foreground/8 bg-foreground/3 p-3.5 sm:p-5">
                   <span className="block text-xs font-semibold uppercase tracking-wider text-foreground/50 mb-2">
                     {labels.metaTitle}
                   </span>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.meta.split("•").map((tag, i) => (
                       <span
                         key={i}
-                        className="rounded-full border border-foreground/10 bg-background px-3 py-1 text-xs font-medium text-foreground/80"
+                        className="rounded-full border border-foreground/10 bg-background px-2.5 py-1 text-[11px] sm:text-xs font-medium text-foreground/80"
                       >
                         {tag.trim()}
                       </span>
@@ -141,19 +141,19 @@ export function ProjectDetailModal({
                 <span className="block text-xs font-semibold uppercase tracking-wider text-foreground/50 mb-2">
                   {labels.overviewTitle}
                 </span>
-                <p className="text-base sm:text-lg leading-relaxed text-foreground/75 tracking-tight">
+                <p className="text-[15px] sm:text-lg leading-relaxed text-foreground/75 tracking-tight">
                   {project.description}
                 </p>
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-foreground/8">
+              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 pt-4 border-t border-foreground/8">
                 {project.link ? (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="focus-ring inline-flex items-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90 cursor-pointer"
+                    className="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90 cursor-pointer text-center"
                   >
                     <span>{labels.openLink}</span>
                     <ArrowUpRight className="h-4 w-4" />
@@ -163,7 +163,7 @@ export function ProjectDetailModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="focus-ring rounded-xl border border-foreground/10 bg-foreground/5 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10 cursor-pointer"
+                  className="focus-ring rounded-xl border border-foreground/10 bg-foreground/5 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10 cursor-pointer text-center"
                 >
                   {labels.close}
                 </button>
