@@ -20,10 +20,10 @@ export function ContactCard(): ReactNode {
   const p = data.profile;
 
   return (
-    <section className="mx-auto my-12 w-full max-w-275 px-6 sm:my-20 sm:px-10">
+    <section className="mx-auto my-8 sm:my-20 w-full max-w-275 px-4 sm:px-10">
       <FadeIn>
-        <div className="relative w-full overflow-hidden rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
-          <div className="relative w-full overflow-hidden rounded-[1.6rem]">
+        <div className="relative w-full overflow-hidden rounded-3xl sm:rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
+          <div className="relative w-full overflow-hidden rounded-[1.4rem] sm:rounded-[1.6rem]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-45 dark:opacity-25"
@@ -35,12 +35,12 @@ export function ContactCard(): ReactNode {
               <ShaderFlow scale={3} brightness={3}/>
             </div>
 
-            <div className="relative grid gap-8 p-6 sm:gap-10 sm:p-7 md:grid-cols-[1.2fr_1fr] md:items-stretch md:gap-6 md:p-6">
-              <div className="flex flex-col gap-5">
-                <h2 className="font-serif text-[2.25rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-[2.75rem] lg:text-[3.25rem]">
+            <div className="relative grid gap-6 p-4 sm:gap-10 sm:p-7 md:grid-cols-[1.2fr_1fr] md:items-stretch md:gap-6 md:p-6">
+              <div className="flex flex-col gap-4 sm:gap-5">
+                <h2 className="font-serif text-[1.85rem] sm:text-[2.75rem] lg:text-[3.25rem] font-medium leading-[1.08] tracking-tight text-foreground">
                   {t("contact.title")}
                 </h2>
-                <p className="max-w-[34ch] text-[18px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[20px] mb-4">
+                <p className="max-w-[34ch] text-[16px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[19px] md:text-[20px] mb-2 sm:mb-4">
                   {t("contact.text")}
                 </p>
                 <p className="text-sm text-foreground/60 mb-2">
@@ -49,8 +49,8 @@ export function ContactCard(): ReactNode {
                 <ContactCardCtas />
               </div>
 
-              <div className="border-foreground/8 flex flex-col items-center justify-center gap-6 rounded-[1.1rem] border bg-background p-6 sm:p-8">
-                <div className="flex items-center gap-3 opacity-85">
+              <div className="border-foreground/8 flex flex-col items-center justify-center gap-5 sm:gap-6 rounded-[1.1rem] border bg-background p-4 sm:p-8">
+                <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 opacity-85">
                   <SocialIcon
                     href={`mailto:${p.email}`}
                     label="Email"
@@ -118,7 +118,7 @@ function SocialIcon({
     <Link
       href={href}
       aria-label={label}
-      className="border-foreground/8 hover:border-foreground/15 focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-background text-foreground/70 transition-colors hover:text-foreground"
+      className="border-foreground/8 hover:border-foreground/15 focus-ring inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border bg-background text-foreground/70 transition-colors hover:text-foreground"
       {...props}
     >
       {LucideIcon ? (

@@ -140,6 +140,23 @@ export function Projects({
   const { data } = usePortfolio();
   const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [screenTier, setScreenTier] = useState<"mobile" | "tablet" | "desktop">("desktop");
+
+  useEffect(() => {
+    const updateTier = () => {
+      const w = window.innerWidth;
+      if (w < 640) {
+        setScreenTier("mobile");
+      } else if (w < 1024) {
+        setScreenTier("tablet");
+      } else {
+        setScreenTier("desktop");
+      }
+    };
+    updateTier();
+    window.addEventListener("resize", updateTier);
+    return () => window.removeEventListener("resize", updateTier);
+  }, []);
 
   const getSafeImage = (img: string | undefined, defaultImg: string): string => {
     if (!img || img.trim() === "" || img.startsWith("blob:")) {
@@ -250,12 +267,12 @@ export function Projects({
       ) : null}
 
       {withHeadline ? (
-        <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
+        <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
           <FadeIn className="flex flex-col items-center gap-4 text-center pb-4 sm:pb-6">
-            <h2 className="font-serif text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3rem] lg:text-[3.5rem]">
+            <h2 className="font-serif text-[2rem] sm:text-[2.75rem] md:text-[3rem] lg:text-[3.5rem] font-medium leading-[1.08] tracking-tight text-foreground">
               {t("projects.title")}
             </h2>
-            <p className="max-w-[38ch] text-[18px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[20px]">
+            <p className="max-w-[38ch] text-[16px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[18px] md:text-[20px]">
               {t("projects.subtitle")}
             </p>
             {viewMoreVisible ? (
@@ -281,22 +298,22 @@ export function Projects({
             className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background via-background/60 to-transparent"
           />
 
-          <div className="relative h-[620px] sm:h-[680px] md:h-[720px] w-full">
+          <div className="relative h-[520px] sm:h-[620px] md:h-[720px] w-full">
             <DriftWall
               items={driftWallItems}
-              columns={5}
-              tileWidth={220}
-              tileHeight={145}
-              gap={18}
-              tilt={16}
-              turn={-14}
-              perspective={1200}
-              depth={120}
+              columns={screenTier === "mobile" ? 3 : screenTier === "tablet" ? 4 : 5}
+              tileWidth={screenTier === "mobile" ? 150 : screenTier === "tablet" ? 185 : 220}
+              tileHeight={screenTier === "mobile" ? 100 : screenTier === "tablet" ? 122 : 145}
+              gap={screenTier === "mobile" ? 12 : screenTier === "tablet" ? 15 : 18}
+              tilt={screenTier === "mobile" ? 10 : 16}
+              turn={screenTier === "mobile" ? -8 : -14}
+              perspective={screenTier === "mobile" ? 850 : 1200}
+              depth={screenTier === "mobile" ? 80 : 120}
               speed={38}
               direction="up"
               variance={0.45}
               parallax={0.6}
-              lift={64}
+              lift={screenTier === "mobile" ? 32 : 64}
               fade={0.6}
               dim={0.65}
               overlayColor="#060010"
@@ -310,18 +327,18 @@ export function Projects({
         </div>
       ) : (
         /* PROJECTS PAGE (/projects): AccordionGallery en haut + détails en bas */
-        <div className="flex flex-col gap-12 sm:gap-16">
-          <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
+        <div className="flex flex-col gap-10 sm:gap-16">
+          <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
             <div className="relative w-full overflow-hidden rounded-2xl border border-foreground/8 bg-background/60 p-2 sm:p-3 shadow-2xl backdrop-blur-md">
               <AccordionGallery
                 items={accordionItems}
                 defaultIndex={0}
-                expandRatio={0.48}
-                trigger="hover"
-                height={440}
-                gap={12}
+                expandRatio={screenTier === "mobile" ? 0.44 : 0.48}
+                trigger={screenTier === "mobile" ? "click" : "hover"}
+                height={screenTier === "mobile" ? 340 : screenTier === "tablet" ? 390 : 440}
+                gap={screenTier === "mobile" ? 8 : 12}
                 radius={14}
-                tilt={6}
+                tilt={screenTier === "mobile" ? 3 : 6}
                 actionText={t("projects.viewDetails")}
                 onItemClick={(item) => {
                   if (item.projectRef) {
@@ -332,7 +349,7 @@ export function Projects({
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
+          <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
             <div className="mb-8 flex items-center justify-between border-b border-foreground/8 pb-4">
               <div className="flex items-center gap-2.5">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -368,7 +385,7 @@ export function Projects({
       )}
 
       {viewMoreVisible ? (
-        <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
+        <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
           <div className="mt-6 flex justify-center sm:mt-10">
             <Link
               href="/projects"

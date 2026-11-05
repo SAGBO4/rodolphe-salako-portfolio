@@ -138,23 +138,23 @@ export function Experience(): ReactNode {
             {entries.map((entry) => (
               <li
                 key={`${entry.company}-${entry.period}`}
-                className="bg-background border-foreground/5 flex items-start gap-4 rounded-3xl border p-3.5 sm:p-4"
+                className="bg-background border-foreground/5 flex items-start gap-3 sm:gap-4 rounded-3xl border p-3 sm:p-4"
               >
                 <CompanyLogo entry={entry} />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <div className="flex flex-wrap items-center justify-between gap-1">
-                    <span className="text-foreground text-[16px] font-semibold tracking-tight sm:text-[17px]">
+                    <span className="text-foreground text-[15px] font-semibold tracking-tight sm:text-[17px]">
                       {entry.company}
                     </span>
-                    <span className="text-foreground/55 text-[13px] tracking-tight">
+                    <span className="text-foreground/55 text-[12px] sm:text-[13px] tracking-tight">
                       {entry.period}
                     </span>
                   </div>
-                  <span className="text-foreground/80 mt-0.5 text-[14px] font-medium tracking-tight">
+                  <span className="text-foreground/80 mt-0.5 text-[13px] sm:text-[14px] font-medium tracking-tight">
                     {entry.role}
                   </span>
                   {entry.description && (
-                    <p className="text-foreground/60 mt-1.5 text-[13px] leading-relaxed tracking-tight sm:text-[13.5px]">
+                    <p className="text-foreground/60 mt-1.5 text-[12.5px] leading-relaxed tracking-tight sm:text-[13.5px]">
                       {entry.description}
                     </p>
                   )}
@@ -217,7 +217,7 @@ function CompanyLogo({ entry }: { entry: Entry }): ReactNode {
   const initials = entry.company.charAt(0);
   return (
     <span
-      className="ring-foreground/8 inline-flex h-12 w-12 shrink-0 items-center justify-center bg-white ring-1 dark:ring-white/10"
+      className="ring-foreground/8 inline-flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center bg-white ring-1 dark:ring-white/10"
       aria-hidden="true"
       style={{
         borderRadius: 14,
@@ -230,11 +230,11 @@ function CompanyLogo({ entry }: { entry: Entry }): ReactNode {
           alt=""
           width={24}
           height={24}
-          className="h-6 w-6"
+          className="h-5 w-5 sm:h-6 sm:w-6"
           draggable={false}
         />
       ) : (
-        <span className="text-[18px] font-semibold tracking-tight text-white">
+        <span className="text-[16px] sm:text-[18px] font-semibold tracking-tight text-white">
           {initials}
         </span>
       )}

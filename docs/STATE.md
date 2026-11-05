@@ -26,6 +26,15 @@ Dernière mise à jour : 2026-11-05
 - Mise à jour structurelle des données : ajout des secteurs de l'immobilier et des services financiers, enrichissement des compétences (16 compétences), coordonnées complétées (téléphone/WhatsApp `+229 01 40 79 72 62` et localisation `Porto-Novo, Bénin`), et ajout de la 11ème expérience professionnelle `NDA` (Social Media Manager, 2020 – 2023).
 - Synchronisation complète dans `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts`, `components/contact/contact-card.tsx` et `/ZEKIHUB`.
 - Création et validation de la suite de tests automatisés `tests/portfolio.test.mjs` (49 tests passés avec succès).
+- F-13 : Révision et perfectionnement de la responsivité sur l'intégralité du site (breakpoints 320px, 375px, 640px, 768px, 1024px et desktop) :
+  - `Nav` : positionnement `top-3 sm:top-6`, max-width `calc(100vw - 1.5rem)`, padding mobile `p-1 sm:p-1.5`, gap `gap-0.5 sm:gap-1`, et liens `px-2.5 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm` sans clipping.
+  - `Hero` : typographie fluide `clamp(1.4rem, 5.5vw, 2.75rem)` sur h1 avec wrapping sécurisé, paddings de section harmonisés, et `ProfileCard` réactif (`max-w-[310px] sm:max-w-[360px]` avec styles CSS dédiés `<= 380px`).
+  - `DriftWall` : adaptation dynamique du nombre de colonnes (3 sur mobile, 4 sur tablette, 5 sur desktop), dimensions de tuiles (150x100px mobile vs 220x145px desktop), perspective et hauteur ajustées (`h-[520px] sm:h-[620px] md:h-[720px]`).
+  - `AccordionGallery` : support de l'affichage tactile mobile avec labels condensés (`text-sm`, line-clamp) et déclencheur clic fluide.
+  - `ProjectsHeader` : correction du vide excessif (`sm:pt-100` remplacé par `sm:pt-48 pt-28 pb-10 sm:pb-16`) et titre adaptatif.
+  - `About` : réduction du padding interne sur mobile (`p-4 sm:p-8`), grilles de statistiques flexibles, alignement `items-start sm:items-center` sur l'éducation et l'expérience, puces compactes sur les compétences, et hauteur augmentée (`h-56`) pour le bac physique Matter.js.
+  - `ContactCard` & `ProjectDetailModal` : retour à la ligne sécurisé des icônes de contact, padding condensé, et inversion mobile des boutons d'actions (`flex-col-reverse sm:flex-row`).
+  - Global : application de `overflow-x: hidden` sur `html, body` interdisant tout défilement horizontal parasite.
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

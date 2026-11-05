@@ -8,12 +8,12 @@ export function ProjectsHeader(): ReactNode {
   const { t } = useLanguage();
 
   return (
-    <section className="mx-auto w-full max-w-275 px-6 pt-44 pb-16 sm:px-10 sm:pt-100 sm:pb-20">
-      <FadeIn className="flex flex-col items-center gap-5 text-center">
-        <h1 className="font-serif text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3.25rem] lg:text-[3.75rem]">
+    <section className="mx-auto w-full max-w-275 px-4 pt-28 pb-10 sm:px-10 sm:pt-48 sm:pb-16">
+      <FadeIn className="flex flex-col items-center gap-4 sm:gap-5 text-center">
+        <h1 className="font-serif text-[clamp(2rem,7vw,3.75rem)] font-medium leading-[1.08] tracking-tight text-foreground">
           {t("projects.pageTitle")}
         </h1>
-        <p className="max-w-[36ch] text-[20px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[22px]">
+        <p className="max-w-[36ch] text-[16px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[20px] md:text-[22px]">
           {t("projects.pageSubtitle")}
         </p>
       </FadeIn>
