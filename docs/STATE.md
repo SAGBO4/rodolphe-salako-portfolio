@@ -22,6 +22,9 @@ Dernière mise à jour : 2026-11-05
 - Déploiement de production validé sur Vercel avec domaines permanents : https://rodolphe-salako.vercel.app et https://guy-pearl.vercel.app (HTTP 200).
 - Injection des clés d'environnement Supabase (`NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`) dans `.env` et validation de la connectivité API.
 - Résolution complète des icônes du moteur physique Matter.js avec 12 icônes locales SVG haute fidélité (`public/icons/`).
+- Intégration du nouveau CV officiel `/home/lesaint/Downloads/123SALAKO Rodolphe Resum @.pdf` (1.6MB, 5 pages) vers `/public/SALAKO_CV.pdf` (F-12).
+- Mise à jour structurelle des données : ajout des secteurs de l'immobilier et des services financiers, enrichissement des compétences (16 compétences), coordonnées complétées (téléphone/WhatsApp `+229 01 40 79 72 62` et localisation `Porto-Novo, Bénin`), et ajout de la 11ème expérience professionnelle `NDA` (Social Media Manager, 2020 – 2023).
+- Synchronisation complète dans `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts`, `components/contact/contact-card.tsx` et `/ZEKIHUB`.
 - Création et validation de la suite de tests automatisés `tests/portfolio.test.mjs` (49 tests passés avec succès).
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.

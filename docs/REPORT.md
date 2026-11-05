@@ -3,7 +3,7 @@
 ## Synthèse du run (2026-11-05)
 
 - **Projet** : Portfolio de Rodolphe Salako (Business Development, Sales & Strategic Partnerships - iGaming & Web3)
-- **Features livrées** : 11/11 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11)
+- **Features livrées** : 12/12 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11, F-12)
 - **Tests exécutés** : 49 passés, 0 échec (`npm test`)
 - **Compilation Next.js** : Réussie (18/18 routes Turbopack)
 - **TypeScript** : 0 erreur (`npm run typecheck`)
@@ -57,6 +57,12 @@ Branche / commits : local workspace
 | F-11 AC3 (Support téléversement images & CV PDF) | `tests/portfolio.test.mjs` "AC3: File uploader supports images and PDF CV documents" | verified | `app/api/admin/upload` gère les images et PDF (`application/pdf`) sous préfixe `zeki_` |
 | F-11 AC4 (Redirection transparente 308 de l'ancienne route /HUBGUY) | `tests/portfolio.test.mjs` "AC4: Legacy /HUBGUY redirects to /ZEKIHUB in next.config.ts" | verified | `next.config.ts` configure la redirection 308 permanente vers `/ZEKIHUB` |
 | F-11 AC5 (Système de session et identifiants de sécurité) | `tests/portfolio.test.mjs` "AC5: Auth system provides secure session tokens and fallback credentials" | verified | Cookie `zekihub_admin_session`, hachage scrypt et support des variables `.env` |
+| F-12 AC1 (Mise à jour du CV officiel SALAKO_CV.pdf) | `tests/portfolio.test.mjs` "AC1: CV file exists and is valid PDF" | verified | Fichier `public/SALAKO_CV.pdf` mis à jour depuis `123SALAKO Rodolphe Resum @.pdf` (1.6MB, 5 pages) |
+| F-12 AC2 (Coordonnées téléphone & localisation) | `tests/portfolio.test.mjs` "AC1: Profile matches Rodolphe Salako" | verified | `+229 01 40 79 72 62` et `Porto-Novo, Bénin` configurés et cliquables (tel/WhatsApp) |
+| F-12 AC3 (Résumé professionnel Real Estate & Financial Services) | `tests/portfolio.test.mjs` "AC1: Profile matches Rodolphe Salako" | verified | Tagline, hero et paragraphes de présentation alignés avec les 4 secteurs d'activité |
+| F-12 AC4 (Catalogue de compétences étendu à 16) | `tests/portfolio.test.mjs` "AC1: Profile matches Rodolphe Salako" | verified | 16 compétences clés du résumé intégrées dans `data/portfolio.json` et `DEFAULT_PORTFOLIO_DATA` |
+| F-12 AC5 (11 expériences complètes incluant NDA SMM) | `tests/portfolio.test.mjs` "AC3: Career experiences populated" | verified | 11 postes au total avec ajout de `NDA` Social Media Manager (2020 – 2023) |
+| F-12 AC6 (Vérification non-régression) | `npm test` & `npm run typecheck` | verified | 49 tests passés avec succès, 0 erreur TypeScript, 0 erreur Turbopack |
 
 ### Scénarios de production
 

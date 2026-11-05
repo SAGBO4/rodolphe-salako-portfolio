@@ -168,3 +168,17 @@ Scenarios: PS-01, PS-06, PS-11, PS-12, PS-15, PS-20
 Data: `portfolio_content` sur Supabase, `data/portfolio.json`, `data/auth.json`
 Out of scope: Création de comptes multi-utilisateurs
 Status: approved
+
+### F-12 Mise à jour du CV Officiel & Synchronisation Intégrale des Données du Résumé
+Actor: Recruteurs, partenaires stratégiques et visiteurs téléchargeant le CV ou consultant le parcours
+Acceptance:
+  AC1 Le fichier CV officiel `/public/SALAKO_CV.pdf` est mis à jour à partir du nouveau document PDF source (`123SALAKO Rodolphe Resum @.pdf`, 1.6MB, 5 pages) avec en-tête PDF valide
+  AC2 Les coordonnées de contact sont complétées avec le numéro de téléphone officiel (`+229 01 40 79 72 62` / `+2290140797262`) et la localisation (`Porto-Novo, Bénin`), accessibles en appel et WhatsApp direct
+  AC3 Le résumé professionnel et le tagline intègrent l'expertise élargie aux secteurs de l'immobilier (Real Estate) et des services financiers (Financial Services), ainsi que la vente B2B et la génération de leads
+  AC4 Le catalogue des compétences comprend les 16 compétences officielles répertoriées dans le nouveau CV
+  AC5 L'historique professionnel inclut l'intégralité des 11 expériences professionnelles réelles, intégrant le poste `Social Media Manager` chez `NDA` (2020 – 2023)
+  AC6 (negative) Aucune régression sur le téléchargement du CV, les tests automatisés ou la compilation TypeScript
+Scenarios: PS-01, PS-06, PS-11, PS-12, PS-15, PS-20
+Data: `public/SALAKO_CV.pdf`, `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts`
+Out of scope: Remplacement des assets visuels existants
+Status: approved

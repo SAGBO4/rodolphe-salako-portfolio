@@ -96,6 +96,14 @@ const ENTRIES: Entry[] = [
     description:
       "Fostered a thriving Telegram community, provided real-time user assistance, organized promotional contests, and maintained vigilant anti-scam protection.",
   },
+  {
+    company: "NDA",
+    role: "Social Media Manager",
+    period: "2020 – 2023",
+    brand: "#64748B",
+    description:
+      "Managed and developed NDA's social media presence in sports betting and gaming. Created engaging promotional content, handled player interactions, and supported user retention and community growth.",
+  },
 ];
 
 const COLLAPSED_HEIGHT = 440;

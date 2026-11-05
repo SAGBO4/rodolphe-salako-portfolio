@@ -2,7 +2,7 @@
 
 import { usePortfolio } from "@/lib/portfolio-context";
 import { useLanguage } from "@/lib/i18n/context";
-import { Mail, Send } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -57,6 +57,11 @@ export function ContactCard(): ReactNode {
                     lucideIcon={Mail}
                   />
                   <SocialIcon
+                    href={`tel:${p.phoneRaw || "+2290140797262"}`}
+                    label={`Phone / WhatsApp: ${p.phone || "+229 01 40 79 72 62"}`}
+                    lucideIcon={Phone}
+                  />
+                  <SocialIcon
                     href={p.telegram}
                     label="Telegram"
                     lucideIcon={Send}
@@ -77,8 +82,13 @@ export function ContactCard(): ReactNode {
                     &copy; {p.name}
                   </p>
                   <p className="text-[12px] tracking-tight text-foreground/50">
-                    {p.role} | iGaming &amp; Web3
+                    {p.role} | iGaming, Web3 &amp; FinTech
                   </p>
+                  {p.phone && (
+                    <p className="text-[12px] font-mono tracking-tight text-foreground/60 mt-0.5">
+                      {p.location ? `${p.location} • ` : ""}{p.phone}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

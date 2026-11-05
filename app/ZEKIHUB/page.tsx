@@ -567,6 +567,16 @@ function ProfileEditor({
             onChange={(v) => updateP("email", v)}
           />
           <InputGroup
+            label="Numéro Téléphone / WhatsApp"
+            value={p.phone || ""}
+            onChange={(v) => updateP("phone", v)}
+          />
+          <InputGroup
+            label="Localisation (Ville, Pays)"
+            value={p.location || ""}
+            onChange={(v) => updateP("location", v)}
+          />
+          <InputGroup
             label="Lien Telegram"
             value={p.telegram}
             onChange={(v) => updateP("telegram", v)}

@@ -3,15 +3,15 @@
     "name": "Rodolphe Salako",
     "role": "Business Development & Sales Professional",
     "greeting": "Hello! I'm Rodolphe Salako.",
-    "heroIntro": "Hey 👋, I'm Rodolphe Salako",
+    "heroIntro": "Hey \ud83d\udc4b, I'm Rodolphe Salako",
     "heroTitle1": "Business Development &",
     "heroTitle2": "Strategic Partnerships",
-    "heroDescription": "Business Development and Sales professional with experience in the iGaming and Web3 industries. Focused on identifying business opportunities, developing strategic partnerships, building strong professional relationships, and exploring new markets.",
-    "aboutTagline": "Connecting People. Building Partnerships. Driving Growth. Dedicated to identifying business opportunities, developing strategic B2B partnerships, leading affiliate networks, exploring new markets, and driving digital expansion.",
+    "heroDescription": "Business Development and Sales professional with experience across the iGaming, Web3, real estate, and financial services industries. Skilled in B2B sales, strategic partnership management, market expansion, lead generation, and affiliate management across international markets.",
+    "aboutTagline": "Connecting People. Building Partnerships. Driving Growth. Dedicated to identifying business opportunities, B2B sales, developing strategic partnerships, leading affiliate networks, and driving commercial expansion across iGaming, Web3, real estate, and financial services.",
     "aboutParagraphs": [
-      "I'm Rodolphe Salako, a Business Development and Sales professional with experience in the iGaming and Web3 industries.",
-      "My work focuses on identifying business opportunities, developing strategic partnerships, building strong professional relationships, and exploring new markets. I also have experience in affiliate management, team leadership, event coordination, social media, and community management.",
-      "I'm passionate about connecting businesses, building valuable partnerships, and contributing to growth across the digital industry. Connecting People. Building Partnerships. Driving Growth."
+      "I'm Rodolphe Salako, a Business Development and Sales professional with experience across the iGaming, Web3, real estate, and financial services industries.",
+      "My work focuses on identifying business opportunities, developing strategic B2B partnerships, lead generation, market expansion, and affiliate management. I also bring extensive experience in team leadership, event coordination, social media, and community management across international markets.",
+      "I'm passionate about connecting businesses, building valuable alliances, developing commercial networks, and accelerating growth across the digital industry. Connecting People. Building Partnerships. Driving Growth."
     ],
     "mission": "Connecting People. Building Partnerships. Driving Growth.",
     "stats": [
@@ -39,15 +39,18 @@
     "twitterHandle": "@ZekiZeki40",
     "linkedin": "https://www.linkedin.com/in/rodolphe-salako-578885334",
     "availability": "Available for remote work worldwide & international events",
-    "cvUrl": "/SALAKO_CV.pdf"
+    "cvUrl": "/SALAKO_CV.pdf",
+    "phone": "+229 01 40 79 72 62",
+    "phoneRaw": "+2290140797262",
+    "location": "Porto-Novo, B\u00e9nin"
   },
   "projects": [
     {
       "id": "strategic-partnerships",
       "order": 1,
-      "title": "Business Development & Strategic Partnerships — iGaming & Web3",
+      "title": "Business Development & Strategic Partnerships \u2014 iGaming & Web3",
       "category": "Business Development",
-      "meta": "B2B Dealmaking • Strategic Partnerships • Operator Relations • BetConstruct AI",
+      "meta": "B2B Dealmaking \u2022 Strategic Partnerships \u2022 Operator Relations \u2022 BetConstruct AI",
       "image": "/uploads/rodolphe_betconstruct.jpg",
       "imageAlt": "Rodolphe Salako B2B Partnerships with BetConstruct and Game Operators",
       "description": "Identifying new business opportunities and structuring strategic B2B partnerships with game studios, betting operators, and crypto platforms across African and international markets.",
@@ -56,9 +59,9 @@
     {
       "id": "affiliate-leadership",
       "order": 2,
-      "title": "Affiliate Management & Team Leadership — 1win & 1xBet",
+      "title": "Affiliate Management & Team Leadership \u2014 1win & 1xBet",
       "category": "Affiliate Leadership",
-      "meta": "Team Lead • Media Buyers • Deal Negotiation • Revenue Growth",
+      "meta": "Team Lead \u2022 Media Buyers \u2022 Deal Negotiation \u2022 Revenue Growth",
       "image": "/uploads/rodolphe_1xbet_summit.jpg",
       "imageAlt": "Rodolphe Salako Affiliate Team Leadership 1win and 1xBet",
       "description": "Leading and coordinating teams of affiliate managers, recruiting top media buyers, structuring high-converting commission models, and optimizing player acquisition funnels.",
@@ -67,9 +70,9 @@
     {
       "id": "summits-speaking",
       "order": 3,
-      "title": "Event Coordination & Speaker — SiGMA Africa & SBWA+ Dakar",
+      "title": "Event Coordination & Speaker \u2014 SiGMA Africa & SBWA+ Dakar",
       "category": "Event Coordination",
-      "meta": "Official Speaker • SiGMA Africa Cape Town • SBWA+ Summit Dakar",
+      "meta": "Official Speaker \u2022 SiGMA Africa Cape Town \u2022 SBWA+ Summit Dakar",
       "image": "/uploads/rodolphe_sigma_africa.jpg",
       "imageAlt": "Rodolphe Salako Speaker at SiGMA Africa and SBWA+ Summit",
       "description": "Representing gaming brands at premier international conferences. Official Speaker at SBWA+ & GEFA in Dakar, networking with C-level executives, and building high-trust industry alliances.",
@@ -78,9 +81,9 @@
     {
       "id": "market-expansion-benin",
       "order": 4,
-      "title": "Exploring New Markets — Block-Scholars Africa Country Representative",
+      "title": "Exploring New Markets \u2014 Block-Scholars Africa Country Representative",
       "category": "Market Expansion",
-      "meta": "Country Representative • Benin Republic • Tech Education • Partnerships",
+      "meta": "Country Representative \u2022 Benin Republic \u2022 Tech Education \u2022 Partnerships",
       "image": "/uploads/rodolphe_meetup_speaker.jpg",
       "imageAlt": "Rodolphe Salako Block-Scholars Africa Benin Representative",
       "description": "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale Web3 and digital technology adoption.",
@@ -89,9 +92,9 @@
     {
       "id": "marketing-management",
       "order": 5,
-      "title": "Marketing Management & Growth Strategy — CJC Race & Chainmakers",
+      "title": "Marketing Management & Growth Strategy \u2014 CJC Race & Chainmakers",
       "category": "Marketing Management",
-      "meta": "Growth Strategy • Digital Campaigns • Influencer Partnerships • Tournaments",
+      "meta": "Growth Strategy \u2022 Digital Campaigns \u2022 Influencer Partnerships \u2022 Tournaments",
       "image": "/uploads/rodolphe_summit_table.jpg",
       "imageAlt": "Rodolphe Salako Marketing Management CJC Race and Chainmakers",
       "description": "Developing integrated multi-channel marketing campaigns, managing marketing budgets, negotiating influencer collaborations, and delivering initiatives that drive user acquisition and engagement.",
@@ -100,9 +103,9 @@
     {
       "id": "social-media-community",
       "order": 6,
-      "title": "Social Media, Community Management & Video Production — Onlyplay Club",
+      "title": "Social Media, Community Management & Video Production \u2014 Onlyplay Club",
       "category": "Social Media & Community",
-      "meta": "Community Operations • Interactive AMAs • Video Editing • Telegram & Discord",
+      "meta": "Community Operations \u2022 Interactive AMAs \u2022 Video Editing \u2022 Telegram & Discord",
       "image": "/uploads/rodolphe_onlyplay_ama.jpg",
       "imageAlt": "Onlyplay Club Community AMAs and Player Operations",
       "description": "Managing multi-channel community engagement across Telegram, Discord, and X. Hosting high-engagement AMAs, editing promotional video content, and turning player communities into sustainable growth engines.",
@@ -114,8 +117,8 @@
       "id": "block-scholars",
       "order": 1,
       "company": "Block-Scholars Africa",
-      "role": "Country Representative – Benin Republic",
-      "period": "2026 – Present",
+      "role": "Country Representative \u2013 Benin Republic",
+      "period": "2026 \u2013 Present",
       "brand": "#10B981",
       "description": "Exploring new markets and developing presence across Benin. Building strategic partnerships with universities, student communities, and industry leaders; recruiting ambassador networks, and organizing digital technology and iGaming educational initiatives."
     },
@@ -124,7 +127,7 @@
       "order": 2,
       "company": "1win",
       "role": "Affiliate Manager & Team Lead",
-      "period": "Feb 2024 – Jul 2024",
+      "period": "Feb 2024 \u2013 Jul 2024",
       "brand": "#1E40AF",
       "description": "Managed and coordinated a high-performing affiliate management team. Supervised partner onboarding, negotiated bespoke commission structures, monitored traffic quality, and scaled revenues."
     },
@@ -133,7 +136,7 @@
       "order": 3,
       "company": "Onlyplay",
       "role": "Ambassador Team Lead",
-      "period": "Jul 2025 – Jan 2026",
+      "period": "Jul 2025 \u2013 Jan 2026",
       "brand": "#FF7043",
       "description": "Recruited, trained, and led an international team of brand ambassadors across emerging markets. Defined content guidelines, supervised milestone execution, and built enduring professional relationships with creators."
     },
@@ -142,7 +145,7 @@
       "order": 4,
       "company": "CJC Race",
       "role": "Marketing Manager",
-      "period": "2024 – 2025",
+      "period": "2024 \u2013 2025",
       "brand": "#EF4444",
       "description": "Executed integrated marketing campaigns (digital ads, influencer partnerships, online tournaments) that accelerated player acquisition, game visibility, and brand reach."
     },
@@ -151,7 +154,7 @@
       "order": 5,
       "company": "Les chainmakers",
       "role": "Marketing Manager",
-      "period": "2022 – 2024",
+      "period": "2022 \u2013 2024",
       "brand": "#8B5CF6",
       "description": "Formulated marketing strategies to accelerate brand growth, negotiated partnership activations, and managed competitor benchmarking and audience communications."
     },
@@ -160,7 +163,7 @@
       "order": 6,
       "company": "1xBet",
       "role": "Affiliate Manager",
-      "period": "2023 – 2024",
+      "period": "2023 \u2013 2024",
       "brand": "#2563EB",
       "description": "Cultivated strategic affiliate relationships, onboarded new traffic sources, and coordinated promotional materials to drive user acquisition."
     },
@@ -168,8 +171,8 @@
       "id": "tapbit",
       "order": 7,
       "company": "Tapbit Crypto Exchange",
-      "role": "English – French Translator & Community Support",
-      "period": "Nov 2025 – Mar 2026",
+      "role": "English \u2013 French Translator & Community Support",
+      "period": "Nov 2025 \u2013 Mar 2026",
       "brand": "#0284C7",
       "description": "Localized cryptocurrency documentation, market updates, and UI interfaces from English to French. Collaborated with marketing and community teams to engage francophone traders."
     },
@@ -187,7 +190,7 @@
       "order": 9,
       "company": "TopGoal French",
       "role": "Community Manager",
-      "period": "Jan 2024 – Jul 2024",
+      "period": "Jan 2024 \u2013 Jul 2024",
       "brand": "#F59E0B",
       "description": "Moderated the official French Telegram community, coordinated interactive events, and delivered community insights to product managers."
     },
@@ -196,9 +199,18 @@
       "order": 10,
       "company": "Yescoin - French",
       "role": "Community Manager",
-      "period": "2023 – 2024",
+      "period": "2023 \u2013 2024",
       "brand": "#FBBF24",
       "description": "Fostered a thriving Telegram community, provided real-time user assistance, organized promotional contests, and maintained vigilant anti-scam protection."
+    },
+    {
+      "id": "nda-smm",
+      "order": 11,
+      "company": "NDA",
+      "role": "Social Media Manager",
+      "period": "2020 \u2013 2023",
+      "brand": "#64748B",
+      "description": "Managed and developed NDA's social media presence in sports betting and gaming. Created engaging promotional content, handled player interactions, and supported user retention and community growth."
     }
   ],
   "education": [
@@ -206,7 +218,7 @@
       "id": "bachelor-translation",
       "order": 1,
       "school": "University Center of Adjarra, Porto-Novo, Benin",
-      "degree": "Bachelor’s Degree in English (English – French Translation)",
+      "degree": "Bachelor\u2019s Degree in English (English \u2013 French Translation)",
       "period": "2025",
       "tag": "DEGREE",
       "brand": "#6366F1"
@@ -225,7 +237,7 @@
       "order": 3,
       "school": "National High School Board",
       "degree": "High School Diploma (Baccalaureate)",
-      "period": "2021 – 2022",
+      "period": "2021 \u2013 2022",
       "tag": "BAC",
       "brand": "#10B981"
     },
@@ -240,18 +252,22 @@
     }
   ],
   "skills": [
-    "Business Development & B2B Sales (iGaming & Web3)",
-    "Strategic Partnerships & Dealmaking",
-    "Exploring New Markets & Regional Expansion",
+    "Business Development",
+    "B2B Sales & Lead Generation",
+    "Strategic Partnership Management",
     "Affiliate Management & Team Leadership",
-    "Event Coordination & International Summits",
-    "Official Conference Speaker & Brand Ambassador",
-    "Marketing Management & Growth Strategy",
-    "Social Media & Community Management",
-    "Short-form Video Production (CapCut, Premiere)",
-    "English–French Translation & Localization",
-    "Interactive AMAs & Player Tournaments",
-    "Influencer Outreach & Media Buying"
+    "Country Management",
+    "Regional Coordination",
+    "Growth Strategy & Management",
+    "Marketing Management",
+    "Social Media Management",
+    "Community Management",
+    "Influencer Management",
+    "Market Research & Analysis",
+    "Event Management & Coordination",
+    "Problem-Solving",
+    "English\u2013French Translation",
+    "Video Editing"
   ],
   "stack": [
     {

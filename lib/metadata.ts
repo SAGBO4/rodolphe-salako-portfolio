@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const siteConfig = {
   name: "Rodolphe Salako",
   description:
-    "Business Development & Sales professional with experience in the iGaming and Web3 industries. Focused on strategic partnerships, affiliate leadership, exploring new markets, and driving growth.",
-  url: "https://rodolphe-salako.netlify.app",
+    "Business Development and Sales professional with experience across iGaming, Web3, real estate, and financial services. Focused on B2B sales, strategic partnerships, affiliate leadership, exploring new markets, and driving growth.",
+  url: "https://rodolphe-salako.vercel.app",
   ogImage: "/rodolphe-profile.png",
   creator: "@ZekiZeki40",
   authors: [
     {
       name: "Rodolphe Salako",
-      url: "https://rodolphe-salako.netlify.app",
+      url: "https://rodolphe-salako.vercel.app",
     },
   ],
   keywords: [
@@ -18,10 +18,14 @@ export const siteConfig = {
     "Business Development",
     "Strategic Partnerships",
     "B2B Sales",
+    "Lead Generation",
     "iGaming",
     "Web3",
+    "Real Estate",
+    "Financial Services",
     "Affiliate Manager",
     "Team Leadership",
+    "Block-Scholars",
     "Event Speaker",
     "SiGMA Africa",
     "SBWA+",

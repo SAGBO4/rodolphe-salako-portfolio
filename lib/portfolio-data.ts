@@ -21,6 +21,9 @@ export type ProfileData = {
   twitter: string;
   twitterHandle: string;
   linkedin?: string;
+  phone?: string;
+  phoneRaw?: string;
+  location?: string;
   availability: string;
   cvUrl: string;
 };
@@ -86,13 +89,13 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     heroTitle1: "Business Development &",
     heroTitle2: "Strategic Partnerships",
     heroDescription:
-      "Business Development and Sales professional with experience in the iGaming and Web3 industries. Focused on identifying business opportunities, developing strategic partnerships, building strong professional relationships, and exploring new markets.",
+      "Business Development and Sales professional with experience across the iGaming, Web3, real estate, and financial services industries. Skilled in B2B sales, strategic partnership management, market expansion, lead generation, and affiliate management across international markets.",
     aboutTagline:
-      "Connecting People. Building Partnerships. Driving Growth. Dedicated to identifying business opportunities, developing strategic B2B partnerships, leading affiliate networks, exploring new markets, and driving digital expansion.",
+      "Connecting People. Building Partnerships. Driving Growth. Dedicated to identifying business opportunities, B2B sales, developing strategic partnerships, leading affiliate networks, and driving commercial expansion across iGaming, Web3, real estate, and financial services.",
     aboutParagraphs: [
-      "I'm Rodolphe Salako, a Business Development and Sales professional with experience in the iGaming and Web3 industries.",
-      "My work focuses on identifying business opportunities, developing strategic partnerships, building strong professional relationships, and exploring new markets. I also have experience in affiliate management, team leadership, event coordination, social media, and community management.",
-      "I'm passionate about connecting businesses, building valuable partnerships, and contributing to growth across the digital industry. Connecting People. Building Partnerships. Driving Growth.",
+      "I'm Rodolphe Salako, a Business Development and Sales professional with experience across the iGaming, Web3, real estate, and financial services industries.",
+      "My work focuses on identifying business opportunities, developing strategic B2B partnerships, lead generation, market expansion, and affiliate management. I also bring extensive experience in team leadership, event coordination, social media, and community management across international markets.",
+      "I'm passionate about connecting businesses, building valuable alliances, developing commercial networks, and accelerating growth across the digital industry. Connecting People. Building Partnerships. Driving Growth.",
     ],
     mission: "Connecting People. Building Partnerships. Driving Growth.",
     stats: [
@@ -101,6 +104,9 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       { label: "Remote & Bilingual", value: "100%" },
       { label: "Global Markets", value: "Africa & Global" },
     ],
+    phone: "+229 01 40 79 72 62",
+    phoneRaw: "+2290140797262",
+    location: "Porto-Novo, Bénin",
     email: "rodolphesalako8@gmail.com",
     telegram: "https://t.me/ZekiZeki40",
     telegramHandle: "@ZekiZeki40",
@@ -285,6 +291,16 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       description:
         "Fostered a thriving Telegram community, provided real-time user assistance, organized promotional contests, and maintained vigilant anti-scam protection.",
     },
+    {
+      id: "nda-smm",
+      order: 11,
+      company: "NDA",
+      role: "Social Media Manager",
+      period: "2020 – 2023",
+      brand: "#64748B",
+      description:
+        "Managed and developed NDA's social media presence in sports betting and gaming. Created engaging promotional content, handled player interactions, and supported user retention and community growth.",
+    },
   ],
   education: [
     {
@@ -325,18 +341,22 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     },
   ],
   skills: [
-    "Business Development & B2B Sales (iGaming & Web3)",
-    "Strategic Partnerships & Dealmaking",
-    "Exploring New Markets & Regional Expansion",
+    "Business Development",
+    "B2B Sales & Lead Generation",
+    "Strategic Partnership Management",
     "Affiliate Management & Team Leadership",
-    "Event Coordination & International Summits",
-    "Official Conference Speaker & Brand Ambassador",
-    "Marketing Management & Growth Strategy",
-    "Social Media & Community Management",
-    "Short-form Video Production (CapCut, Premiere)",
-    "English–French Translation & Localization",
-    "Interactive AMAs & Player Tournaments",
-    "Influencer Outreach & Media Buying",
+    "Country Management",
+    "Regional Coordination",
+    "Growth Strategy & Management",
+    "Marketing Management",
+    "Social Media Management",
+    "Community Management",
+    "Influencer Management",
+    "Market Research & Analysis",
+    "Event Management & Coordination",
+    "Problem-Solving",
+    "English–French Translation",
+    "Video Editing",
   ],
   stack: [
     { id: "1", order: 1, label: "LinkedIn", slug: "linkedin", bg: "#0A66C2", fg: "#ffffff", iconUrl: "/icons/linkedin.svg" },

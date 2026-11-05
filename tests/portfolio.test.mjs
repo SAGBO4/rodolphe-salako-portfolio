@@ -53,6 +53,7 @@ test("F-02: Data Store & Metadata Consistency", async (t) => {
     assert.equal(data.profile.email, "rodolphesalako8@gmail.com");
     assert.match(data.profile.twitter, /ZekiZeki40/);
     assert.match(data.profile.cvUrl, /SALAKO_CV\.pdf/);
+    assert.equal(data.profile.phone, "+229 01 40 79 72 62");
   });
 
   await t.test("AC2: Six CM projects are populated", () => {
@@ -70,12 +71,13 @@ test("F-02: Data Store & Metadata Consistency", async (t) => {
   });
 
   await t.test("AC3: Career experiences populated", () => {
-    assert.ok(data.experiences.length >= 8, "Must have at least 8 experience entries");
+    assert.ok(data.experiences.length >= 11, "Must have all 11 experience entries from resume");
     const companies = data.experiences.map((e) => e.company);
     assert.ok(companies.includes("Onlyplay"));
     assert.ok(companies.includes("Block-Scholars Africa"));
     assert.ok(companies.includes("Tapbit Crypto Exchange"));
     assert.ok(companies.includes("1win"));
+    assert.ok(companies.includes("NDA"), "Must include NDA experience");
   });
 
   await t.test("AC4 (negative): No residual Guy Tibro in public metadata", () => {

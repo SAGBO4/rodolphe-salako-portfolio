@@ -150,12 +150,12 @@ export const PORTFOLIO_FRENCH_OVERLAY = {
     heroTitle1: "Business Development &",
     heroTitle2: "Partenariats Stratégiques",
     heroDescription:
-      "Professionnel du Business Development et des Ventes avec une expérience confirmée dans les industries iGaming et Web3. Axé sur l'identification d'opportunités d'affaires, le développement de partenariats stratégiques, la consolidation de relations professionnelles et l'exploration de nouveaux marchés.",
+      "Professionnel du Business Development et des Ventes avec une expérience confirmée dans les industries iGaming, Web3, l'immobilier et les services financiers. Expert en vente B2B, partenariats stratégiques, génération de leads et expansion commerciale sur les marchés internationaux.",
     aboutTagline:
-      "Connecter les acteurs. Bâtir des partenariats. Accélérer la croissance. Dédié à l'identification d'opportunités, aux partenariats B2B, au leadership d'affiliation, à l'exploration de nouveaux marchés et à l'expansion digitale.",
+      "Connecter les acteurs. Bâtir des partenariats. Accélérer la croissance. Dédié à l'identification d'opportunités d'affaires, aux partenariats B2B, à la génération de leads, au leadership d'affiliation et à l'expansion sur les marchés internationaux de l'iGaming, du Web3, de l'immobilier et des services financiers.",
     aboutParagraphs: [
-      "Je suis Rodolphe Salako, professionnel du Business Development et des Ventes avec une expérience éprouvée dans les secteurs de l'iGaming et du Web3.",
-      "Mon travail se concentre sur l'identification d'opportunités d'affaires, le développement de partenariats stratégiques, la négociation B2B et l'exploration de nouveaux marchés. J'ai également une solide expérience en gestion de réseaux d'affiliation, leadership d'équipe, coordination d'événements internationaux, réseaux sociaux et gestion de communautés.",
+      "Je suis Rodolphe Salako, professionnel du Business Development et des Ventes avec une expérience éprouvée dans les secteurs de l'iGaming, du Web3, de l'immobilier et des services financiers.",
+      "Mon travail se concentre sur l'identification d'opportunités d'affaires, le développement de partenariats stratégiques B2B, la génération de leads, la négociation commerciale et l'exploration de nouveaux marchés. J'ai également une solide expérience en gestion de réseaux d'affiliation, leadership d'équipe, coordination d'événements internationaux, réseaux sociaux et gestion de communautés.",
       "Je suis passionné par la mise en relation des entreprises, la conclusion d'alliances stratégiques durables et l'accélération de la croissance à l'échelle internationale. Connecter les acteurs. Bâtir des partenariats. Accélérer la croissance.",
     ],
     mission: "Connecter les acteurs. Bâtir des partenariats. Accélérer la croissance.",
@@ -165,6 +165,9 @@ export const PORTFOLIO_FRENCH_OVERLAY = {
       { label: "100% Bilingue & Remote", value: "100%" },
       { label: "Marchés Internationaux", value: "Afrique & Monde" },
     ],
+    phone: "+229 01 40 79 72 62",
+    phoneRaw: "+2290140797262",
+    location: "Porto-Novo, Bénin",
     availability: "Disponible pour missions remote dans le monde entier & sommets internationaux",
   },
   projects: [
@@ -297,6 +300,14 @@ export const PORTFOLIO_FRENCH_OVERLAY = {
       period: "2023 – 2024",
       description:
         "Développement d'une communauté active sur Telegram, assistance utilisateur quotidienne, organisation de concours et application rigoureuse de la sécurité anti-arnaques.",
+    },
+    {
+      id: "nda-smm",
+      company: "NDA",
+      role: "Social Media Manager",
+      period: "2020 – 2023",
+      description:
+        "Gestion et développement de la présence de NDA sur les réseaux sociaux dans le secteur des paris sportifs et du gaming. Création de contenus engageants, interaction quotidienne avec les joueurs et contribution active à l'acquisition et à la fidélisation.",
     },
   ],
   education: [
