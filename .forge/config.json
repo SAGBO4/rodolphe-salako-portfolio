@@ -1,0 +1,16 @@
+{
+  "forge_home": "/home/lesaint/Rendue/forge",
+  "db_phase": "pre-production",
+  "commits": "on-feature-branch",
+  "docs_dir": "docs",
+  "docs_language": "fr",
+  "design": "",
+  "stack": [
+    "nextjs",
+    "react"
+  ],
+  "validation": "",
+  "test_runners": [],
+  "orm": "supabase",
+  "package_roots": []
+}
