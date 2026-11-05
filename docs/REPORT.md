@@ -82,3 +82,34 @@ Branche / commits : local workspace
    - Menu orbital 3D `InfiniteMenu` intact.
    - Canvas physique `Matter.js` intact.
    - Shaders d'ambiance `ShaderFlow` intacts.
+
+---
+
+## Rapport Tech Lead & DevOps (Forge Pipeline)
+
+### 1. Gestion de Dépôt & Licence
+* **Dépôt distant GitHub** : [SAGBO4/rodolphe-salako-portfolio](https://github.com/SAGBO4/rodolphe-salako-portfolio)
+* **Licence** : Licence MIT officielle (Copyright (c) 2026 SAGBO MICHAEL).
+* **Hygiène Git & Sécurité** :
+  * Fichier `.env` et secrets exclus via `.gitignore`.
+  * Données de sécurité locales `data/auth.json` exclues.
+  * Zéro mention d'outils d'IA ou de bots dans l'historique des commits et messages de PR.
+
+### 2. Workflow Git Flow
+* **Branche Principale (`main`)** : Branche de production verrouillée, synchronisée avec l'état stable validé.
+* **Branche d'Intégration (`dev`)** : Branche d'intégration intermédiaire recevant les validations de features.
+* **Branche Fonctionnelle (`feature/rodolphe-salako-portfolio`)** : Développement modulaire et commits atomiques en impératif anglais.
+* **Pull Request #1** : `feature/rodolphe-salako-portfolio` vers `dev` &rarr; Relecture, validation et merge sans conflit ([PR #1](https://github.com/SAGBO4/rodolphe-salako-portfolio/pull/1)).
+* **Pull Request #2** : `dev` vers `main` &rarr; Relecture de release de production v1.0.0 et merge officiel ([PR #2](https://github.com/SAGBO4/rodolphe-salako-portfolio/pull/2)).
+
+### 3. Pipeline de Validation & Gates Qualité
+* **Tests unitaires et d'intégration** : **49 tests exécutés avec succès** (`npm test`), 0 échec.
+* **Typage statique TypeScript** : `npm run typecheck` &rarr; **0 erreur**.
+* **Compilation Turbopack Next.js** : **18/18 routes générées** en statique et dynamique (`npm run build`).
+* **Conformité documentaire Forge** : `docs_check.py` &rarr; **0 erreur, 0 avertissement**.
+
+### 4. Déploiement en Production sur Vercel
+* **Build de déploiement** : Optimisation réussie dans `.vercel/output`.
+* **URL en production** : [https://speedy-mandolin-z9y3fqe.tmp.now](https://speedy-mandolin-z9y3fqe.tmp.now) (HTTP 200 vérifié via curl).
+* **Lien de réclamation Vercel** : [Réclamer le déploiement sur Vercel](https://vercel.com/claim-deployment?code=2807d8c2-e77a-4f99-9496-c8b12ad0e69a) pour le lier de façon permanente au compte Vercel de l'utilisateur.
+

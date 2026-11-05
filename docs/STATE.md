@@ -17,6 +17,9 @@ Dernière mise à jour : 2026-11-05
 - Intégration du composant `AccordionGallery` de React Bits avec GSAP (F-09) en haut de la section Projets, combiné avec les cartes complètes de détails de projets en bas, et ouverture directe de la modale de détails précis au clic.
 - Intégration du composant `ProfileCard` holographique 3D de React Bits (F-10) dans la section Hero avec reflets irisés, tilt interactif, informations de contact et profil de Rodolphe Salako.
 - Déploiement du tableau de bord d'administration sous `/ZEKIHUB` (F-11) avec gestion CRUD complète (projets avec réordonnancement ↑/↓, expériences, formations, stack et profil), téléversement de CV PDF et redirection permanente depuis `/HUBGUY`.
+- Initialisation et publication du dépôt distant GitHub sous licence MIT : `SAGBO4/rodolphe-salako-portfolio`.
+- Exécution complète du Git Flow professionnel : branche `main`, branche `dev`, `feature/rodolphe-salako-portfolio`, PR #1 vers `dev`, et PR #2 de release vers `main`.
+- Déploiement de production validé sur Vercel : https://speedy-mandolin-z9y3fqe.tmp.now (HTTP 200).
 - Injection des clés d'environnement Supabase (`NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`) dans `.env` et validation de la connectivité API.
 - Résolution complète des icônes du moteur physique Matter.js avec 12 icônes locales SVG haute fidélité (`public/icons/`).
 - Création et validation de la suite de tests automatisés `tests/portfolio.test.mjs` (49 tests passés avec succès).
@@ -25,7 +28,7 @@ Dernière mise à jour : 2026-11-05
 
 ## En cours
 
-- Prêt pour l'exécution du script SQL d'initialisation de la table `portfolio_content` sur l'instance Supabase de l'utilisateur.
+- Aucun (Toutes les étapes de développement, Git Flow, déploiement Vercel et documentation Forge sont complétées).
 
 ## Bloqué
 
@@ -33,4 +36,4 @@ Dernière mise à jour : 2026-11-05
 
 ## Prochaine étape
 
-- L'utilisateur exécute la requête SQL dans son tableau de bord Supabase (SQL Editor) pour activer la persistance Cloud en temps réel.
+- L'utilisateur peut réclamer son déploiement Vercel et exécuter la requête SQL dans son Supabase pour synchroniser en temps réel la base Cloud.
