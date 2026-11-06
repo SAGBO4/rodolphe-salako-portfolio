@@ -125,6 +125,7 @@ Branche / commits : local workspace
 ### 4. Déploiement en Production sur Vercel
 * **Plateforme de Déploiement** : Vercel Production Deployment (compte authentifié `lesaints-projects`)
 * **Domaines Officiels Permanents** :
+  * Domaine Personnalisé : [https://rodolphesalako.com](https://rodolphesalako.com) &rarr; [https://www.rodolphesalako.com](https://www.rodolphesalako.com) (HTTP 200 / HTTPS SSL vérifié)
   * Principal : [https://rodolphe-salako.vercel.app](https://rodolphe-salako.vercel.app) (HTTP 200 vérifié)
   * Alias projet : [https://guy-pearl.vercel.app](https://guy-pearl.vercel.app) (HTTP 200 vérifié)
 * **Configuration d'Environnement Vercel** :

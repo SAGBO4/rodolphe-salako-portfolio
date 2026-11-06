@@ -35,6 +35,9 @@ Dernière mise à jour : 2026-11-05
   - `About` : réduction du padding interne sur mobile (`p-4 sm:p-8`), grilles de statistiques flexibles, alignement `items-start sm:items-center` sur l'éducation et l'expérience, puces compactes sur les compétences, et hauteur augmentée (`h-56`) pour le bac physique Matter.js.
   - `ContactCard` & `ProjectDetailModal` : retour à la ligne sécurisé des icônes de contact, padding condensé, et inversion mobile des boutons d'actions (`flex-col-reverse sm:flex-row`).
   - Global : application de `overflow-x: hidden` sur `html, body` interdisant tout défilement horizontal parasite.
+- F-14 : Activation et résolution de la zone DNS personnalisée `rodolphesalako.com` sur Vercel :
+  - Configuration de la zone faisant autorité Vercel (`zone: true`, `intendedNameservers: [ns1.vercel-dns.com, ns2.vercel-dns.com]`).
+  - Validation complète de la configuration et des certificats SSL pour `rodolphesalako.com` (redirection 308 HTTPS) et `www.rodolphesalako.com` (HTTP 200 OK en direct).
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 
