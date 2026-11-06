@@ -369,4 +369,13 @@ test("F-11: Dashboard ZEKIHUB & Gestion Complète du CRUD", async (t) => {
     assert.match(code, /zekihub_admin_session/);
     assert.match(code, /verifyPassword/);
   });
+
+  await t.test("AC6: Public floating nav is hidden on admin routes and header displays R. SALAKO", () => {
+    const navCode = fs.readFileSync(path.join(process.cwd(), "components/layout/nav.tsx"), "utf8");
+    assert.match(navCode, /pathname\.startsWith\("\/ZEKIHUB"\)/);
+    assert.match(navCode, /isAdminRoute/);
+
+    const adminHeaderCode = fs.readFileSync(zekihubPath, "utf8");
+    assert.match(adminHeaderCode, /R\.\s*SALAKO/);
+  });
 });

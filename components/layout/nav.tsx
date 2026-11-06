@@ -35,13 +35,18 @@ export function Nav(): ReactNode {
   } | null>(null);
   const [hasMeasured, setHasMeasured] = useState(false);
 
+  const isAdminRoute = Boolean(
+    pathname && (pathname.startsWith("/ZEKIHUB") || pathname.startsWith("/HUBGUY"))
+  );
+
   const activeIndex = NAV_ITEMS.findIndex((item) =>
     item.href === "/"
       ? pathname === "/"
-      : pathname === item.href || pathname.startsWith(`${item.href}/`)
+      : pathname === item.href || (pathname ? pathname.startsWith(`${item.href}/`) : false)
   );
 
   useLayoutEffect(() => {
+    if (isAdminRoute) return;
     const list = listRef.current;
     const activeEl =
       activeIndex >= 0 ? itemRefs.current[activeIndex] : null;
@@ -55,13 +60,18 @@ export function Nav(): ReactNode {
       x: itemRect.left - listRect.left,
       width: itemRect.width,
     });
-  }, [activeIndex, pathname, t]);
+  }, [activeIndex, pathname, t, isAdminRoute]);
 
   useEffect(() => {
+    if (isAdminRoute) return;
     if (!pillRect) return;
     const id = requestAnimationFrame(() => setHasMeasured(true));
     return () => cancelAnimationFrame(id);
-  }, [pillRect]);
+  }, [pillRect, isAdminRoute]);
+
+  if (isAdminRoute) {
+    return null;
+  }
 
   return (
     <nav

@@ -148,16 +148,16 @@ export default function ZekiHubDashboardPage(): ReactNode {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 border-b border-foreground/8 bg-background/85 backdrop-blur-md px-4 py-3 sm:px-10 sm:py-3.5">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+      <header className="sticky top-0 z-40 border-b border-foreground/8 bg-background/85 backdrop-blur-md px-3 py-2.5 sm:px-10 sm:py-3.5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Link
               href="/"
-              className="font-serif text-lg font-semibold tracking-tight text-foreground"
+              className="font-serif text-base sm:text-lg font-semibold tracking-tight text-foreground whitespace-nowrap hover:opacity-80 transition-opacity"
             >
-              Rodolphe Salako
+              R. SALAKO
             </Link>
-            <span className="rounded-md border border-foreground/10 bg-foreground/3 px-2 py-0.5 text-xs font-mono font-semibold text-foreground/70">
+            <span className="shrink-0 rounded-md border border-foreground/10 bg-foreground/3 px-2 py-0.5 text-xs font-mono font-semibold text-foreground/70">
               ZEKIHUB
             </span>
             <span
@@ -176,7 +176,7 @@ export default function ZekiHubDashboardPage(): ReactNode {
             </span>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
             <Link
               href="/"
               target="_blank"
@@ -189,7 +189,7 @@ export default function ZekiHubDashboardPage(): ReactNode {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-4 py-1.5 text-xs font-medium text-background hover:opacity-90 disabled:opacity-50 transition-opacity cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-3.5 py-1.5 sm:px-4 sm:py-1.5 text-xs font-medium text-background hover:opacity-90 disabled:opacity-50 transition-opacity cursor-pointer shadow-xs whitespace-nowrap"
             >
               <Save className="h-3.5 w-3.5" />
               <span>{saving ? "Sauvegarde..." : "Enregistrer"}</span>
@@ -197,7 +197,7 @@ export default function ZekiHubDashboardPage(): ReactNode {
 
             <button
               onClick={handleLogout}
-              className="inline-flex items-center justify-center h-8 w-8 rounded-xl border border-foreground/10 text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center h-8 w-8 rounded-xl border border-foreground/10 text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-colors cursor-pointer shrink-0"
               title="Déconnexion"
               aria-label="Déconnexion"
             >

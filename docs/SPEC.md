@@ -164,6 +164,7 @@ Acceptance:
   AC3 La gestion complète du CRUD est opérationnelle pour l'ensemble des entités : Projets (création, édition, suppression, réordonnancement haut/bas), Expériences, Piliers d'expertise, Compétences/Stack physique et Profil
   AC4 Le téléversement de fichiers prend en charge les formats d'images (PNG, JPG, WEBP, GIF, SVG) ainsi que les documents PDF pour la mise à jour directe du CV
   AC5 Le système d'authentification fournit des jetons de session sécurisés avec persistance et supporte les identifiants d'environnement configurables via `.env`
+  AC6 La barre de navigation publique flottante (`Nav`) est automatiquement masquée sur les routes d'administration `/ZEKIHUB` et `/HUBGUY` pour éliminer tout chevauchement avec l'en-tête du back-office, et l'en-tête affiche de manière compacte et épurée `R. SALAKO` sans retour à la ligne sur mobile
 Scenarios: PS-01, PS-06, PS-11, PS-12, PS-15, PS-20
 Data: `portfolio_content` sur Supabase, `data/portfolio.json`, `data/auth.json`
 Out of scope: Création de comptes multi-utilisateurs

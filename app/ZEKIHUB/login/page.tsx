@@ -54,7 +54,7 @@ export default function AdminLoginPage(): ReactNode {
               ZEKI HUB
             </h1>
             <p className="mt-2 text-sm text-foreground/60">
-              Rodolphe Salako Management Hub
+              R. SALAKO Management Hub
             </p>
           </div>
 

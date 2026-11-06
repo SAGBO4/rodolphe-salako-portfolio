@@ -38,6 +38,10 @@ Dernière mise à jour : 2026-11-05
 - F-14 : Activation et résolution de la zone DNS personnalisée `rodolphesalako.com` sur Vercel :
   - Configuration de la zone faisant autorité Vercel (`zone: true`, `intendedNameservers: [ns1.vercel-dns.com, ns2.vercel-dns.com]`).
   - Validation complète de la configuration et des certificats SSL pour `rodolphesalako.com` (redirection 308 HTTPS) et `www.rodolphesalako.com` (HTTP 200 OK en direct).
+- F-15 : Correction de l'en-tête et masquage de la navigation publique sur `/ZEKIHUB` :
+  - Masquage conditionnel de la barre flottante publique `Nav` sur les routes du dashboard administrateur (`/ZEKIHUB` et `/HUBGUY`), résolvant le problème de superposition visuelle sur smartphone.
+  - Remplacement de l'intitulé dans l'en-tête par `R. SALAKO` (avec `whitespace-nowrap` et padding compact) pour un affichage sur une seule ligne sans retour forcé.
+  - Suite de tests automatisés portée à 50 tests unitaires réussis.
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

@@ -4,7 +4,7 @@
 
 - **Projet** : Portfolio de Rodolphe Salako (Business Development, Sales & Strategic Partnerships - iGaming & Web3)
 - **Features livrées** : 13/13 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11, F-12, F-13)
-- **Tests exécutés** : 49 passés, 0 échec (`npm test`)
+- **Tests exécutés** : 50 passés, 0 échec (`npm test`)
 - **Compilation Next.js** : Réussie (18/18 routes Turbopack)
 - **TypeScript** : 0 erreur (`npm run typecheck`)
 - **Contrôle documentaire** : `docs_check.py` : 0 erreur, 0 avertissement
@@ -57,6 +57,7 @@ Branche / commits : local workspace
 | F-11 AC3 (Support téléversement images & CV PDF) | `tests/portfolio.test.mjs` "AC3: File uploader supports images and PDF CV documents" | verified | `app/api/admin/upload` gère les images et PDF (`application/pdf`) sous préfixe `zeki_` |
 | F-11 AC4 (Redirection transparente 308 de l'ancienne route /HUBGUY) | `tests/portfolio.test.mjs` "AC4: Legacy /HUBGUY redirects to /ZEKIHUB in next.config.ts" | verified | `next.config.ts` configure la redirection 308 permanente vers `/ZEKIHUB` |
 | F-11 AC5 (Système de session et identifiants de sécurité) | `tests/portfolio.test.mjs` "AC5: Auth system provides secure session tokens and fallback credentials" | verified | Cookie `zekihub_admin_session`, hachage scrypt et support des variables `.env` |
+| F-11 AC6 (Masquage nav flottante sur admin & R. SALAKO) | `tests/portfolio.test.mjs` "AC6: Public floating nav is hidden on admin routes and header displays R. SALAKO" | verified | `Nav` masquée conditionnellement sur `/ZEKIHUB` & `/HUBGUY`, en-tête compact `R. SALAKO` sans retour de ligne |
 | F-12 AC1 (Mise à jour du CV officiel SALAKO_CV.pdf) | `tests/portfolio.test.mjs` "AC1: CV file exists and is valid PDF" | verified | Fichier `public/SALAKO_CV.pdf` mis à jour depuis `123SALAKO Rodolphe Resum @.pdf` (1.6MB, 5 pages) |
 | F-12 AC2 (Coordonnées téléphone & localisation) | `tests/portfolio.test.mjs` "AC1: Profile matches Rodolphe Salako" | verified | `+229 01 40 79 72 62` et `Porto-Novo, Bénin` configurés et cliquables (tel/WhatsApp) |
 | F-12 AC3 (Résumé professionnel Real Estate & Financial Services) | `tests/portfolio.test.mjs` "AC1: Profile matches Rodolphe Salako" | verified | Tagline, hero et paragraphes de présentation alignés avec les 4 secteurs d'activité |
@@ -117,7 +118,7 @@ Branche / commits : local workspace
 * **Pull Request #2** : `dev` vers `main` &rarr; Relecture de release de production v1.0.0 et merge officiel ([PR #2](https://github.com/SAGBO4/rodolphe-salako-portfolio/pull/2)).
 
 ### 3. Pipeline de Validation & Gates Qualité
-* **Tests unitaires et d'intégration** : **49 tests exécutés avec succès** (`npm test`), 0 échec.
+* **Tests unitaires et d'intégration** : **50 tests exécutés avec succès** (`npm test`), 0 échec.
 * **Typage statique TypeScript** : `npm run typecheck` &rarr; **0 erreur**.
 * **Compilation Turbopack Next.js** : **18/18 routes générées** en statique et dynamique (`npm run build`).
 * **Conformité documentaire Forge** : `docs_check.py` &rarr; **0 erreur, 0 avertissement**.
