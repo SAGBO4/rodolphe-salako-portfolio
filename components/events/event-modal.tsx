@@ -4,14 +4,13 @@ import { useEffect, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Award, Image as ImageIcon } from "lucide-react";
 import type { EventItem } from "@/lib/portfolio-data";
-import type { FlatPhotoItem } from "./events-gallery";
+import type { PurePhotoItem } from "./events-gallery";
 import { useLanguage } from "@/lib/i18n/context";
 
 type NormalizedPhoto = {
   url: string;
-  caption: string;
   type?: string | undefined;
-  title?: string | undefined;
+  eventTitle?: string | undefined;
   badge?: string | undefined;
   isSpeaker?: boolean | undefined;
   city?: string | undefined;
@@ -20,7 +19,7 @@ type NormalizedPhoto = {
 };
 
 type EventModalProps = {
-  photos?: FlatPhotoItem[] | undefined;
+  photos?: PurePhotoItem[] | undefined;
   initialIndex?: number | undefined;
   event?: EventItem | null | undefined;
   onClose: () => void;
@@ -32,15 +31,18 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
   const photoList: NormalizedPhoto[] = photos
     ? photos.map((p) => ({
         url: p.url,
-        caption: p.caption,
         type: p.type,
-        title: p.caption,
+        eventTitle: p.eventTitle,
         badge:
           p.type === "speaker"
             ? "Speaker"
             : p.type === "post"
             ? "Capture Post"
-            : p.eventBadge || "Sommet",
+            : p.eventCategory === "sigma-africa"
+            ? "SiGMA Africa"
+            : p.eventCategory === "sbwa-dakar"
+            ? "SBWA+ Summit"
+            : "iGaming Afrika",
         isSpeaker: p.isSpeaker,
         city: p.city,
         country: p.country,
@@ -49,9 +51,8 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
     : event
     ? event.photos.map((p) => ({
         url: p.url,
-        caption: p.caption || event.title,
         type: p.type,
-        title: p.caption || event.title,
+        eventTitle: event.title,
         badge: event.badge,
         isSpeaker: p.type === "speaker" || event.isSpeaker,
         city: event.city,
@@ -111,16 +112,16 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
     <div
       role="dialog"
       aria-modal="true"
-      aria-labelledby="photo-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-black/90 backdrop-blur-md animate-in fade-in duration-200"
+      aria-labelledby="photo-modal-header"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-black/92 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl max-h-[94vh] flex flex-col rounded-3xl bg-[#0d0f12] border border-foreground/15 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-5xl max-h-[94vh] flex flex-col rounded-3xl bg-[#0b0d10] border border-foreground/15 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Bar (Épuré : Badge + Titre + Bouton Fermer) */}
-        <div className="flex items-center justify-between border-b border-foreground/10 px-5 py-3.5 sm:px-6 bg-foreground/2">
+        {/* Header Bar : Catégorie du sommet + Bouton Fermer (Aucune description superflue) */}
+        <div className="flex items-center justify-between border-b border-foreground/10 px-5 py-3 sm:px-6 bg-foreground/2">
           <div className="flex items-center gap-2.5 min-w-0 pr-4">
             <span
               className={`shrink-0 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-semibold uppercase tracking-wider ${
@@ -135,10 +136,10 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
               {current.badge}
             </span>
             <span
-              id="photo-modal-title"
+              id="photo-modal-header"
               className="font-serif text-sm sm:text-base font-semibold text-foreground truncate"
             >
-              {current.caption}
+              {current.eventTitle}
             </span>
           </div>
 
@@ -151,13 +152,13 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
           </button>
         </div>
 
-        {/* Center High-Res Image Viewport (Pas de description textuelle encombrante) */}
+        {/* Visionneuse Photo Plein Écran */}
         <div className="flex-1 flex flex-col items-center justify-center p-3 sm:p-5 overflow-hidden">
-          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full max-h-[68vh] rounded-2xl overflow-hidden bg-black/70 border border-foreground/10 flex items-center justify-center">
+          <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full max-h-[70vh] rounded-2xl overflow-hidden bg-black/70 border border-foreground/10 flex items-center justify-center">
             {current.url && (
               <Image
                 src={current.url}
-                alt={current.caption}
+                alt=""
                 fill
                 priority
                 className="object-contain"
@@ -193,7 +194,7 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
               </span>
             </div>
 
-            {/* Location Tag */}
+            {/* Localisation */}
             {current.city && (
               <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/75 border border-white/15 text-xs font-medium text-white/90 backdrop-blur-sm shadow-md">
                 <span>{current.city}, {current.country}</span>
@@ -202,7 +203,7 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
           </div>
         </div>
 
-        {/* Thumbnail Strip (Navigation rapide entre miniatures) */}
+        {/* Thumbnail Strip (Navigation par vignettes sans texte) */}
         {total > 1 && (
           <div className="border-t border-foreground/10 px-4 py-2.5 bg-foreground/2 flex items-center gap-2 overflow-x-auto">
             {photoList.map((photo, idx) => (
@@ -212,13 +213,13 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
                 className={`relative shrink-0 h-14 w-18 sm:h-16 sm:w-20 rounded-xl overflow-hidden border transition-all cursor-pointer ${
                   activeIndex === idx
                     ? "border-amber-400 ring-2 ring-amber-400/30 scale-102 opacity-100"
-                    : "border-foreground/15 opacity-55 hover:opacity-100"
+                    : "border-foreground/15 opacity-50 hover:opacity-100"
                 }`}
                 aria-label={`Miniature ${idx + 1}`}
               >
                 <Image
                   src={photo.url}
-                  alt={photo.caption}
+                  alt=""
                   fill
                   className="object-cover"
                   sizes="80px"
