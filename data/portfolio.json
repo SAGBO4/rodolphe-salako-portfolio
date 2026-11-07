@@ -42,7 +42,9 @@
     "cvUrl": "/SALAKO_CV.pdf",
     "phone": "+229 40 79 72 62",
     "phoneRaw": "+22940797262",
-    "location": "Porto-Novo, Bénin"
+    "location": "Porto-Novo, Bénin",
+    "avatarUrl": "/rodolphe.webp",
+    "miniAvatarUrl": "/rodolphe_hover.webp"
   },
   "projects": [
     {

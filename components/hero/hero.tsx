@@ -47,8 +47,8 @@ export function Hero(): ReactNode {
 
           <ScaleUnblur className="flex justify-center md:justify-end">
             <ProfileCard
-              avatarUrl={PORTRAIT_SRC}
-              miniAvatarUrl={PORTRAIT_HOVER_SRC}
+              avatarUrl={p.avatarUrl || PORTRAIT_SRC}
+              miniAvatarUrl={p.miniAvatarUrl || PORTRAIT_HOVER_SRC}
               name={p.name}
               title={p.role || "Business Development & Sales Professional"}
               handle="ZekiZeki40"

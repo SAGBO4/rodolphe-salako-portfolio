@@ -56,6 +56,12 @@ Dernière mise à jour : 2026-11-05
   - Gestionnaire d'événements `EventsEditor` dans le dashboard `/ZEKIHUB` (CRUD, sélecteur de sommet, toggle Speaker, réordonnancement).
   - Onglet "Événements" ajouté dans la barre de navigation `Nav`.
   - Suite de tests unitaires portée à 56 tests passés avec succès.
+- F-18 : Système Universel de Téléversement Drag & Drop et Gestion Multi-Photos Galerie dans ZEKIHUB :
+  - Suppression du badge "● Supabase Connected" dans l'en-tête du tableau de bord ZEKIHUB à la demande de l'utilisateur.
+  - Création de composants réutilisables de glisser-déposer : `DropzoneImageUploader` (images avec prévisualisation, remplacement instantané et compression WebP), `DropzoneMultiPhotoUploader` (multi-sélection et glisser-déposer de plusieurs photos simultanées directement dans la galerie d'un sommet), et `DropzoneFileUploader` (documents PDF/CV).
+  - Gestion avancée des photos de sommets dans `EventsEditor` : ajout par lot, tag interactif au clic (📸 Photo, 🎙️ Speaker, 📱 Post), réordonnancement fluide (◀ / ▶) et suppression.
+  - Ajout d'une section dédiée "Portraits Officiels & Carte 3D Hero" dans `ProfileEditor` permettant de remplacer le portrait principal (`avatarUrl`) et le portrait au survol (`miniAvatarUrl`) de la carte 3D de la page d'accueil.
+  - Modernisation des téléverseurs dans `ProjectsEditor` (couvertures de projets) et `SkillsStackEditor` (icônes d'outils Matter.js).
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

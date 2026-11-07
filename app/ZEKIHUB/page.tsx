@@ -7,12 +7,15 @@ import {
   Briefcase,
   Calendar,
   Check,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   Copy,
   Database,
   ExternalLink,
   FileText,
   GraduationCap,
+  Image as ImageIcon,
   KeyRound,
   Layers,
   Lock,
@@ -27,11 +30,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useRef, type ReactNode } from "react";
 import {
   DEFAULT_PORTFOLIO_DATA,
   EducationItem,
   EventItem,
+  EventPhoto,
   ExperienceItem,
   PortfolioData,
   ProjectItem,
@@ -453,6 +457,26 @@ function ProfileEditor({
         </div>
       </SectionCard>
 
+      <SectionCard title="Portraits Officiels & Carte 3D Hero">
+        <p className="text-xs text-foreground/60 mb-4">
+          Gérez les portraits officiels affichés sur la carte interactive 3D de la page d&apos;accueil (portrait principal au repos et portrait alternatif affiché au survol).
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <DropzoneImageUploader
+            label="Portrait Principal Hero (Carte 3D)"
+            value={p.avatarUrl || "/rodolphe.webp"}
+            onChange={(v) => updateP("avatarUrl", v)}
+            aspectHint="Vertical 3:4 ou carré — Affiché au repos"
+          />
+          <DropzoneImageUploader
+            label="Portrait Alternatif Hero (Au survol)"
+            value={p.miniAvatarUrl || "/rodolphe_hover.webp"}
+            onChange={(v) => updateP("miniAvatarUrl", v)}
+            aspectHint="Expression souriante / angle alternatif — Au survol"
+          />
+        </div>
+      </SectionCard>
+
       <SectionCard title="Histoire & Mission (Page About)">
         <div className="space-y-4">
           <TextareaGroup
@@ -600,8 +624,8 @@ function ProfileEditor({
             onChange={(v) => updateP("availability", v)}
           />
           <div className="sm:col-span-2">
-            <FileUploadField
-              label="Fichier CV (PDF)"
+            <DropzoneFileUploader
+              label="Fichier CV officiel (PDF)"
               value={p.cvUrl || "/SALAKO_CV.pdf"}
               onChange={(url) => updateP("cvUrl", url)}
               accept="application/pdf"
@@ -761,11 +785,11 @@ function ProjectsEditor({
                 onChange={(v) => updateProject(proj.id, "imageAlt", v)}
               />
               <div className="sm:col-span-2">
-                <ImageUploader
-                  label="Image du projet"
+                <DropzoneImageUploader
+                  label="Image de couverture du projet"
                   value={proj.image}
                   onChange={(v) => updateProject(proj.id, "image", v)}
-                  aspectHint="16:9 recommandé - Téléversez ou collez une URL"
+                  aspectHint="16:9 recommandé — Glissez-déposez ou collez une URL"
                 />
               </div>
             </div>
@@ -982,7 +1006,7 @@ function EventsEditor({
               </div>
 
               <div className="sm:col-span-2">
-                <ImageUploader
+                <DropzoneImageUploader
                   label="Image de couverture du sommet"
                   value={ev.coverImage}
                   onChange={(v) => updateEvent(ev.id, "coverImage", v)}
@@ -998,31 +1022,21 @@ function EventsEditor({
               rows={3}
             />
 
-            <div className="pt-2 border-t border-foreground/8">
-              <span className="text-xs font-semibold text-foreground/80 block mb-3">
-                Photos de la galerie ({ev.photos?.length || 0} photos &amp; captures)
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                {ev.photos?.map((ph, pi) => (
-                  <div key={pi} className="relative aspect-square rounded-xl overflow-hidden border border-foreground/10 bg-black/40 group">
-                    <img src={ph.url} alt={ph.caption} className="w-full h-full object-cover" />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const newPhotos = ev.photos.filter((_, idx) => idx !== pi);
-                        updateEvent(ev.id, "photos", newPhotos);
-                      }}
-                      className="absolute top-1 right-1 p-1 rounded-md bg-black/80 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                      title="Supprimer la photo"
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </button>
-                    <span className="absolute bottom-0 inset-x-0 bg-black/80 px-1 py-0.5 text-[9px] text-white/80 truncate">
-                      {ph.caption}
-                    </span>
-                  </div>
-                ))}
+            <div className="pt-3 border-t border-foreground/8 space-y-3">
+              <div>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground/80">
+                  Galerie Photos du Sommet ({ev.photos?.length || 0} photos)
+                </h3>
+                <p className="text-[11px] text-foreground/50">
+                  Glissez-déposez une ou plusieurs photos directement ci-dessous pour enrichir la galerie de ce sommet.
+                </p>
               </div>
+
+              <DropzoneMultiPhotoUploader
+                photos={ev.photos || []}
+                onChange={(newPhotos) => updateEvent(ev.id, "photos", newPhotos)}
+                summitTitle={ev.title}
+              />
             </div>
           </div>
         ))}
@@ -1564,12 +1578,15 @@ function SkillsStackEditor({
                 </div>
               </div>
 
-              <InputGroup
-                label="URL d'icône personnalisée (ex: /icons/telegram.svg)"
-                value={chip.iconUrl || ""}
-                onChange={(v) => updateChip(chip.id, "iconUrl", v)}
-                placeholder="/icons/nom.svg ou https://..."
-              />
+              <div className="pt-2">
+                <DropzoneImageUploader
+                  label="Icône personnalisée (SVG, PNG ou WebP)"
+                  value={chip.iconUrl || ""}
+                  onChange={(v) => updateChip(chip.id, "iconUrl", v)}
+                  aspectHint="SVG vectoriel ou carré recommandé"
+                  placeholder="/icons/nom.svg ou https://..."
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -1851,49 +1868,677 @@ function TextareaGroup({
   );
 }
 
-function FileUploadField({
+/* -------------------------------------------------------------------------- */
+/* CLIENT-SIDE UPLOAD & IMAGE OPTIMIZATION HELPERS                             */
+/* -------------------------------------------------------------------------- */
+
+async function compressImageToWebP(file: File, maxDim = 1600): Promise<{ file: File; dataUrl: string }> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = (e.target?.result as string) || "";
+      if (!dataUrl) {
+        resolve({ file, dataUrl: "" });
+        return;
+      }
+      const img = new window.Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        if (width > maxDim || height > maxDim) {
+          if (width > height) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          resolve({ file, dataUrl });
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        const webpDataUrl = canvas.toDataURL("image/webp", 0.88);
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const compressedFile = new File(
+                [blob],
+                file.name.replace(/\.[^.]+$/, ".webp"),
+                { type: "image/webp" }
+              );
+              resolve({ file: compressedFile, dataUrl: webpDataUrl });
+            } else {
+              resolve({ file, dataUrl: webpDataUrl });
+            }
+          },
+          "image/webp",
+          0.88
+        );
+      };
+      img.onerror = () => resolve({ file, dataUrl });
+      img.src = dataUrl;
+    };
+    reader.onerror = () => resolve({ file, dataUrl: "" });
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadFileUnified(file: File): Promise<string> {
+  const isImage = file.type.startsWith("image/") && file.type !== "image/svg+xml";
+  let fileToUpload = file;
+  let fallbackDataUrl = "";
+
+  if (isImage) {
+    const compressed = await compressImageToWebP(file);
+    fileToUpload = compressed.file;
+    fallbackDataUrl = compressed.dataUrl;
+  }
+
+  try {
+    const formData = new FormData();
+    formData.append("file", fileToUpload, fileToUpload.name);
+
+    const res = await fetch("/api/admin/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const json = await res.json();
+    if (res.ok && json.success && json.url) {
+      return json.url as string;
+    }
+  } catch (err) {
+    console.warn("Upload API failed, falling back to client dataUrl:", err);
+  }
+
+  if (fallbackDataUrl) {
+    return fallbackDataUrl;
+  }
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve((reader.result as string) || "");
+    reader.onerror = () => reject(new Error("Impossible de lire le fichier"));
+    reader.readAsDataURL(file);
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* UNIVERSAL DRAG & DROP IMAGE UPLOADER                                       */
+/* -------------------------------------------------------------------------- */
+function DropzoneImageUploader({
+  value,
+  onChange,
+  label = "Image",
+  aspectHint,
+  placeholder = "https://... ou glissez-déposez un fichier",
+}: {
+  value: string;
+  onChange: (url: string) => void;
+  label?: string;
+  aspectHint?: string;
+  placeholder?: string;
+}) {
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleProcessFile = async (file: File) => {
+    if (!file) return;
+    setUploading(true);
+    setError(null);
+    try {
+      const url = await uploadFileUnified(file);
+      onChange(url);
+    } catch {
+      setError("Erreur lors de l'enregistrement de l'image.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      await handleProcessFile(file);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isDragging) setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/70">
+          {label}{" "}
+          {aspectHint && (
+            <span className="text-[10px] text-foreground/40 font-normal lowercase">
+              ({aspectHint})
+            </span>
+          )}
+        </label>
+        <button
+          type="button"
+          onClick={() => setShowUrlInput(!showUrlInput)}
+          className="text-[11px] text-foreground/50 hover:text-foreground underline transition-colors cursor-pointer"
+        >
+          {showUrlInput ? "Masquer URL directe" : "Saisir une URL"}
+        </button>
+      </div>
+
+      <input
+        type="file"
+        ref={fileInputRef}
+        accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) void handleProcessFile(file);
+          e.target.value = "";
+        }}
+        className="hidden"
+      />
+
+      {value ? (
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          className={`relative group rounded-2xl border transition-all overflow-hidden ${
+            isDragging
+              ? "border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-500/30"
+              : "border-foreground/12 bg-foreground/2 hover:border-foreground/25"
+          }`}
+        >
+          <div className="flex flex-col sm:flex-row items-center gap-4 p-3.5">
+            <div className="relative h-24 w-36 sm:h-20 sm:w-28 rounded-xl overflow-hidden border border-foreground/10 bg-black/40 shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={value}
+                alt="Aperçu"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.currentTarget as HTMLElement).style.opacity = "0.2";
+                }}
+              />
+              {uploading && (
+                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
+                </div>
+              )}
+            </div>
+
+            <div className="min-w-0 flex-1 space-y-1 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="text-xs font-semibold text-foreground">Image sélectionnée</span>
+                <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 text-[10px] font-medium border border-emerald-500/30">
+                  Prête
+                </span>
+              </div>
+              <p className="text-[11px] text-foreground/50 font-mono truncate max-w-full">
+                {value}
+              </p>
+              <p className="text-[10px] text-foreground/40">
+                Glissez une image ici ou cliquez sur Remplacer
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-foreground/15 bg-background hover:bg-foreground/5 px-3 py-1.5 text-xs font-medium text-foreground transition-colors cursor-pointer"
+              >
+                <Upload className="h-3.5 w-3.5" />
+                <span>Remplacer</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onChange("")}
+                className="p-2 rounded-xl border border-red-500/20 text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer"
+                title="Supprimer l'image"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {isDragging && (
+            <div className="absolute inset-0 bg-emerald-950/80 backdrop-blur-xs flex items-center justify-center text-emerald-300 font-medium text-xs gap-2">
+              <Upload className="h-4 w-4 animate-bounce" />
+              <span>Déposez pour remplacer l&apos;image</span>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={() => fileInputRef.current?.click()}
+          className={`relative rounded-2xl border-2 border-dashed p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
+            isDragging
+              ? "border-emerald-500 bg-emerald-500/10 scale-[1.01]"
+              : "border-foreground/15 hover:border-foreground/30 bg-foreground/1 hover:bg-foreground/3"
+          }`}
+        >
+          {uploading ? (
+            <div className="flex flex-col items-center gap-2 py-2">
+              <div className="h-6 w-6 animate-spin rounded-full border-2 border-foreground/20 border-t-foreground" />
+              <p className="text-xs font-medium text-foreground/80">Téléversement et optimisation WebP...</p>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-10 w-10 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/70">
+                <ImageIcon className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-foreground">
+                  Glissez-déposez votre image ici, ou{" "}
+                  <span className="text-emerald-400 underline underline-offset-2">parcourir vos fichiers</span>
+                </p>
+                <p className="text-[11px] text-foreground/45 mt-0.5">
+                  JPG, PNG, WebP, SVG jusqu&apos;à 10 Mo (conversion automatique en WebP léger)
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {showUrlInput && (
+        <div className="pt-1">
+          <input
+            type="text"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+            className="w-full rounded-xl border border-foreground/10 bg-background px-3.5 py-2 text-xs font-mono text-foreground focus:border-foreground/30 focus:outline-none transition-colors"
+          />
+        </div>
+      )}
+
+      {error && <p className="text-[11px] text-red-500 font-medium">{error}</p>}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* MULTI-PHOTO GALLERY DRAG & DROP UPLOADER (EVENTS & SUMMITS)                */
+/* -------------------------------------------------------------------------- */
+function DropzoneMultiPhotoUploader({
+  photos = [],
+  onChange,
+  summitTitle,
+}: {
+  photos: EventPhoto[];
+  onChange: (photos: EventPhoto[]) => void;
+  summitTitle: string;
+}) {
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<{ current: number; total: number } | null>(null);
+  const [manualUrl, setManualUrl] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const multiInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFiles = async (fileList: FileList | File[]) => {
+    const files = Array.from(fileList);
+    if (files.length === 0) return;
+
+    setError(null);
+    setUploadProgress({ current: 0, total: files.length });
+
+    const newPhotos: EventPhoto[] = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (!file) continue;
+      setUploadProgress({ current: i + 1, total: files.length });
+      try {
+        const url = await uploadFileUnified(file);
+        newPhotos.push({
+          url,
+          caption: `${summitTitle} - Photo ${photos.length + newPhotos.length + 1}`,
+          type: "photo",
+        });
+      } catch (err) {
+        console.error("Failed uploading photo:", file.name, err);
+      }
+    }
+
+    setUploadProgress(null);
+
+    if (newPhotos.length > 0) {
+      onChange([...photos, ...newPhotos]);
+    } else {
+      setError("Aucune photo n'a pu être téléversée.");
+    }
+  };
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    if (e.dataTransfer.files?.length) {
+      await handleFiles(e.dataTransfer.files);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isDragging) setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const addManualPhoto = () => {
+    if (!manualUrl.trim()) return;
+    const newP: EventPhoto = {
+      url: manualUrl.trim(),
+      caption: `${summitTitle} - Photo ${photos.length + 1}`,
+      type: "photo",
+    };
+    onChange([...photos, newP]);
+    setManualUrl("");
+  };
+
+  const removePhoto = (index: number) => {
+    onChange(photos.filter((_, i) => i !== index));
+  };
+
+  const movePhoto = (index: number, direction: "left" | "right") => {
+    const target = direction === "left" ? index - 1 : index + 1;
+    if (target < 0 || target >= photos.length) return;
+    const updated = [...photos];
+    const [moved] = updated.splice(index, 1);
+    if (!moved) return;
+    updated.splice(target, 0, moved);
+    onChange(updated);
+  };
+
+  const toggleType = (index: number) => {
+    const cur = photos[index];
+    if (!cur) return;
+    const nextType: "photo" | "speaker" | "post" =
+      cur.type === "photo" ? "speaker" : cur.type === "speaker" ? "post" : "photo";
+    const updated = [...photos];
+    updated[index] = { ...cur, type: nextType };
+    onChange(updated);
+  };
+
+  const updateCaption = (index: number, caption: string) => {
+    const cur = photos[index];
+    if (!cur) return;
+    const updated = [...photos];
+    updated[index] = { ...cur, caption };
+    onChange(updated);
+  };
+
+  return (
+    <div className="space-y-4">
+      <input
+        type="file"
+        ref={multiInputRef}
+        multiple
+        accept="image/png,image/jpeg,image/webp,image/gif"
+        onChange={(e) => {
+          if (e.target.files?.length) void handleFiles(e.target.files);
+          e.target.value = "";
+        }}
+        className="hidden"
+      />
+
+      {/* Multi Drag & Drop Area */}
+      <div
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        onClick={() => multiInputRef.current?.click()}
+        className={`relative rounded-2xl border-2 border-dashed p-6 sm:p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
+          isDragging
+            ? "border-emerald-500 bg-emerald-500/10 scale-[1.01]"
+            : "border-foreground/15 hover:border-foreground/30 bg-foreground/1 hover:bg-foreground/3"
+        }`}
+      >
+        {uploadProgress ? (
+          <div className="flex flex-col items-center gap-2.5 py-3">
+            <div className="h-7 w-7 animate-spin rounded-full border-2 border-emerald-500/30 border-t-emerald-500" />
+            <p className="text-xs font-semibold text-foreground">
+              Téléversement en cours : {uploadProgress.current} / {uploadProgress.total} photo(s)...
+            </p>
+            <p className="text-[11px] text-foreground/50">Compression WebP et intégration directe dans la galerie</p>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center gap-2.5">
+            <div className="h-12 w-12 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/80">
+              <Upload className="h-6 w-6" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-foreground">
+                Glissez-déposez vos photos ici{" "}
+                <span className="text-emerald-400 underline underline-offset-2">ou cliquez pour choisir</span>
+              </p>
+              <p className="text-xs text-foreground/50 mt-1">
+                Sélectionnez 1 ou plusieurs photos en même temps (JPG, PNG, WebP). Elles seront automatiquement ajoutées à ce sommet.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {error && <p className="text-xs text-red-500 font-medium">{error}</p>}
+
+      {/* Manual URL input */}
+      <div className="flex gap-2 items-center">
+        <input
+          type="text"
+          value={manualUrl}
+          onChange={(e) => setManualUrl(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addManualPhoto())}
+          placeholder="Ou collez une URL d'image externe (https://...)..."
+          className="flex-1 rounded-xl border border-foreground/10 bg-background px-3 py-1.5 text-xs font-mono text-foreground focus:border-foreground/30 focus:outline-none"
+        />
+        <button
+          type="button"
+          onClick={addManualPhoto}
+          disabled={!manualUrl.trim()}
+          className="inline-flex items-center gap-1 rounded-xl border border-foreground/15 bg-background hover:bg-foreground/5 px-3 py-1.5 text-xs font-medium text-foreground disabled:opacity-40 cursor-pointer"
+        >
+          <Plus className="h-3.5 w-3.5" />
+          <span>Ajouter</span>
+        </button>
+      </div>
+
+      {/* Photo Gallery Grid */}
+      {photos.length > 0 ? (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-xs text-foreground/60">
+            <span>
+              {photos.length} photo{photos.length > 1 ? "s" : ""} dans la galerie de ce sommet :
+            </span>
+            <span className="text-[11px] text-foreground/40">
+              Astuce : Cliquez sur le badge d&apos;une photo pour changer son tag (Photo / Speaker / Post)
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {photos.map((ph, pi) => {
+              const typeLabel =
+                ph.type === "speaker"
+                  ? "🎙️ Speaker"
+                  : ph.type === "post"
+                  ? "📱 Post"
+                  : "📷 Photo";
+
+              const typeBadgeColor =
+                ph.type === "speaker"
+                  ? "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                  : ph.type === "post"
+                  ? "bg-purple-500/20 text-purple-400 border-purple-500/30"
+                  : "bg-blue-500/20 text-blue-400 border-blue-500/30";
+
+              return (
+                <div
+                  key={pi}
+                  className="group relative rounded-xl border border-foreground/10 bg-foreground/3 overflow-hidden flex flex-col justify-between"
+                >
+                  <div className="relative aspect-square w-full bg-black/40 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={ph.url}
+                      alt={ph.caption || "Photo"}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+
+                    {/* Type badge (clickable) */}
+                    <button
+                      type="button"
+                      onClick={() => toggleType(pi)}
+                      className={`absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md text-[10px] font-semibold border backdrop-blur-xs cursor-pointer shadow-xs transition-colors ${typeBadgeColor}`}
+                      title="Cliquer pour changer : Photo / Speaker / Post"
+                    >
+                      {typeLabel}
+                    </button>
+
+                    {/* Delete button */}
+                    <button
+                      type="button"
+                      onClick={() => removePhoto(pi)}
+                      className="absolute top-1.5 right-1.5 p-1 rounded-md bg-black/75 hover:bg-red-600 text-white/80 hover:text-white transition-colors cursor-pointer"
+                      title="Supprimer cette photo"
+                    >
+                      <Trash2 className="h-3 w-3" />
+                    </button>
+
+                    {/* Order Controls */}
+                    <div className="absolute bottom-1.5 right-1.5 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        type="button"
+                        onClick={() => movePhoto(pi, "left")}
+                        disabled={pi === 0}
+                        className="p-1 rounded bg-black/75 hover:bg-black text-white disabled:opacity-20 cursor-pointer"
+                        title="Déplacer à gauche"
+                      >
+                        <ChevronLeft className="h-3 w-3" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => movePhoto(pi, "right")}
+                        disabled={pi === photos.length - 1}
+                        className="p-1 rounded bg-black/75 hover:bg-black text-white disabled:opacity-20 cursor-pointer"
+                        title="Déplacer à droite"
+                      >
+                        <ChevronRight className="h-3 w-3" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Caption Editor */}
+                  <div className="p-2 border-t border-foreground/8 bg-background">
+                    <input
+                      type="text"
+                      value={ph.caption || ""}
+                      onChange={(e) => updateCaption(pi, e.target.value)}
+                      placeholder="Légende de la photo..."
+                      className="w-full bg-transparent text-[11px] text-foreground focus:outline-none truncate"
+                      title={ph.caption}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        <p className="text-xs text-foreground/45 italic">
+          Aucune photo dans la galerie de ce sommet. Glissez-déposez des images ci-dessus pour les ajouter.
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* UNIVERSAL DRAG & DROP FILE UPLOADER (PDF / CV)                             */
+/* -------------------------------------------------------------------------- */
+function DropzoneFileUploader({
   label,
   value,
   onChange,
-  accept,
+  accept = "application/pdf",
   hint,
 }: {
   label: string;
   value: string;
   onChange: (url: string) => void;
-  accept: string;
+  accept?: string;
   hint?: string;
 }) {
+  const [isDragging, setIsDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleProcessFile = async (file: File) => {
     if (!file) return;
-
     setUploading(true);
     setError(null);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      const json = await res.json();
-      if (!res.ok || !json.success) {
-        setError(json.error || "Erreur lors du téléversement");
-      } else {
-        onChange(json.url);
-      }
+      const url = await uploadFileUnified(file);
+      onChange(url);
     } catch {
-      setError("Erreur réseau lors du téléversement.");
+      setError("Erreur lors de l'enregistrement du document.");
     } finally {
       setUploading(false);
-      e.target.value = "";
     }
+  };
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      await handleProcessFile(file);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isDragging) setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
   };
 
   return (
@@ -1902,211 +2547,108 @@ function FileUploadField({
         <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/70">
           {label} {hint && <span className="text-[10px] text-foreground/40 font-normal lowercase">({hint})</span>}
         </label>
-        <label className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 px-2.5 py-1 text-xs font-medium text-foreground transition-colors cursor-pointer">
-          {uploading ? (
-            <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-foreground/20 border-t-foreground" />
-          ) : (
-            <Upload className="h-3.5 w-3.5 text-foreground/70" />
-          )}
-          <span>{uploading ? "Téléversement..." : "Téléverser un nouveau CV"}</span>
-          <input
-            type="file"
-            accept={accept}
-            onChange={handleFile}
-            disabled={uploading}
-            className="hidden"
-          />
-        </label>
       </div>
 
-      <div className="flex items-center gap-2">
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="/SALAKO_CV.pdf ou https://..."
-          className="flex-1 rounded-xl border border-foreground/10 bg-background px-3.5 py-2 text-sm text-foreground focus:border-foreground/30 focus:outline-none transition-colors"
-        />
-        {value && (
-          <a
-            href={value}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-xl border border-foreground/10 bg-foreground/3 px-3 py-2 text-xs font-medium text-foreground/75 hover:text-foreground hover:bg-foreground/8 transition-colors shrink-0"
-          >
-            <FileText className="h-3.5 w-3.5" />
-            <span>Voir</span>
-          </a>
-        )}
-      </div>
+      <input
+        type="file"
+        ref={fileInputRef}
+        accept={accept}
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) void handleProcessFile(file);
+          e.target.value = "";
+        }}
+        className="hidden"
+      />
+
+      {value ? (
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          className={`rounded-2xl border p-4 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all ${
+            isDragging
+              ? "border-emerald-500 bg-emerald-500/10 ring-2 ring-emerald-500/30"
+              : "border-foreground/12 bg-foreground/2"
+          }`}
+        >
+          <div className="flex items-center gap-3 min-w-0 w-full sm:w-auto">
+            <div className="h-10 w-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 border border-red-500/20">
+              <FileText className="h-5 w-5" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold text-foreground truncate">Document PDF Officiel</p>
+              <p className="text-[11px] text-foreground/50 font-mono truncate">{value}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-end shrink-0">
+            <a
+              href={value}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-foreground/15 bg-background hover:bg-foreground/5 px-3 py-1.5 text-xs font-medium text-foreground transition-colors"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              <span>Consulter</span>
+            </a>
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-foreground/15 bg-background hover:bg-foreground/5 px-3 py-1.5 text-xs font-medium text-foreground transition-colors cursor-pointer"
+            >
+              <Upload className="h-3.5 w-3.5" />
+              <span>Remplacer</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onChange("")}
+              className="p-1.5 rounded-xl border border-red-500/20 text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer"
+              title="Supprimer"
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={() => fileInputRef.current?.click()}
+          className={`rounded-2xl border-2 border-dashed p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
+            isDragging
+              ? "border-emerald-500 bg-emerald-500/10"
+              : "border-foreground/15 hover:border-foreground/30 bg-foreground/1 hover:bg-foreground/3"
+          }`}
+        >
+          {uploading ? (
+            <div className="flex flex-col items-center gap-2 py-2">
+              <div className="h-6 w-6 animate-spin rounded-full border-2 border-foreground/20 border-t-foreground" />
+              <p className="text-xs font-medium text-foreground/80">Téléversement du fichier PDF...</p>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-10 w-10 rounded-2xl bg-foreground/5 flex items-center justify-center text-foreground/70">
+                <FileText className="h-5 w-5" />
+              </div>
+              <p className="text-xs font-semibold text-foreground">
+                Glissez-déposez le fichier PDF du CV ici, ou{" "}
+                <span className="text-emerald-400 underline underline-offset-2">parcourir</span>
+              </p>
+              <p className="text-[11px] text-foreground/45">Format PDF (max 10 Mo)</p>
+            </div>
+          )}
+        </div>
+      )}
 
       {error && <p className="text-[11px] text-red-500 font-medium">{error}</p>}
     </div>
   );
 }
 
-function ImageUploader({
-  value,
-  onChange,
-  label = "Image",
-  aspectHint,
-}: {
-  value: string;
-  onChange: (url: string) => void;
-  label?: string;
-  aspectHint?: string;
-}) {
-  const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const compressToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (readerEvent) => {
-        const dataUrl = readerEvent.target?.result as string;
-        if (!dataUrl) {
-          resolve("");
-          return;
-        }
-        const img = new window.Image();
-        img.onload = () => {
-          const maxDim = 800;
-          let width = img.width;
-          let height = img.height;
-          if (width > maxDim || height > maxDim) {
-            if (width > height) {
-              height = Math.round((height * maxDim) / width);
-              width = maxDim;
-            } else {
-              width = Math.round((width * maxDim) / height);
-              height = maxDim;
-            }
-          }
-          const canvas = document.createElement("canvas");
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext("2d");
-          if (!ctx) {
-            resolve(dataUrl);
-            return;
-          }
-          ctx.drawImage(img, 0, 0, width, height);
-          resolve(canvas.toDataURL("image/webp", 0.85));
-        };
-        img.onerror = () => resolve(dataUrl);
-        img.src = dataUrl;
-      };
-      reader.onerror = () => resolve("");
-      reader.readAsDataURL(file);
-    });
-  };
-
-  const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    setError(null);
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      const json = await res.json();
-      if (!res.ok || !json.success) {
-        // Fallback to local client compression and data URL
-        const fallbackDataUrl = await compressToBase64(file);
-        if (fallbackDataUrl) {
-          onChange(fallbackDataUrl);
-        } else {
-          setError(json.error || "Erreur lors du téléversement");
-        }
-      } else {
-        onChange(json.url);
-      }
-    } catch (err) {
-      console.warn("API upload failed, attempting client-side data URL fallback:", err);
-      try {
-        const fallbackDataUrl = await compressToBase64(file);
-        if (fallbackDataUrl) {
-          onChange(fallbackDataUrl);
-        } else {
-          setError("Erreur lors de la lecture du fichier.");
-        }
-      } catch {
-        setError("Erreur réseau lors de l'envoi.");
-      }
-    } finally {
-      setUploading(false);
-      e.target.value = "";
-    }
-  };
-
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/70">
-          {label} {aspectHint && <span className="text-[10px] text-foreground/40 font-normal lowercase">({aspectHint})</span>}
-        </label>
-        <label className="inline-flex items-center gap-1.5 rounded-lg border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 px-2.5 py-1 text-xs font-medium text-foreground transition-colors cursor-pointer">
-          {uploading ? (
-            <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-foreground/20 border-t-foreground" />
-          ) : (
-            <Upload className="h-3.5 w-3.5 text-foreground/70" />
-          )}
-          <span>{uploading ? "Téléversement..." : "Téléverser une image"}</span>
-          <input
-            type="file"
-            accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
-            onChange={handleFile}
-            disabled={uploading}
-            className="hidden"
-          />
-        </label>
-      </div>
-
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder="https://... ou téléversez ci-dessus"
-        className="w-full rounded-xl border border-foreground/10 bg-background px-3.5 py-2 text-sm text-foreground focus:border-foreground/30 focus:outline-none transition-colors"
-      />
-
-      {value && value.startsWith("blob:") && (
-        <p className="text-[11px] text-amber-500 font-medium">
-          ⚠️ Attention : Vous avez entré une URL locale &ldquo;blob:&rdquo;. Les URLs blob ne sont valables que dans la mémoire de votre navigateur et ne s&apos;afficheront pas pour les visiteurs. Veuillez cliquer sur &ldquo;Téléverser une image&rdquo; ou renseigner une URL https://.
-        </p>
-      )}
-
-      {error && (
-        <p className="text-[11px] text-red-500 font-medium">{error}</p>
-      )}
-
-      {value && (
-        <div className="flex items-center gap-3 p-2.5 rounded-2xl bg-background border border-foreground/8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={value}
-            alt="Preview"
-            className="h-14 w-24 object-cover rounded-xl border border-foreground/10"
-            onError={(e) => {
-              (e.currentTarget as HTMLElement).style.display = "none";
-            }}
-          />
-          <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold text-foreground truncate">Aperçu de l&apos;image</p>
-            <p className="text-[11px] text-foreground/50 truncate font-mono">{value}</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
 function SecurityPasswordEditor() {
   const [status, setStatus] = useState<{

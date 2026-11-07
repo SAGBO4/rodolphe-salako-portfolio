@@ -26,6 +26,8 @@ export type ProfileData = {
   location?: string;
   availability: string;
   cvUrl: string;
+  avatarUrl?: string;
+  miniAvatarUrl?: string;
 };
 
 export type ProjectItem = {
@@ -142,6 +144,8 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     linkedin: "https://www.linkedin.com/in/rodolphe-salako-578885334",
     availability: "Remote, on site and international events",
     cvUrl: "/SALAKO_CV.pdf",
+    avatarUrl: "/rodolphe.webp",
+    miniAvatarUrl: "/rodolphe_hover.webp",
   },
   projects: [
     {

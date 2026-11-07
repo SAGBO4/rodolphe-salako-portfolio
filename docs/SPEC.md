@@ -213,3 +213,17 @@ Scenarios: PS-01, PS-06, PS-11, PS-15, PS-19, PS-20
 Data: `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts`
 Out of scope: Intégration de billetterie ou flux vidéo en direct
 Status: approved
+
+### F-18 Système Universel de Téléversement Drag & Drop et Gestion Multi-Photos Galerie dans ZEKIHUB
+Actor: Administrateur (Rodolphe Salako) gérant ses contenus visuels, sommets, projets et documents depuis le tableau de bord ZEKIHUB
+Acceptance:
+  AC1 Zone de glisser-déposer universelle `DropzoneImageUploader` avec aperçu temps réel, compression WebP automatique côté client et téléversement sécurisé
+  AC2 Téléverseur multi-photos `DropzoneMultiPhotoUploader` permettant d'ajouter par lot des photos directement dans la galerie d'un sommet avec sélecteur de tag (Photo / Speaker / Post), réordonnancement et suppression
+  AC3 Zone de glisser-déposer dédiée `DropzoneFileUploader` pour le CV officiel en PDF avec vérification du type de fichier et prévisualisation
+  AC4 Section "Portraits Officiels & Carte 3D Hero" intégrée dans ProfileEditor pour configurer directement le portrait principal et le portrait au survol de la carte interactive
+  AC5 Remplacement des anciens sélecteurs textuels dans ProjectsEditor et SkillsStackEditor pour permettre l'ajout direct d'images et d'icônes par glisser-déposer
+  AC6 (negative) Aucune régression sur les tests unitaires (56 tests verts), la compilation TypeScript ou le build Turbopack
+Scenarios: PS-01, PS-06, PS-11, PS-15, PS-19, PS-20
+Data: `app/ZEKIHUB/page.tsx`, `components/hero/hero.tsx`, `lib/portfolio-data.ts`, `data/portfolio.json`
+Out of scope: Traitement vidéo lourd côté client
+Status: approved

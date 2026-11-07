@@ -77,6 +77,12 @@ Branche / commits : local workspace
 | F-17 AC3 (SiGMA Africa & iGaming Afrika) | `tests/portfolio.test.mjs` "AC3: SiGMA Africa Cape Town and iGaming Afrika Nairobi exist" | verified | Dates, lieux et galeries photos respectives configurés |
 | F-17 AC4 (Nav /events & filtres par sommet style works-card) | `tests/portfolio.test.mjs` "AC4: Nav includes /events and EventsPage is present" | verified | Onglet "Événements" dans `Nav`, grille photos inspirée de works-card (fidelepicture.com) sans paragraphe de description, filtres par sommet et lightbox épurée |
 | F-17 AC5 (EventsSpotlight sur accueil & EventsEditor dans ZEKIHUB) | `tests/portfolio.test.mjs` "AC5: HomePage renders EventsSpotlight and ZEKIHUB has EventsEditor" | verified | Composant `EventsSpotlight` monté sur `/` et éditeur CRUD complet dans `/ZEKIHUB` |
+| F-18 AC1 (Zone Drag & Drop d'images universelle DropzoneImageUploader) | Tests manuels & compilation | verified | Glisser-déposer d'images avec compression WebP automatique côté client, aperçu temps réel, remplacement instantané et fallback |
+| F-18 AC2 (Téléverseur multi-photos DropzoneMultiPhotoUploader dans EventsEditor) | Tests manuels & compilation | verified | Ajout par lot de plusieurs photos simultanées directement dans la galerie d'un sommet avec tags interactifs (Photo / Speaker / Post), réordonnancement et suppression |
+| F-18 AC3 (Téléverseur PDF DropzoneFileUploader pour le CV) | Tests manuels & compilation | verified | Glisser-déposer de CV PDF avec aperçu, consultation directe et remplacement sécurisé |
+| F-18 AC4 (Section Portraits Officiels & Carte 3D Hero dans ProfileEditor) | Tests manuels & compilation | verified | Configuration directe du portrait principal (`avatarUrl`) et alternatif (`miniAvatarUrl`) de la carte interactive 3D de l'accueil |
+| F-18 AC5 (Mise à niveau des couvertures de projets et icônes stack) | Tests manuels & compilation | verified | `ProjectsEditor` et `SkillsStackEditor` équipés de zones de glisser-déposer fluides |
+| F-18 AC6 (Non-régression globale) | `npm test` & `npm run typecheck` & `npm run build` | verified | 56 tests passés avec succès, 0 erreur TypeScript, build Turbopack 19/19 routes |
 
 ### Scénarios de production
 
