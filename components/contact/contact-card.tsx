@@ -57,8 +57,8 @@ export function ContactCard(): ReactNode {
                     lucideIcon={Mail}
                   />
                   <SocialIcon
-                    href={`tel:${p.phoneRaw || "+2290140797262"}`}
-                    label={`Phone / WhatsApp: ${p.phone || "+229 01 40 79 72 62"}`}
+                    href={`tel:${p.phoneRaw || "+22940797262"}`}
+                    label={`Phone / WhatsApp: ${p.phone || "+229 40 79 72 62"}`}
                     lucideIcon={Phone}
                   />
                   <SocialIcon

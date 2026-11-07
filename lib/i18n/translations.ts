@@ -62,7 +62,7 @@ export const translations = {
     "contact.text":
       "Ready to expand your market presence in iGaming or Web3? Whether you need business development, strategic partnerships, affiliate team leadership, or event representation, let’s connect and drive growth together.",
     "contact.availability":
-      "Available for remote work worldwide & international events",
+      "Remote, on site and international events",
     "contact.seeProjects": "See projects",
     "contact.email": "Email",
     "contact.telegram": "Telegram",
@@ -130,7 +130,7 @@ export const translations = {
     "contact.text":
       "Prêt à accélérer votre présence sur le marché de l'iGaming ou du Web3 ? Que vous ayez besoin de business development, de partenariats stratégiques B2B, de leadership d'affiliation ou de représentation sur les sommets, échangeons ensemble.",
     "contact.availability":
-      "Disponible pour des missions remote dans le monde entier & événements internationaux",
+      "Disponible en remote, sur site et événements internationaux",
     "contact.seeProjects": "Voir les projets",
     "contact.email": "Email",
     "contact.telegram": "Telegram",
@@ -161,14 +161,14 @@ export const PORTFOLIO_FRENCH_OVERLAY = {
     mission: "Connecter les acteurs. Bâtir des partenariats. Accélérer la croissance.",
     stats: [
       { label: "Années d'expérience", value: "4+" },
-      { label: "Partenaires Stratégiques", value: "20+" },
+      { label: "Partenaires Stratégiques", value: "40+" },
       { label: "100% Bilingue & Remote", value: "100%" },
       { label: "Marchés Internationaux", value: "Afrique & Monde" },
     ],
-    phone: "+229 01 40 79 72 62",
-    phoneRaw: "+2290140797262",
+    phone: "+229 40 79 72 62",
+    phoneRaw: "+22940797262",
     location: "Porto-Novo, Bénin",
-    availability: "Disponible pour missions remote dans le monde entier & sommets internationaux",
+    availability: "Disponible en remote, sur site et événements internationaux",
   },
   projects: [
     {
@@ -201,7 +201,7 @@ export const PORTFOLIO_FRENCH_OVERLAY = {
       category: "Expansion Régionale",
       meta: "Représentant Pays • République du Bénin • Éducation Numérique • Partenariats",
       description:
-        "Pilotage de l'expansion régionale au Bénin. Développement de partenariats institutionnels avec des universités, des communautés étudiantes et des acteurs économiques pour accélérer l'adoption des technologies Web3.",
+        "Pilotage de l'expansion régionale au Bénin. Développement de partenariats institutionnels avec des universités, des communautés étudiantes et des acteurs économiques pour accélérer l'adoption de l'iGaming, du Web3 et des technologies numériques.",
     },
     {
       id: "marketing-management",

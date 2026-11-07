@@ -53,7 +53,9 @@ test("F-02: Data Store & Metadata Consistency", async (t) => {
     assert.equal(data.profile.email, "rodolphesalako8@gmail.com");
     assert.match(data.profile.twitter, /ZekiZeki40/);
     assert.match(data.profile.cvUrl, /SALAKO_CV\.pdf/);
-    assert.equal(data.profile.phone, "+229 01 40 79 72 62");
+    assert.equal(data.profile.phone, "+229 40 79 72 62");
+    assert.equal(data.profile.availability, "Remote, on site and international events");
+    assert.equal(data.profile.stats.find((s) => s.label === "Strategic Partners")?.value, "40+");
   });
 
   await t.test("AC2: Six CM projects are populated", () => {

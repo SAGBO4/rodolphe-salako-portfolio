@@ -174,7 +174,7 @@ Status: approved
 Actor: Recruteurs, partenaires stratégiques et visiteurs téléchargeant le CV ou consultant le parcours
 Acceptance:
   AC1 Le fichier CV officiel `/public/SALAKO_CV.pdf` est mis à jour à partir du nouveau document PDF source (`123SALAKO Rodolphe Resum @.pdf`, 1.6MB, 5 pages) avec en-tête PDF valide
-  AC2 Les coordonnées de contact sont complétées avec le numéro de téléphone officiel (`+229 01 40 79 72 62` / `+2290140797262`) et la localisation (`Porto-Novo, Bénin`), accessibles en appel et WhatsApp direct
+  AC2 Les coordonnées de contact affichent le numéro de téléphone au format épuré sans le 01 (`+229 40 79 72 62` / `+22940797262`) et la localisation (`Porto-Novo, Bénin`), avec disponibilité "Remote, on site and international events", métrique révisée à 40+ Partenaires Stratégiques, et description de projet Block-Scholars précisant "to scale iGaming, Web3 and digital technology adoption"
   AC3 Le résumé professionnel et le tagline intègrent l'expertise élargie aux secteurs de l'immobilier (Real Estate) et des services financiers (Financial Services), ainsi que la vente B2B et la génération de leads
   AC4 Le catalogue des compétences comprend les 16 compétences officielles répertoriées dans le nouveau CV
   AC5 L'historique professionnel inclut l'intégralité des 11 expériences professionnelles réelles, intégrant le poste `Social Media Manager` chez `NDA` (2020 – 2023)

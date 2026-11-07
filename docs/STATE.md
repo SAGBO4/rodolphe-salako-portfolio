@@ -42,6 +42,11 @@ Dernière mise à jour : 2026-11-05
   - Masquage conditionnel de la barre flottante publique `Nav` sur les routes du dashboard administrateur (`/ZEKIHUB` et `/HUBGUY`), résolvant le problème de superposition visuelle sur smartphone.
   - Remplacement de l'intitulé dans l'en-tête par `R. SALAKO` (avec `whitespace-nowrap` et padding compact) pour un affichage sur une seule ligne sans retour forcé.
   - Suite de tests automatisés portée à 50 tests unitaires réussis.
+- F-16 : Intégration des ajustements éditoriaux et coordonnées demandés par le client :
+  - Disponibilité affinée : "Remote, on site and international events" (FR : "Disponible en remote, sur site et événements internationaux").
+  - Description Block-Scholars complétée : "to scale iGaming, Web3 and digital technology adoption".
+  - Métrique des partenaires stratégiques mise à jour : 40+ Strategic Partners (au lieu de 20+).
+  - Numéro de téléphone épuré : retrait du préfixe 01 -> `+229 40 79 72 62` (tel/WhatsApp : `+22940797262`).
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

@@ -100,12 +100,12 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     mission: "Connecting People. Building Partnerships. Driving Growth.",
     stats: [
       { label: "Years Experience", value: "4+" },
-      { label: "Strategic Partners", value: "20+" },
+      { label: "Strategic Partners", value: "40+" },
       { label: "Remote & Bilingual", value: "100%" },
       { label: "Global Markets", value: "Africa & Global" },
     ],
-    phone: "+229 01 40 79 72 62",
-    phoneRaw: "+2290140797262",
+    phone: "+229 40 79 72 62",
+    phoneRaw: "+22940797262",
     location: "Porto-Novo, Bénin",
     email: "rodolphesalako8@gmail.com",
     telegram: "https://t.me/ZekiZeki40",
@@ -113,7 +113,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     twitter: "https://x.com/ZekiZeki40",
     twitterHandle: "@ZekiZeki40",
     linkedin: "https://www.linkedin.com/in/rodolphe-salako-578885334",
-    availability: "Available for remote work worldwide & international events",
+    availability: "Remote, on site and international events",
     cvUrl: "/SALAKO_CV.pdf",
   },
   projects: [
@@ -162,7 +162,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       image: "/uploads/rodolphe_meetup_speaker.jpg",
       imageAlt: "Rodolphe Salako Block-Scholars Africa Benin Representative",
       description:
-        "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale Web3 and digital technology adoption.",
+        "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale iGaming, Web3 and digital technology adoption.",
       link: "https://www.linkedin.com/in/rodolphe-salako-578885334",
     },
     {

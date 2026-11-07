@@ -96,7 +96,7 @@ const PROJECTS: Project[] = [
     iconLabel: "MARKET EXPANSION",
     title: "Exploring New Markets — Block-Scholars Africa Country Representative",
     description:
-      "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale Web3 and digital technology adoption.",
+      "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale iGaming, Web3 and digital technology adoption.",
     meta: "Country Representative • Benin Republic • Campus Ambassador Network",
     imageRatio: 1024 / 680,
     image: "/uploads/rodolphe_meetup_speaker.jpg",
