@@ -5,6 +5,7 @@ export const translations = {
     // Navigation
     "nav.home": "Home",
     "nav.projects": "Projects",
+    "nav.events": "Events",
     "nav.about": "About",
     "nav.switchLang": "Switch to French",
 
@@ -68,11 +69,32 @@ export const translations = {
     "contact.telegram": "Telegram",
     "contact.twitter": "X (Twitter)",
     "contact.linkedin": "LinkedIn",
+
+    // Events & Summits
+    "events.badge": "Summits & Appearances",
+    "events.pageTitle": "Summits & Global Events",
+    "events.pageSubtitle":
+      "Official speaker keynote sessions, B2B dealmaking, and international gaming representation across SiGMA Africa, SBWA+ Dakar, and iGaming Afrika Nairobi.",
+    "events.spotlightTitle": "International Summits & Speaking",
+    "events.spotlightSubtitle":
+      "Official presence and keynote panels across major iGaming summits in Africa.",
+    "events.viewAll": "Explore All Summits & Gallery",
+    "events.filterAll": "All Events",
+    "events.filterSigma": "SiGMA Africa (Cape Town)",
+    "events.filterSbwa": "SBWA+ Summit (Dakar)",
+    "events.filterNairobi": "iGaming Afrika (Nairobi)",
+    "events.speakerBadge": "Official Speaker 🎙️",
+    "events.photosCount": "photos & posts",
+    "events.openGallery": "Explore Event",
+    "events.closeModal": "Close preview",
+    "events.keyTakeaways": "Key Highlights & Deliverables",
+    "events.officialPosts": "Official Posts & Spotlights",
   },
   fr: {
     // Navigation
     "nav.home": "Accueil",
     "nav.projects": "Projets",
+    "nav.events": "Événements",
     "nav.about": "À propos",
     "nav.switchLang": "Passer en anglais",
 
@@ -136,6 +158,26 @@ export const translations = {
     "contact.telegram": "Telegram",
     "contact.twitter": "X (Twitter)",
     "contact.linkedin": "LinkedIn",
+
+    // Events & Summits
+    "events.badge": "Sommets & Événements",
+    "events.pageTitle": "Sommets & Événements Internationaux",
+    "events.pageSubtitle":
+      "Interventions officielles en tant que Speaker, partenariats stratégiques B2B et représentation de marque aux sommets SiGMA Africa, SBWA+ Dakar et iGaming Afrika Nairobi.",
+    "events.spotlightTitle": "Sommets Internationaux & Interventions",
+    "events.spotlightSubtitle":
+      "Présence officielle et panels de conférence sur les plus grands sommets de l'industrie iGaming en Afrique.",
+    "events.viewAll": "Explorer la Galerie des Événements",
+    "events.filterAll": "Tous les événements",
+    "events.filterSigma": "SiGMA Africa (Cape Town)",
+    "events.filterSbwa": "SBWA+ Summit (Dakar)",
+    "events.filterNairobi": "iGaming Afrika (Nairobi)",
+    "events.speakerBadge": "Speaker Officiel 🎙️",
+    "events.photosCount": "photos & captures",
+    "events.openGallery": "Explorer l'événement",
+    "events.closeModal": "Fermer l'aperçu",
+    "events.keyTakeaways": "Faits Marquants & Livrables",
+    "events.officialPosts": "Publications & Annonces Officielles",
   },
 } as const;
 

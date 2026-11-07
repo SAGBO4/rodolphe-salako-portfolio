@@ -5,6 +5,7 @@ import {
   ArrowDown,
   ArrowUp,
   Briefcase,
+  Calendar,
   Check,
   Clock,
   Copy,
@@ -30,6 +31,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import {
   DEFAULT_PORTFOLIO_DATA,
   EducationItem,
+  EventItem,
   ExperienceItem,
   PortfolioData,
   ProjectItem,
@@ -39,6 +41,7 @@ import {
 type TabKey =
   | "profile"
   | "projects"
+  | "events"
   | "experiences"
   | "education"
   | "skills-stack"
@@ -239,6 +242,12 @@ export default function ZekiHubDashboardPage(): ReactNode {
                 label={`Projects (${data.projects?.length || 0})`}
               />
               <TabButton
+                active={activeTab === "events"}
+                onClick={() => setActiveTab("events")}
+                icon={Calendar}
+                label={`Summits & Events (${data.events?.length || 0})`}
+              />
+              <TabButton
                 active={activeTab === "experiences"}
                 onClick={() => setActiveTab("experiences")}
                 icon={Layers}
@@ -278,6 +287,9 @@ export default function ZekiHubDashboardPage(): ReactNode {
             )}
             {activeTab === "projects" && (
               <ProjectsEditor data={data} onChange={setData} />
+            )}
+            {activeTab === "events" && (
+              <EventsEditor data={data} onChange={setData} />
             )}
             {activeTab === "experiences" && (
               <ExperiencesEditor data={data} onChange={setData} />
@@ -778,6 +790,254 @@ function ProjectsEditor({
               onChange={(v) => updateProject(proj.id, "description", v)}
               rows={3}
             />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2b. EVENTS & SUMMITS EDITOR                                                */
+/* -------------------------------------------------------------------------- */
+function EventsEditor({
+  data,
+  onChange,
+}: {
+  data: PortfolioData;
+  onChange: (d: PortfolioData) => void;
+}) {
+  const events = data.events || [];
+
+  const updateEvent = (id: string, field: keyof EventItem, val: unknown) => {
+    onChange({
+      ...data,
+      events: events.map((e) => (e.id === id ? { ...e, [field]: val } : e)),
+    });
+  };
+
+  const addEvent = () => {
+    const newId = "event-" + Date.now();
+    const newE: EventItem = {
+      id: newId,
+      slug: newId,
+      title: "Nouveau Sommet International",
+      eventCategory: "sbwa-dakar",
+      eventCategoryLabel: "SBWA+ Summit",
+      date: "Dates 2026",
+      location: "Hôtel & Ville, Pays",
+      city: "Ville",
+      country: "Pays",
+      role: "Strategic Delegate / Speaker",
+      isSpeaker: false,
+      badge: "Sommet & Alliances B2B",
+      summary: "Description des interventions, conférences et négociations menées au sommet.",
+      coverImage: "/events/sbwa-dakar/sbwa_i_am_speaking.webp",
+      coverImageAlt: "Nouveau Sommet",
+      photos: [],
+      order: events.length + 1,
+    };
+    onChange({ ...data, events: [...events, newE] });
+  };
+
+  const deleteEvent = (id: string) => {
+    if (typeof window !== "undefined" && !window.confirm("Supprimer ce sommet de la galerie ?")) return;
+    onChange({ ...data, events: events.filter((e) => e.id !== id) });
+  };
+
+  const moveEvent = (index: number, direction: "up" | "down") => {
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= events.length) return;
+    const reordered = [...events];
+    const [moved] = reordered.splice(index, 1);
+    if (!moved) return;
+    reordered.splice(targetIndex, 0, moved);
+    const updated = reordered.map((item, idx) => ({ ...item, order: idx + 1 }));
+    onChange({ ...data, events: updated });
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-serif font-semibold text-foreground">
+            Galerie des Sommets &amp; Événements Internationaux
+          </h2>
+          <p className="text-xs text-foreground/60 mt-1">
+            Gérez les apparitions sur les sommets (SiGMA Africa, SBWA+ Dakar, iGaming Afrika), les photos en haute résolution, les captures de posts et les badges Speaker.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={addEvent}
+          className="inline-flex items-center gap-1.5 rounded-xl bg-foreground px-4 py-2 text-xs font-semibold text-background hover:opacity-90 transition-opacity cursor-pointer shadow-xs self-start sm:self-auto"
+        >
+          <Plus className="h-4 w-4" />
+          <span>Ajouter un événement</span>
+        </button>
+      </div>
+
+      <div className="space-y-6">
+        {events.map((ev, index) => (
+          <div
+            key={ev.id}
+            className="rounded-2xl border border-foreground/10 bg-foreground/2 p-5 sm:p-6 space-y-5"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-foreground/8">
+              <div className="flex items-center gap-2">
+                <span className="h-6 w-6 rounded-full bg-foreground/10 text-foreground text-xs font-mono font-semibold flex items-center justify-center">
+                  {index + 1}
+                </span>
+                <span className="font-semibold text-sm text-foreground truncate max-w-xs">
+                  {ev.title}
+                </span>
+                {ev.isSpeaker && (
+                  <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[10px] font-semibold">
+                    Speaker 🎙️
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => moveEvent(index, "up")}
+                  disabled={index === 0}
+                  className="p-1.5 rounded-lg border border-foreground/10 text-foreground/60 hover:text-foreground disabled:opacity-30 cursor-pointer"
+                  title="Monter"
+                >
+                  <ArrowUp className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveEvent(index, "down")}
+                  disabled={index === events.length - 1}
+                  className="p-1.5 rounded-lg border border-foreground/10 text-foreground/60 hover:text-foreground disabled:opacity-30 cursor-pointer"
+                  title="Descendre"
+                >
+                  <ArrowDown className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => deleteEvent(ev.id)}
+                  className="p-1.5 rounded-lg border border-red-500/20 text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer"
+                  title="Supprimer"
+                >
+                  <Trash2 className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <InputGroup
+                label="Titre du Sommet"
+                value={ev.title}
+                onChange={(v) => updateEvent(ev.id, "title", v)}
+              />
+              <div>
+                <label className="block text-xs font-medium text-foreground/70 mb-1">
+                  Catégorie de Filtre
+                </label>
+                <select
+                  value={ev.eventCategory}
+                  onChange={(e) => {
+                    const cat = e.target.value;
+                    const label =
+                      cat === "sigma-africa"
+                        ? "SiGMA Africa (Cape Town)"
+                        : cat === "sbwa-dakar"
+                        ? "SBWA+ Summit (Dakar)"
+                        : "iGaming Afrika (Nairobi)";
+                    updateEvent(ev.id, "eventCategory", cat);
+                    updateEvent(ev.id, "eventCategoryLabel", label);
+                  }}
+                  className="w-full rounded-xl border border-foreground/15 bg-background px-3 py-2 text-xs font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-foreground/30"
+                >
+                  <option value="sbwa-dakar">SBWA+ Summit (Dakar)</option>
+                  <option value="sigma-africa">SiGMA Africa (Cape Town)</option>
+                  <option value="igaming-nairobi">iGaming Afrika (Nairobi)</option>
+                </select>
+              </div>
+
+              <InputGroup
+                label="Dates du sommet (ex: 14 - 16 Oct 2024)"
+                value={ev.date}
+                onChange={(v) => updateEvent(ev.id, "date", v)}
+              />
+
+              <InputGroup
+                label="Lieu & Ville / Pays (ex: King Fahd Palace Hôtel, Dakar)"
+                value={ev.location}
+                onChange={(v) => updateEvent(ev.id, "location", v)}
+              />
+
+              <InputGroup
+                label="Rôle Officiel (ex: Official Speaker & Onlyplay Representative)"
+                value={ev.role}
+                onChange={(v) => updateEvent(ev.id, "role", v)}
+              />
+
+              <InputGroup
+                label="Badge Affiché (ex: Speaker Officiel 🎙️)"
+                value={ev.badge}
+                onChange={(v) => updateEvent(ev.id, "badge", v)}
+              />
+
+              <div className="sm:col-span-2">
+                <label className="flex items-center gap-2 cursor-pointer text-xs font-medium text-foreground/80">
+                  <input
+                    type="checkbox"
+                    checked={Boolean(ev.isSpeaker)}
+                    onChange={(e) => updateEvent(ev.id, "isSpeaker", e.target.checked)}
+                    className="rounded border-foreground/20 text-foreground focus:ring-0"
+                  />
+                  <span>Mettre en valeur comme Speaker Officiel (badge doré et icône micro)</span>
+                </label>
+              </div>
+
+              <div className="sm:col-span-2">
+                <ImageUploader
+                  label="Image de couverture du sommet"
+                  value={ev.coverImage}
+                  onChange={(v) => updateEvent(ev.id, "coverImage", v)}
+                  aspectHint="16:10 ou 16:9 recommandé"
+                />
+              </div>
+            </div>
+
+            <TextareaGroup
+              label="Résumé & Enjeux du sommet"
+              value={ev.summary}
+              onChange={(v) => updateEvent(ev.id, "summary", v)}
+              rows={3}
+            />
+
+            <div className="pt-2 border-t border-foreground/8">
+              <span className="text-xs font-semibold text-foreground/80 block mb-3">
+                Photos de la galerie ({ev.photos?.length || 0} photos &amp; captures)
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                {ev.photos?.map((ph, pi) => (
+                  <div key={pi} className="relative aspect-square rounded-xl overflow-hidden border border-foreground/10 bg-black/40 group">
+                    <img src={ph.url} alt={ph.caption} className="w-full h-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newPhotos = ev.photos.filter((_, idx) => idx !== pi);
+                        updateEvent(ev.id, "photos", newPhotos);
+                      }}
+                      className="absolute top-1 right-1 p-1 rounded-md bg-black/80 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                      title="Supprimer la photo"
+                    >
+                      <Trash2 className="h-3 w-3" />
+                    </button>
+                    <span className="absolute bottom-0 inset-x-0 bg-black/80 px-1 py-0.5 text-[9px] text-white/80 truncate">
+                      {ph.caption}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ))}
       </div>

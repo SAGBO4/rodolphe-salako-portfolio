@@ -381,3 +381,65 @@ test("F-11: Dashboard ZEKIHUB & Gestion Complète du CRUD", async (t) => {
     assert.match(adminHeaderCode, /R\.\s*SALAKO/);
   });
 });
+
+test("F-17: Summits & Events Gallery (SiGMA Africa, SBWA+ Dakar, iGaming Afrika)", async (t) => {
+  const jsonPath = path.join(ROOT, "data", "portfolio.json");
+  const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+
+  await t.test("AC1: All event images exist in public/events/", () => {
+    assert.ok(Array.isArray(data.events), "data.events must be an array");
+    assert.equal(data.events.length, 3, "Must have 3 summit events");
+
+    for (const ev of data.events) {
+      assert.ok(ev.coverImage, `Event ${ev.id} must have a cover image`);
+      assert.ok(
+        fs.existsSync(path.join(ROOT, "public", ev.coverImage.replace(/^\//, ""))),
+        `Event cover image ${ev.coverImage} must exist`
+      );
+      assert.ok(Array.isArray(ev.photos) && ev.photos.length > 0, `Event ${ev.id} must have photos`);
+      for (const ph of ev.photos) {
+        assert.ok(
+          fs.existsSync(path.join(ROOT, "public", ph.url.replace(/^\//, ""))),
+          `Event photo ${ph.url} must exist`
+        );
+      }
+    }
+  });
+
+  await t.test("AC2: SBWA+ Dakar features official speaker badge and post captures", () => {
+    const sbwa = data.events.find((e) => e.eventCategory === "sbwa-dakar");
+    assert.ok(sbwa, "SBWA+ Dakar event must exist");
+    assert.equal(sbwa.isSpeaker, true, "SBWA+ must highlight Speaker role");
+    assert.match(sbwa.badge, /Speaker/i);
+    const postCaptures = sbwa.photos.filter((p) => p.type === "post" || p.type === "speaker");
+    assert.ok(postCaptures.length >= 4, "Must have speaker and post captures");
+  });
+
+  await t.test("AC3: SiGMA Africa Cape Town and iGaming Afrika Nairobi exist", () => {
+    const sigma = data.events.find((e) => e.eventCategory === "sigma-africa");
+    assert.ok(sigma, "SiGMA Africa must exist");
+    assert.equal(sigma.city, "Cape Town");
+
+    const nairobi = data.events.find((e) => e.eventCategory === "igaming-nairobi");
+    assert.ok(nairobi, "iGaming Afrika must exist");
+    assert.equal(nairobi.city, "Nairobi");
+  });
+
+  await t.test("AC4: Nav includes /events and EventsPage is present", () => {
+    const navCode = fs.readFileSync(path.join(ROOT, "components/layout/nav.tsx"), "utf8");
+    assert.match(navCode, /\/events/);
+    assert.match(navCode, /nav\.events/);
+
+    const eventsPagePath = path.join(ROOT, "app/events/page.tsx");
+    assert.ok(fs.existsSync(eventsPagePath), "app/events/page.tsx must exist");
+  });
+
+  await t.test("AC5: HomePage renders EventsSpotlight and ZEKIHUB has EventsEditor", () => {
+    const homeCode = fs.readFileSync(path.join(ROOT, "app/page.tsx"), "utf8");
+    assert.match(homeCode, /EventsSpotlight/);
+
+    const adminPath = path.join(ROOT, "app/ZEKIHUB/page.tsx");
+    const adminCode = fs.readFileSync(adminPath, "utf8");
+    assert.match(adminCode, /EventsEditor/);
+  });
+});

@@ -3,7 +3,7 @@
     "name": "Rodolphe Salako",
     "role": "Business Development & Sales Professional",
     "greeting": "Hello! I'm Rodolphe Salako.",
-    "heroIntro": "Hey \ud83d\udc4b, I'm Rodolphe Salako",
+    "heroIntro": "Hey 👋, I'm Rodolphe Salako",
     "heroTitle1": "Business Development &",
     "heroTitle2": "Strategic Partnerships",
     "heroDescription": "Business Development and Sales professional with experience across the iGaming, Web3, real estate, and financial services industries. Skilled in B2B sales, strategic partnership management, market expansion, lead generation, and affiliate management across international markets.",
@@ -42,16 +42,16 @@
     "cvUrl": "/SALAKO_CV.pdf",
     "phone": "+229 40 79 72 62",
     "phoneRaw": "+22940797262",
-    "location": "Porto-Novo, B\u00e9nin"
+    "location": "Porto-Novo, Bénin"
   },
   "projects": [
     {
       "id": "strategic-partnerships",
       "order": 1,
-      "title": "Business Development & Strategic Partnerships \u2014 iGaming & Web3",
+      "title": "Business Development & Strategic Partnerships — iGaming & Web3",
       "category": "Business Development",
-      "meta": "B2B Dealmaking \u2022 Strategic Partnerships \u2022 Operator Relations \u2022 BetConstruct AI",
-      "image": "/uploads/rodolphe_betconstruct.jpg",
+      "meta": "B2B Dealmaking • Strategic Partnerships • Operator Relations • BetConstruct AI",
+      "image": "/rodolphe.webp",
       "imageAlt": "Rodolphe Salako B2B Partnerships with BetConstruct and Game Operators",
       "description": "Identifying new business opportunities and structuring strategic B2B partnerships with game studios, betting operators, and crypto platforms across African and international markets.",
       "link": "https://www.linkedin.com/in/rodolphe-salako-578885334"
@@ -59,9 +59,9 @@
     {
       "id": "affiliate-leadership",
       "order": 2,
-      "title": "Affiliate Management & Team Leadership \u2014 1win & 1xBet",
+      "title": "Affiliate Management & Team Leadership — 1win & 1xBet",
       "category": "Affiliate Leadership",
-      "meta": "Team Lead \u2022 Media Buyers \u2022 Deal Negotiation \u2022 Revenue Growth",
+      "meta": "Team Lead • Media Buyers • Deal Negotiation • Revenue Growth",
       "image": "/uploads/rodolphe_1xbet_summit.jpg",
       "imageAlt": "Rodolphe Salako Affiliate Team Leadership 1win and 1xBet",
       "description": "Leading and coordinating teams of affiliate managers, recruiting top media buyers, structuring high-converting commission models, and optimizing player acquisition funnels.",
@@ -70,9 +70,9 @@
     {
       "id": "summits-speaking",
       "order": 3,
-      "title": "Event Coordination & Speaker \u2014 SiGMA Africa & SBWA+ Dakar",
+      "title": "Event Coordination & Speaker — SiGMA Africa & SBWA+ Dakar",
       "category": "Event Coordination",
-      "meta": "Official Speaker \u2022 SiGMA Africa Cape Town \u2022 SBWA+ Summit Dakar",
+      "meta": "Official Speaker • SiGMA Africa Cape Town • SBWA+ Summit Dakar",
       "image": "/uploads/rodolphe_sigma_africa.jpg",
       "imageAlt": "Rodolphe Salako Speaker at SiGMA Africa and SBWA+ Summit",
       "description": "Representing gaming brands at premier international conferences. Official Speaker at SBWA+ & GEFA in Dakar, networking with C-level executives, and building high-trust industry alliances.",
@@ -81,9 +81,9 @@
     {
       "id": "market-expansion-benin",
       "order": 4,
-      "title": "Exploring New Markets \u2014 Block-Scholars Africa Country Representative",
+      "title": "Exploring New Markets — Block-Scholars Africa Country Representative",
       "category": "Market Expansion",
-      "meta": "Country Representative \u2022 Benin Republic \u2022 Tech Education \u2022 Partnerships",
+      "meta": "Country Representative • Benin Republic • Tech Education • Partnerships",
       "image": "/uploads/rodolphe_meetup_speaker.jpg",
       "imageAlt": "Rodolphe Salako Block-Scholars Africa Benin Representative",
       "description": "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale iGaming, Web3 and digital technology adoption.",
@@ -92,9 +92,9 @@
     {
       "id": "marketing-management",
       "order": 5,
-      "title": "Marketing Management & Growth Strategy \u2014 CJC Race & Chainmakers",
+      "title": "Marketing Management & Growth Strategy — CJC Race & Chainmakers",
       "category": "Marketing Management",
-      "meta": "Growth Strategy \u2022 Digital Campaigns \u2022 Influencer Partnerships \u2022 Tournaments",
+      "meta": "Growth Strategy • Digital Campaigns • Influencer Partnerships • Tournaments",
       "image": "/uploads/rodolphe_summit_table.jpg",
       "imageAlt": "Rodolphe Salako Marketing Management CJC Race and Chainmakers",
       "description": "Developing integrated multi-channel marketing campaigns, managing marketing budgets, negotiating influencer collaborations, and delivering initiatives that drive user acquisition and engagement.",
@@ -103,9 +103,9 @@
     {
       "id": "social-media-community",
       "order": 6,
-      "title": "Social Media, Community Management & Video Production \u2014 Onlyplay Club",
+      "title": "Social Media, Community Management & Video Production — Onlyplay Club",
       "category": "Social Media & Community",
-      "meta": "Community Operations \u2022 Interactive AMAs \u2022 Video Editing \u2022 Telegram & Discord",
+      "meta": "Community Operations • Interactive AMAs • Video Editing • Telegram & Discord",
       "image": "/uploads/rodolphe_onlyplay_ama.jpg",
       "imageAlt": "Onlyplay Club Community AMAs and Player Operations",
       "description": "Managing multi-channel community engagement across Telegram, Discord, and X. Hosting high-engagement AMAs, editing promotional video content, and turning player communities into sustainable growth engines.",
@@ -117,8 +117,8 @@
       "id": "block-scholars",
       "order": 1,
       "company": "Block-Scholars Africa",
-      "role": "Country Representative \u2013 Benin Republic",
-      "period": "2026 \u2013 Present",
+      "role": "Country Representative – Benin Republic",
+      "period": "2026 – Present",
       "brand": "#10B981",
       "description": "Exploring new markets and developing presence across Benin. Building strategic partnerships with universities, student communities, and industry leaders; recruiting ambassador networks, and organizing digital technology and iGaming educational initiatives."
     },
@@ -127,7 +127,7 @@
       "order": 2,
       "company": "1win",
       "role": "Affiliate Manager & Team Lead",
-      "period": "Feb 2024 \u2013 Jul 2024",
+      "period": "Feb 2024 – Jul 2024",
       "brand": "#1E40AF",
       "description": "Managed and coordinated a high-performing affiliate management team. Supervised partner onboarding, negotiated bespoke commission structures, monitored traffic quality, and scaled revenues."
     },
@@ -136,7 +136,7 @@
       "order": 3,
       "company": "Onlyplay",
       "role": "Ambassador Team Lead",
-      "period": "Jul 2025 \u2013 Jan 2026",
+      "period": "Jul 2025 – Jan 2026",
       "brand": "#FF7043",
       "description": "Recruited, trained, and led an international team of brand ambassadors across emerging markets. Defined content guidelines, supervised milestone execution, and built enduring professional relationships with creators."
     },
@@ -145,7 +145,7 @@
       "order": 4,
       "company": "CJC Race",
       "role": "Marketing Manager",
-      "period": "2024 \u2013 2025",
+      "period": "2024 – 2025",
       "brand": "#EF4444",
       "description": "Executed integrated marketing campaigns (digital ads, influencer partnerships, online tournaments) that accelerated player acquisition, game visibility, and brand reach."
     },
@@ -154,7 +154,7 @@
       "order": 5,
       "company": "Les chainmakers",
       "role": "Marketing Manager",
-      "period": "2022 \u2013 2024",
+      "period": "2022 – 2024",
       "brand": "#8B5CF6",
       "description": "Formulated marketing strategies to accelerate brand growth, negotiated partnership activations, and managed competitor benchmarking and audience communications."
     },
@@ -163,7 +163,7 @@
       "order": 6,
       "company": "1xBet",
       "role": "Affiliate Manager",
-      "period": "2023 \u2013 2024",
+      "period": "2023 – 2024",
       "brand": "#2563EB",
       "description": "Cultivated strategic affiliate relationships, onboarded new traffic sources, and coordinated promotional materials to drive user acquisition."
     },
@@ -171,8 +171,8 @@
       "id": "tapbit",
       "order": 7,
       "company": "Tapbit Crypto Exchange",
-      "role": "English \u2013 French Translator & Community Support",
-      "period": "Nov 2025 \u2013 Mar 2026",
+      "role": "English – French Translator & Community Support",
+      "period": "Nov 2025 – Mar 2026",
       "brand": "#0284C7",
       "description": "Localized cryptocurrency documentation, market updates, and UI interfaces from English to French. Collaborated with marketing and community teams to engage francophone traders."
     },
@@ -190,7 +190,7 @@
       "order": 9,
       "company": "TopGoal French",
       "role": "Community Manager",
-      "period": "Jan 2024 \u2013 Jul 2024",
+      "period": "Jan 2024 – Jul 2024",
       "brand": "#F59E0B",
       "description": "Moderated the official French Telegram community, coordinated interactive events, and delivered community insights to product managers."
     },
@@ -199,7 +199,7 @@
       "order": 10,
       "company": "Yescoin - French",
       "role": "Community Manager",
-      "period": "2023 \u2013 2024",
+      "period": "2023 – 2024",
       "brand": "#FBBF24",
       "description": "Fostered a thriving Telegram community, provided real-time user assistance, organized promotional contests, and maintained vigilant anti-scam protection."
     },
@@ -208,7 +208,7 @@
       "order": 11,
       "company": "NDA",
       "role": "Social Media Manager",
-      "period": "2020 \u2013 2023",
+      "period": "2020 – 2023",
       "brand": "#64748B",
       "description": "Managed and developed NDA's social media presence in sports betting and gaming. Created engaging promotional content, handled player interactions, and supported user retention and community growth."
     }
@@ -218,7 +218,7 @@
       "id": "bachelor-translation",
       "order": 1,
       "school": "University Center of Adjarra, Porto-Novo, Benin",
-      "degree": "Bachelor\u2019s Degree in English (English \u2013 French Translation)",
+      "degree": "Bachelor’s Degree in English (English – French Translation)",
       "period": "2025",
       "tag": "DEGREE",
       "brand": "#6366F1"
@@ -237,7 +237,7 @@
       "order": 3,
       "school": "National High School Board",
       "degree": "High School Diploma (Baccalaureate)",
-      "period": "2021 \u2013 2022",
+      "period": "2021 – 2022",
       "tag": "BAC",
       "brand": "#10B981"
     },
@@ -266,7 +266,7 @@
     "Market Research & Analysis",
     "Event Management & Coordination",
     "Problem-Solving",
-    "English\u2013French Translation",
+    "English–French Translation",
     "Video Editing"
   ],
   "stack": [
@@ -377,6 +377,163 @@
       "bg": "#0284C7",
       "fg": "#ffffff",
       "iconUrl": "/icons/tapbit.svg"
+    }
+  ],
+  "events": [
+    {
+      "id": "sbwa-summit-dakar",
+      "slug": "sbwa-summit-dakar",
+      "title": "Sports Betting West Africa+ (SBWA+) Summit — 11th Annual",
+      "eventCategory": "sbwa-dakar",
+      "eventCategoryLabel": "SBWA+ Summit (Dakar)",
+      "date": "14 - 16 Oct 2024",
+      "location": "King Fahd Palace Hôtel, Dakar, Sénégal",
+      "city": "Dakar",
+      "country": "Sénégal",
+      "role": "Official Speaker & Onlyplay Brand Representative",
+      "isSpeaker": true,
+      "badge": "Speaker Officiel 🎙️",
+      "summary": "Intervention officielle en tant que Speaker lors du 11ème sommet annuel Sports Betting West Africa+. Représentation d'Onlyplay, networking C-Level, prises de parole sur la rétention des joueurs et la croissance de l'iGaming en Afrique de l'Ouest.",
+      "coverImage": "/events/sbwa-dakar/sbwa_i_am_speaking.webp",
+      "coverImageAlt": "Rodolphe Salako I AM SPEAKING banner at SBWA+ Summit Dakar",
+      "photos": [
+        {
+          "url": "/events/sbwa-dakar/sbwa_i_am_speaking.webp",
+          "caption": "Bannière officielle 'I AM SPEAKING' — SBWA+ Summit 11th Annual Dakar",
+          "type": "speaker"
+        },
+        {
+          "url": "/events/sbwa-dakar/eventus_speaker_spotlight.webp",
+          "caption": "Eventus International Speaker Spotlight : Rodolphe Salako représentant Onlyplay",
+          "type": "post"
+        },
+        {
+          "url": "/events/sbwa-dakar/onlyplay_announcement_post.webp",
+          "caption": "Annonce officielle ONLYPLAY : De Lisbonne à Dakar pour le BiG West Africa Summit",
+          "type": "post"
+        },
+        {
+          "url": "/events/sbwa-dakar/rodolphe_dakar_post.webp",
+          "caption": "Publication en direct de Rodolphe Salako au King Fahd Palace : networking & échanges",
+          "type": "post"
+        },
+        {
+          "url": "/events/sbwa-dakar/sbwa_speaker_stage.webp",
+          "caption": "Intervention sur scène et panel de discussion au sommet SBWA+",
+          "type": "speaker"
+        },
+        {
+          "url": "/events/sbwa-dakar/sbwa_panel_delegates.webp",
+          "caption": "Session de discussion plénière avec les leaders de l'industrie iGaming",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sbwa-dakar/rodolphe_sbwa_networking.webp",
+          "caption": "Networking stratégique et échanges B2B dans le salon d'exposition",
+          "type": "photo"
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "sigma-africa-cape-town",
+      "slug": "sigma-africa-cape-town",
+      "title": "SiGMA Africa Summit — GrandWest Sun Exhibits",
+      "eventCategory": "sigma-africa",
+      "eventCategoryLabel": "SiGMA Africa (Cape Town)",
+      "date": "11 - 13 Mars 2024",
+      "location": "GrandWest Sun Exhibits, Cape Town, Afrique du Sud",
+      "city": "Cape Town",
+      "country": "Afrique du Sud",
+      "role": "Strategic Delegate & iGaming Networking Lead",
+      "isSpeaker": false,
+      "badge": "Sommet & Alliances B2B",
+      "summary": "Représentation stratégique de marques iGaming lors du prestigieux sommet SiGMA Africa à Cape Town. Négociation d'accords d'affiliation, rencontres avec des fournisseurs de jeux, opérateurs de paris sportifs et régulateurs panafricains.",
+      "coverImage": "/events/sigma-africa/sigma_cape_town_booth.webp",
+      "coverImageAlt": "Rodolphe Salako at SiGMA Africa exhibition floor Cape Town",
+      "photos": [
+        {
+          "url": "/events/sigma-africa/sigma_cape_town_booth.webp",
+          "caption": "Stand d'exposition et rencontres opérateurs à SiGMA Africa Cape Town",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sigma-africa/sigma_networking_lounge.webp",
+          "caption": "Sessions de networking dans les espaces VIP et lounges de SiGMA",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sigma-africa/sigma_summit_entrance.webp",
+          "caption": "Entrée officielle du sommet GrandWest Sun Exhibits à Cape Town",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sigma-africa/sigma_exhibitors_hall.webp",
+          "caption": "Hall d'exposition principal SiGMA Africa : pavillons studios et plateformes",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sigma-africa/sigma_table_meeting.webp",
+          "caption": "Table ronde et entretiens de négociation commerciale",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sigma-africa/sigma_vip_gathering.webp",
+          "caption": "Échanges stratégiques entre dirigeants et représentants de l'écosystème",
+          "type": "photo"
+        },
+        {
+          "url": "/events/sigma-africa/rodolphe_sigma_portrait.webp",
+          "caption": "Rodolphe Salako accrédité au sommet international SiGMA Africa",
+          "type": "photo"
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "igaming-afrika-nairobi",
+      "slug": "igaming-afrika-nairobi",
+      "title": "iGaming AFRIKA Summit — Nairobi, Kenya",
+      "eventCategory": "igaming-nairobi",
+      "eventCategoryLabel": "iGaming Afrika (Nairobi)",
+      "date": "4 - 6 Mai 2026",
+      "location": "Nairobi, Kenya",
+      "city": "Nairobi",
+      "country": "Kenya",
+      "role": "Brand Representative & East Africa Market Expansion",
+      "isSpeaker": false,
+      "badge": "Expansion & Marché Est-Africain",
+      "summary": "Participation et représentation officielle Onlyplay au sommet de référence iGaming Afrika à Nairobi. Exploration du marché est-africain, établissement de partenariats institutionnels et accélération de l'adoption des solutions de jeu en ligne.",
+      "coverImage": "/events/igaming-nairobi/banner_onlyplay_meet.webp",
+      "coverImageAlt": "Onlyplay official banner Let's meet at iGaming Afrika Summit Nairobi",
+      "photos": [
+        {
+          "url": "/events/igaming-nairobi/banner_onlyplay_meet.webp",
+          "caption": "Bannière officielle ONLYPLAY : 'Let's Meet at iGaming AFRIKA Summit Nairobi'",
+          "type": "banner"
+        },
+        {
+          "url": "/events/igaming-nairobi/nairobi_networking_1.webp",
+          "caption": "Rencontres B2B et échanges avec les acteurs de l'iGaming kenyan",
+          "type": "photo"
+        },
+        {
+          "url": "/events/igaming-nairobi/nairobi_summit_floor.webp",
+          "caption": "Espace congrès et salon des innovations iGaming Afrika",
+          "type": "photo"
+        },
+        {
+          "url": "/events/igaming-nairobi/nairobi_stage_panel.webp",
+          "caption": "Sessions plénières et présentations des tendances technologiques",
+          "type": "photo"
+        },
+        {
+          "url": "/events/igaming-nairobi/nairobi_hall_photo.webp",
+          "caption": "Networking actif et discussions bilatérales avec les opérateurs régionaux",
+          "type": "photo"
+        }
+      ],
+      "order": 3
     }
   ]
 }

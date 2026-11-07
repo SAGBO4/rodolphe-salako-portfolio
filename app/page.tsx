@@ -1,4 +1,5 @@
 import { ContactCard } from "@/components/contact/contact-card";
+import { EventsSpotlight } from "@/components/events/events-spotlight";
 import { Hero } from "@/components/hero/hero";
 import { Projects } from "@/components/projects/projects";
 import { createMetadata, siteConfig } from "@/lib/metadata";
@@ -16,6 +17,7 @@ export default function HomePage(): ReactNode {
     <main id="main-content" className="flex flex-1 flex-col gap-14 sm:gap-20 md:gap-28">
       <Hero />
       <Projects withHeadline viewMoreVisible />
+      <EventsSpotlight />
       <ContactCard />
       <div className="h-12 sm:h-16" />
     </main>

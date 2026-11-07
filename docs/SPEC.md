@@ -199,3 +199,17 @@ Scenarios: PS-01, PS-06, PS-11, PS-14, PS-19, PS-20
 Data: Composants de présentation, styles CSS et layouts
 Out of scope: Altération de la palette de couleurs
 Status: approved
+
+### F-17 Galerie des Sommets & Événements Internationaux (SiGMA, SBWA+, iGaming Afrika)
+Actor: Visiteur, recruteur ou partenaire stratégique consultant les participations et prises de parole internationales de Rodolphe Salako
+Acceptance:
+  AC1 Tous les visuels des sommets sont convertis et optimisés en WebP dans `/public/events/` répartis entre `sigma-africa/`, `sbwa-dakar/` et `igaming-nairobi/`
+  AC2 L'événement SBWA+ Dakar présente le badge officiel "Speaker" avec photos d'intervention et captures des posts de l'événement
+  AC3 Les événements SiGMA Africa (Cape Town) et iGaming Afrika (Nairobi) sont intégrés avec dates, lieux et résumés B2B dédiés
+  AC4 La barre de navigation `Nav` intègre l'onglet "Événements" (`/events`) et la page dédiée propose des filtres interactifs par sommet avec compteur dynamique
+  AC5 La page d'accueil intègre un spotlight `EventsSpotlight` avec aperçu des sommets récents et lien direct vers `/events`, et le dashboard ZEKIHUB dispose du gestionnaire `EventsEditor` complet
+  AC6 (negative) Aucune régression sur le build Turbopack, la suite de tests ou les shaders existants
+Scenarios: PS-01, PS-06, PS-11, PS-15, PS-19, PS-20
+Data: `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts`
+Out of scope: Intégration de billetterie ou flux vidéo en direct
+Status: approved

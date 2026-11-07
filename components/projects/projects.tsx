@@ -63,7 +63,7 @@ const PROJECTS: Project[] = [
       "Identifying new business opportunities and structuring strategic B2B partnerships with game studios, betting operators, and crypto platforms across African and international markets.",
     meta: "B2B Dealmaking • Strategic Partnerships • Operator Relations • BetConstruct AI",
     imageRatio: 1024 / 680,
-    image: "/uploads/rodolphe_betconstruct.jpg",
+    image: "/rodolphe.webp",
     imageAlt: "Rodolphe Salako B2B Partnerships with BetConstruct and Game Operators",
   },
   {

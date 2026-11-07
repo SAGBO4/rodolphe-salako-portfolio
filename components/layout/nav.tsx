@@ -14,13 +14,14 @@ import {
 } from "react";
 
 type NavItem = {
-  labelKey: "nav.home" | "nav.projects" | "nav.about";
+  labelKey: "nav.home" | "nav.projects" | "nav.events" | "nav.about";
   href: string;
 };
 
 const NAV_ITEMS: readonly NavItem[] = [
   { labelKey: "nav.home", href: "/" },
   { labelKey: "nav.projects", href: "/projects" },
+  { labelKey: "nav.events", href: "/events" },
   { labelKey: "nav.about", href: "/about" },
 ];
 
@@ -107,7 +108,7 @@ export function Nav(): ReactNode {
                 <Link
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
-                  className="focus-ring relative inline-flex cursor-pointer items-center justify-center rounded-full px-2.5 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-medium transition-colors duration-300 whitespace-nowrap"
+                  className="focus-ring relative inline-flex cursor-pointer items-center justify-center rounded-full px-2 sm:px-3.5 md:px-4 py-1 sm:py-1.5 text-[11px] sm:text-xs md:text-sm font-medium transition-colors duration-300 whitespace-nowrap"
                 >
                   <span
                     className={

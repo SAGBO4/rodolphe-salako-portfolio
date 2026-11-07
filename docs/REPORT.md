@@ -4,8 +4,8 @@
 
 - **Projet** : Portfolio de Rodolphe Salako (Business Development, Sales & Strategic Partnerships - iGaming & Web3)
 - **Features livrées** : 13/13 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11, F-12, F-13)
-- **Tests exécutés** : 50 passés, 0 échec (`npm test`)
-- **Compilation Next.js** : Réussie (18/18 routes Turbopack)
+- **Tests exécutés** : 56 passés, 0 échec (`npm test`)
+- **Compilation Next.js** : Réussie (19/19 routes Turbopack)
 - **TypeScript** : 0 erreur (`npm run typecheck`)
 - **Contrôle documentaire** : `docs_check.py` : 0 erreur, 0 avertissement
 - **Alignement strict avec la vision client** :
@@ -72,6 +72,11 @@ Branche / commits : local workspace
 | F-13 AC6 (About, Experience, Education & Matter.js physique) | `app/about/page.tsx` & subcomponents | verified | Padding interne `p-4 sm:p-8`, `items-start sm:items-center` sur listes, hauteur Matter.js `h-56` |
 | F-13 AC7 (ContactCard & ProjectDetailModal réactifs) | `components/contact/` & `ProjectDetailModal` | verified | `flex-wrap` sur icônes de contact, `flex-col-reverse sm:flex-row` sur CTAs modale |
 | F-13 AC8 (Zéro overflow horizontal parasite) | `app/globals.css` `html, body` | verified | `overflow-x: hidden` actif, 0 scroll horizontal parasite sur mobile 320px |
+| F-17 AC1 (Images WebP des sommets) | `tests/portfolio.test.mjs` "AC1: All event images exist in public/events/" | verified | 19 visuels haute résolution convertis en WebP dans `public/events/` |
+| F-17 AC2 (SBWA+ Dakar avec badge Speaker & captures posts) | `tests/portfolio.test.mjs` "AC2: SBWA+ Dakar features official speaker badge and post captures" | verified | Badge "Speaker" officiel, photos sur scène et captures de posts intégrées |
+| F-17 AC3 (SiGMA Africa & iGaming Afrika) | `tests/portfolio.test.mjs` "AC3: SiGMA Africa Cape Town and iGaming Afrika Nairobi exist" | verified | Dates, lieux et galeries photos respectives configurés |
+| F-17 AC4 (Nav /events & filtres par sommet) | `tests/portfolio.test.mjs` "AC4: Nav includes /events and EventsPage is present" | verified | Onglet "Événements" dans `Nav`, filtres avec compteurs et modale lightbox |
+| F-17 AC5 (EventsSpotlight sur accueil & EventsEditor dans ZEKIHUB) | `tests/portfolio.test.mjs` "AC5: HomePage renders EventsSpotlight and ZEKIHUB has EventsEditor" | verified | Composant `EventsSpotlight` monté sur `/` et éditeur CRUD complet dans `/ZEKIHUB` |
 
 ### Scénarios de production
 
@@ -118,9 +123,9 @@ Branche / commits : local workspace
 * **Pull Request #2** : `dev` vers `main` &rarr; Relecture de release de production v1.0.0 et merge officiel ([PR #2](https://github.com/SAGBO4/rodolphe-salako-portfolio/pull/2)).
 
 ### 3. Pipeline de Validation & Gates Qualité
-* **Tests unitaires et d'intégration** : **50 tests exécutés avec succès** (`npm test`), 0 échec.
+* **Tests unitaires et d'intégration** : **56 tests exécutés avec succès** (`npm test`), 0 échec.
 * **Typage statique TypeScript** : `npm run typecheck` &rarr; **0 erreur**.
-* **Compilation Turbopack Next.js** : **18/18 routes générées** en statique et dynamique (`npm run build`).
+* **Compilation Turbopack Next.js** : **19/19 routes générées** en statique et dynamique (`npm run build`).
 * **Conformité documentaire Forge** : `docs_check.py` &rarr; **0 erreur, 0 avertissement**.
 
 ### 4. Déploiement en Production sur Vercel

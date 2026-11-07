@@ -71,6 +71,32 @@ export type StackChipItem = {
   order: number;
 };
 
+export type EventPhoto = {
+  url: string;
+  caption: string;
+  type?: "photo" | "speaker" | "post" | "banner";
+};
+
+export type EventItem = {
+  id: string;
+  slug: string;
+  title: string;
+  eventCategory: string;
+  eventCategoryLabel: string;
+  date: string;
+  location: string;
+  city: string;
+  country: string;
+  role: string;
+  isSpeaker?: boolean;
+  badge: string;
+  summary: string;
+  coverImage: string;
+  coverImageAlt: string;
+  photos: EventPhoto[];
+  order: number;
+};
+
 export type PortfolioData = {
   profile: ProfileData;
   projects: ProjectItem[];
@@ -78,6 +104,7 @@ export type PortfolioData = {
   education: EducationItem[];
   skills: string[];
   stack: StackChipItem[];
+  events: EventItem[];
 };
 
 export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
@@ -123,7 +150,7 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
       title: "Business Development & Strategic Partnerships — iGaming & Web3",
       category: "Business Development",
       meta: "B2B Dealmaking • Strategic Partnerships • Operator Relations • BetConstruct AI",
-      image: "/uploads/rodolphe_betconstruct.jpg",
+      image: "/rodolphe.webp",
       imageAlt: "Rodolphe Salako B2B Partnerships with BetConstruct and Game Operators",
       description:
         "Identifying new business opportunities and structuring strategic B2B partnerships with game studios, betting operators, and crypto platforms across African and international markets.",
@@ -371,5 +398,165 @@ export const DEFAULT_PORTFOLIO_DATA: PortfolioData = {
     { id: "10", order: 10, label: "Premiere Pro", slug: "premiere", bg: "#00005B", fg: "#9999FF", iconUrl: "/icons/premiere.svg" },
     { id: "11", order: 11, label: "Canva", slug: "canva", bg: "#00C4CC", fg: "#ffffff", iconUrl: "/icons/canva.svg" },
     { id: "12", order: 12, label: "Tapbit", slug: "tapbit", bg: "#0284C7", fg: "#ffffff", iconUrl: "/icons/tapbit.svg" },
+  ],
+  events: [
+    {
+      id: "sbwa-summit-dakar",
+      slug: "sbwa-summit-dakar",
+      title: "Sports Betting West Africa+ (SBWA+) Summit — 11th Annual",
+      eventCategory: "sbwa-dakar",
+      eventCategoryLabel: "SBWA+ Summit (Dakar)",
+      date: "14 - 16 Oct 2024",
+      location: "King Fahd Palace Hôtel, Dakar, Sénégal",
+      city: "Dakar",
+      country: "Sénégal",
+      role: "Official Speaker & Onlyplay Brand Representative",
+      isSpeaker: true,
+      badge: "Speaker Officiel 🎙️",
+      summary:
+        "Intervention officielle en tant que Speaker lors du 11ème sommet annuel Sports Betting West Africa+. Représentation d'Onlyplay, networking C-Level, prises de parole sur la rétention des joueurs et la croissance de l'iGaming en Afrique de l'Ouest.",
+      coverImage: "/events/sbwa-dakar/sbwa_i_am_speaking.webp",
+      coverImageAlt: "Rodolphe Salako I AM SPEAKING banner at SBWA+ Summit Dakar",
+      photos: [
+        {
+          url: "/events/sbwa-dakar/sbwa_i_am_speaking.webp",
+          caption: "Bannière officielle 'I AM SPEAKING' — SBWA+ Summit 11th Annual Dakar",
+          type: "speaker",
+        },
+        {
+          url: "/events/sbwa-dakar/eventus_speaker_spotlight.webp",
+          caption: "Eventus International Speaker Spotlight : Rodolphe Salako représentant Onlyplay",
+          type: "post",
+        },
+        {
+          url: "/events/sbwa-dakar/onlyplay_announcement_post.webp",
+          caption: "Annonce officielle ONLYPLAY : De Lisbonne à Dakar pour le BiG West Africa Summit",
+          type: "post",
+        },
+        {
+          url: "/events/sbwa-dakar/rodolphe_dakar_post.webp",
+          caption: "Publication en direct de Rodolphe Salako au King Fahd Palace : networking & échanges",
+          type: "post",
+        },
+        {
+          url: "/events/sbwa-dakar/sbwa_speaker_stage.webp",
+          caption: "Intervention sur scène et panel de discussion au sommet SBWA+",
+          type: "speaker",
+        },
+        {
+          url: "/events/sbwa-dakar/sbwa_panel_delegates.webp",
+          caption: "Session de discussion plénière avec les leaders de l'industrie iGaming",
+          type: "photo",
+        },
+        {
+          url: "/events/sbwa-dakar/rodolphe_sbwa_networking.webp",
+          caption: "Networking stratégique et échanges B2B dans le salon d'exposition",
+          type: "photo",
+        },
+      ],
+      order: 1,
+    },
+    {
+      id: "sigma-africa-cape-town",
+      slug: "sigma-africa-cape-town",
+      title: "SiGMA Africa Summit — GrandWest Sun Exhibits",
+      eventCategory: "sigma-africa",
+      eventCategoryLabel: "SiGMA Africa (Cape Town)",
+      date: "11 - 13 Mars 2024",
+      location: "GrandWest Sun Exhibits, Cape Town, Afrique du Sud",
+      city: "Cape Town",
+      country: "Afrique du Sud",
+      role: "Strategic Delegate & iGaming Networking Lead",
+      isSpeaker: false,
+      badge: "Sommet & Alliances B2B",
+      summary:
+        "Représentation stratégique de marques iGaming lors du prestigieux sommet SiGMA Africa à Cape Town. Négociation d'accords d'affiliation, rencontres avec des fournisseurs de jeux, opérateurs de paris sportifs et régulateurs panafricains.",
+      coverImage: "/events/sigma-africa/sigma_cape_town_booth.webp",
+      coverImageAlt: "Rodolphe Salako at SiGMA Africa exhibition floor Cape Town",
+      photos: [
+        {
+          url: "/events/sigma-africa/sigma_cape_town_booth.webp",
+          caption: "Stand d'exposition et rencontres opérateurs à SiGMA Africa Cape Town",
+          type: "photo",
+        },
+        {
+          url: "/events/sigma-africa/sigma_networking_lounge.webp",
+          caption: "Sessions de networking dans les espaces VIP et lounges de SiGMA",
+          type: "photo",
+        },
+        {
+          url: "/events/sigma-africa/sigma_summit_entrance.webp",
+          caption: "Entrée officielle du sommet GrandWest Sun Exhibits à Cape Town",
+          type: "photo",
+        },
+        {
+          url: "/events/sigma-africa/sigma_exhibitors_hall.webp",
+          caption: "Hall d'exposition principal SiGMA Africa : pavillons studios et plateformes",
+          type: "photo",
+        },
+        {
+          url: "/events/sigma-africa/sigma_table_meeting.webp",
+          caption: "Table ronde et entretiens de négociation commerciale",
+          type: "photo",
+        },
+        {
+          url: "/events/sigma-africa/sigma_vip_gathering.webp",
+          caption: "Échanges stratégiques entre dirigeants et représentants de l'écosystème",
+          type: "photo",
+        },
+        {
+          url: "/events/sigma-africa/rodolphe_sigma_portrait.webp",
+          caption: "Rodolphe Salako accrédité au sommet international SiGMA Africa",
+          type: "photo",
+        },
+      ],
+      order: 2,
+    },
+    {
+      id: "igaming-afrika-nairobi",
+      slug: "igaming-afrika-nairobi",
+      title: "iGaming AFRIKA Summit — Nairobi, Kenya",
+      eventCategory: "igaming-nairobi",
+      eventCategoryLabel: "iGaming Afrika (Nairobi)",
+      date: "4 - 6 Mai 2026",
+      location: "Nairobi, Kenya",
+      city: "Nairobi",
+      country: "Kenya",
+      role: "Brand Representative & East Africa Market Expansion",
+      isSpeaker: false,
+      badge: "Expansion & Marché Est-Africain",
+      summary:
+        "Participation et représentation officielle Onlyplay au sommet de référence iGaming Afrika à Nairobi. Exploration du marché est-africain, établissement de partenariats institutionnels et accélération de l'adoption des solutions de jeu en ligne.",
+      coverImage: "/events/igaming-nairobi/banner_onlyplay_meet.webp",
+      coverImageAlt: "Onlyplay official banner Let's meet at iGaming Afrika Summit Nairobi",
+      photos: [
+        {
+          url: "/events/igaming-nairobi/banner_onlyplay_meet.webp",
+          caption: "Bannière officielle ONLYPLAY : 'Let's Meet at iGaming AFRIKA Summit Nairobi'",
+          type: "banner",
+        },
+        {
+          url: "/events/igaming-nairobi/nairobi_networking_1.webp",
+          caption: "Rencontres B2B et échanges avec les acteurs de l'iGaming kenyan",
+          type: "photo",
+        },
+        {
+          url: "/events/igaming-nairobi/nairobi_summit_floor.webp",
+          caption: "Espace congrès et salon des innovations iGaming Afrika",
+          type: "photo",
+        },
+        {
+          url: "/events/igaming-nairobi/nairobi_stage_panel.webp",
+          caption: "Sessions plénières et présentations des tendances technologiques",
+          type: "photo",
+        },
+        {
+          url: "/events/igaming-nairobi/nairobi_hall_photo.webp",
+          caption: "Networking actif et discussions bilatérales avec les opérateurs régionaux",
+          type: "photo",
+        },
+      ],
+      order: 3,
+    },
   ],
 };
