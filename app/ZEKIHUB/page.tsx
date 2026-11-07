@@ -163,20 +163,6 @@ export default function ZekiHubDashboardPage(): ReactNode {
             <span className="shrink-0 rounded-md border border-foreground/10 bg-foreground/3 px-2 py-0.5 text-xs font-mono font-semibold text-foreground/70">
               ZEKIHUB
             </span>
-            <span
-              className={`hidden md:inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-medium border ${
-                supabaseConfigured
-                  ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                  : "border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400"
-              }`}
-            >
-              <span
-                className={`h-1.5 w-1.5 rounded-full ${
-                  supabaseConfigured ? "bg-emerald-500 animate-pulse" : "bg-amber-500"
-                }`}
-              />
-              {supabaseConfigured ? "Supabase Connected" : "Local Storage Mode"}
-            </span>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
