@@ -49,8 +49,9 @@ Dernière mise à jour : 2026-11-05
   - Numéro de téléphone épuré : retrait du préfixe 01 -> `+229 40 79 72 62` (tel/WhatsApp : `+22940797262`).
 - F-17 : Galerie des Sommets & Événements Internationaux (SiGMA Africa, SBWA+ Dakar, iGaming Afrika) :
   - 19 visuels optimisés au format WebP dans `/public/events/` (Cape Town, Dakar avec badge Speaker et captures de posts, Nairobi).
-  - Page dédiée `/events` avec onglets de filtrage par sommet et compteurs dynamiques.
-  - Modale interactive d'agrandissement (`EventModal`) avec carrousel, ruban de miniatures, navigation clavier (Flèches, Echap) et descriptifs complets.
+  - Page dédiée `/events` inspirée du style `works-card` de `fidelepicture.com` : grille directe des photos avec onglets de filtrage par sommet et compteurs dynamiques.
+  - Cartes épurées sans paragraphe de description sous les images : affichage strict de la photo, du titre/caption, du sommet et de la localisation.
+  - Modale lightbox photo plein écran (`EventModal`) avec carrousel, ruban de miniatures, navigation clavier (Flèches, Echap) sans surcharge textuelle.
   - Encart `EventsSpotlight` sur la page d'accueil avec lien direct vers la galerie.
   - Gestionnaire d'événements `EventsEditor` dans le dashboard `/ZEKIHUB` (CRUD, sélecteur de sommet, toggle Speaker, réordonnancement).
   - Onglet "Événements" ajouté dans la barre de navigation `Nav`.

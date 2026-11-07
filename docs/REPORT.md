@@ -75,7 +75,7 @@ Branche / commits : local workspace
 | F-17 AC1 (Images WebP des sommets) | `tests/portfolio.test.mjs` "AC1: All event images exist in public/events/" | verified | 19 visuels haute résolution convertis en WebP dans `public/events/` |
 | F-17 AC2 (SBWA+ Dakar avec badge Speaker & captures posts) | `tests/portfolio.test.mjs` "AC2: SBWA+ Dakar features official speaker badge and post captures" | verified | Badge "Speaker" officiel, photos sur scène et captures de posts intégrées |
 | F-17 AC3 (SiGMA Africa & iGaming Afrika) | `tests/portfolio.test.mjs` "AC3: SiGMA Africa Cape Town and iGaming Afrika Nairobi exist" | verified | Dates, lieux et galeries photos respectives configurés |
-| F-17 AC4 (Nav /events & filtres par sommet) | `tests/portfolio.test.mjs` "AC4: Nav includes /events and EventsPage is present" | verified | Onglet "Événements" dans `Nav`, filtres avec compteurs et modale lightbox |
+| F-17 AC4 (Nav /events & filtres par sommet style works-card) | `tests/portfolio.test.mjs` "AC4: Nav includes /events and EventsPage is present" | verified | Onglet "Événements" dans `Nav`, grille photos inspirée de works-card (fidelepicture.com) sans paragraphe de description, filtres par sommet et lightbox épurée |
 | F-17 AC5 (EventsSpotlight sur accueil & EventsEditor dans ZEKIHUB) | `tests/portfolio.test.mjs` "AC5: HomePage renders EventsSpotlight and ZEKIHUB has EventsEditor" | verified | Composant `EventsSpotlight` monté sur `/` et éditeur CRUD complet dans `/ZEKIHUB` |
 
 ### Scénarios de production
