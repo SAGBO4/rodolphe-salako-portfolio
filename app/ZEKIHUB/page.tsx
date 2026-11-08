@@ -806,7 +806,7 @@ function ProjectsEditor({
               <div className="sm:col-span-2">
                 <DropzoneImageUploader
                   label="Image de couverture du projet"
-                  value={proj.image}
+                  value={proj.image || ""}
                   onChange={(v) => updateProject(proj.id, "image", v)}
                   aspectHint="16:9 recommandé — Glissez-déposez ou collez une URL"
                 />

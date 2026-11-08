@@ -58,17 +58,14 @@ test("F-02: Data Store & Metadata Consistency", async (t) => {
     assert.equal(data.profile.stats.find((s) => s.label === "Strategic Partners")?.value, "40+");
   });
 
-  await t.test("AC2: Six CM projects are populated", () => {
-    assert.equal(data.projects.length, 6);
+  await t.test("AC2: Eleven verified CV positions are populated without images", () => {
+    assert.equal(data.projects.length, 11);
     for (const proj of data.projects) {
       assert.ok(proj.id, "Project must have id");
       assert.ok(proj.title, "Project must have title");
-      assert.ok(proj.image, "Project must have image");
       assert.ok(proj.description, "Project must have description");
-      assert.ok(
-        fs.existsSync(path.join(ROOT, "public", proj.image.replace(/^\//, ""))),
-        `Project image ${proj.image} must resolve in public/`
-      );
+      assert.ok(proj.category, "Project must have category");
+      assert.equal(proj.image, undefined, "Project must have no image per strict media directive");
     }
   });
 
@@ -116,12 +113,12 @@ test("F-04: Projects & 3D InfiniteMenu WebGL Integrity", async (t) => {
   const projFile = fs.readFileSync(path.join(ROOT, "components", "projects", "projects.tsx"), "utf8");
   const menuFile = fs.readFileSync(path.join(ROOT, "components", "ui", "InfiniteMenu.tsx"), "utf8");
 
-  await t.test("AC1: Fallback projects and menu items reference Rodolphe", () => {
-    assert.match(projFile, /Business Development & Strategic Partnerships/);
-    assert.match(projFile, /SiGMA Africa/);
+  await t.test("AC1: Fallback projects reference Rodolphe CV positions without images", () => {
     assert.match(projFile, /Block-Scholars Africa/);
-    assert.match(projFile, /rodolphe_betconstruct\.jpg/);
-    assert.match(projFile, /rodolphe_onlyplay_ama\.jpg/);
+    assert.match(projFile, /ONLYPLAY/);
+    assert.match(projFile, /1win/);
+    assert.match(projFile, /Tapbit/);
+    assert.doesNotMatch(projFile, /<Image/);
   });
 
   await t.test("AC3: WebGL InfiniteMenu shaders remain intact", () => {
@@ -276,15 +273,15 @@ test("F-09: AccordionGallery React Bits & Galerie de Projets Interactive", async
     assert.match(code, /onItemClick/);
   });
 
-  await t.test("AC2: Projects component renders AccordionGallery at top and details cards below", () => {
+  await t.test("AC2: Projects component renders verified positions cards without images", () => {
     const projFile = fs.readFileSync(projPath, "utf8");
-    assert.match(projFile, /AccordionGallery/);
     assert.match(projFile, /ProjectCard/);
+    assert.doesNotMatch(projFile, /<Image/);
   });
 
-  await t.test("AC3: Accordion item click connects to precise ProjectDetailModal", () => {
+  await t.test("AC3: Project card click connects to ProjectDetailModal", () => {
     const projFile = fs.readFileSync(projPath, "utf8");
-    assert.match(projFile, /onItemClick[\s\S]*setSelectedProject/);
+    assert.match(projFile, /setSelectedProject/);
     assert.match(projFile, /<ProjectDetailModal/);
   });
 

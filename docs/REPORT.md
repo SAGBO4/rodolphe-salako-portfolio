@@ -155,3 +155,22 @@ Branche / commits : local workspace
   * Section Projets (`/projects`) : HTTP 200 (47.2 KB avec AccordionGallery & DriftWall)
   * Back-office `/ZEKIHUB` : HTTP 200 (19.4 KB avec authentification et éditeurs CRUD)
 
+---
+
+## F-20 : Refonte Typographique des Réalisations selon le CV (Strictement 0 Image) (2026-11-08)
+
+Statut : done  
+Branche / commits : main, dev
+
+### Critères d'acceptation
+
+| Critère | Test | Statut | Preuve |
+|---|---|---|---|
+| F-20 AC1 (Suppression impérative de toutes les images dans Projets/Réalisations) | `tests/portfolio.test.mjs` "AC1: Fallback projects reference Rodolphe CV positions without images" | verified | `<Image>` et wrappers d'images retirés de `projects.tsx` et `project-detail-modal.tsx` ; `hasImage = false` vérifié sur tous les projets |
+| F-20 AC2 (Affichage strict des 11 postes du CV avec titres et descriptions concises) | `tests/portfolio.test.mjs` "AC2: Eleven verified CV positions are populated without images" | verified | 11 postes extraits mot à mot de `SALAKO_CV.pdf` (Block-Scholars, ONLYPLAY x2, Tapbit, CJC Race, 1win, TopGoal, 1xbet, Yescoin, Chainmakers, NDA) |
+| F-20 AC3 (Source de vérité CV sans extrapolation ni invention) | Examen statique & diffs | verified | Zéro poste inventé, entreprises réelles, périodes exactes et descriptions concises fidèles au texte source |
+| F-20 AC4 (Modale ProjectDetailModal en design typographique épuré) | `tests/portfolio.test.mjs` "AC3: Project card click connects to ProjectDetailModal" | verified | En-tête typographique raffiné avec badges d'entreprise, période, catégories et compétences clés (0 image) |
+| F-20 AC5 (Préservation intégrale et intouchée de la section Events) | `tests/portfolio.test.mjs` F-17 | verified | 3 sommets et 19 photos d'événements préservés à 100% sans aucune modification |
+| F-20 AC6 (Synchronisation complète Supabase Cloud) | Script de vérification API Supabase | verified | `portfolio_content` row `main` mis à jour avec les 11 postes sans image ; Supabase connecté et actif |
+| F-20 AC7 (Non-régression globale) | `npm test`, `npm run typecheck`, `npm run build` | verified | 56 tests unitaires passés, 0 erreur TypeScript, 19/19 routes Turbopack compilées avec succès |
+

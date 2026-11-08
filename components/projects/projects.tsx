@@ -3,128 +3,155 @@
 import {
   ArrowDown,
   ArrowRight,
-  Award,
+  Briefcase,
+  Calendar,
   Gamepad2,
   Globe,
   Sparkles,
   TrendingUp,
   Users,
 } from "lucide-react";
-import { useState, useEffect, type ComponentType, type ReactNode } from "react";
+import { useState, type ComponentType, type ReactNode } from "react";
 import { usePortfolio } from "@/lib/portfolio-context";
 import { useLanguage } from "@/lib/i18n/context";
-import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
 import { FadeIn } from "@/components/ui/motion-primitives";
 import { ProjectDetailModal } from "./project-detail-modal";
 import type { ProjectItem } from "@/lib/portfolio-data";
-import type { AccordionGalleryItem } from "@/components/ui/AccordionGallery";
-import type { DriftWallItem } from "@/components/ui/DriftWall";
-
-const DriftWall = dynamic(() => import("@/components/ui/DriftWall"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-[600px] w-full items-center justify-center rounded-4xl border border-foreground/8 bg-foreground/2 text-sm text-foreground/50">
-      Chargement du mur de projets 3D...
-    </div>
-  ),
-});
-
-const AccordionGallery = dynamic(() => import("@/components/ui/AccordionGallery"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-[440px] w-full items-center justify-center rounded-2xl border border-foreground/8 bg-foreground/2 text-sm text-foreground/50">
-      Chargement de la galerie interactive...
-    </div>
-  ),
-});
 
 type Project = {
   id: string;
   icon: ComponentType<{ className?: string }>;
   iconLabel: string;
+  company?: string;
+  period?: string;
   title: string;
   description: string;
   meta: string;
-  imageRatio: number;
-  image: string;
-  imageAlt: string;
 };
 
 const PROJECTS: Project[] = [
   {
-    id: "strategic-partnerships",
-    icon: TrendingUp,
-    iconLabel: "BUSINESS DEVELOPMENT",
-    title: "Business Development & Strategic Partnerships — iGaming & Web3",
+    id: "block-scholars",
+    icon: Globe,
+    iconLabel: "WEB3 & DIGITAL EDUCATION",
+    company: "Block-Scholars Africa",
+    period: "2026 – Present",
+    title: "Country Representative – Benin Republic",
     description:
-      "Identifying new business opportunities and structuring strategic B2B partnerships with game studios, betting operators, and crypto platforms across African and international markets.",
-    meta: "B2B Dealmaking • Strategic Partnerships • Operator Relations • BetConstruct AI",
-    imageRatio: 1024 / 680,
-    image: "/rodolphe.webp",
-    imageAlt: "Rodolphe Salako B2B Partnerships with BetConstruct and Game Operators",
+      "Représentation de Block-Scholars Africa et développement de sa présence dans l'écosystème numérique béninois. Création de partenariats institutionnels avec universités et organisations, coordination des ambassadeurs et organisation d'ateliers sur les technologies émergentes.",
+    meta: "Web3 • iGaming • Digital Education • Strategic Partnerships • Event Coordination",
   },
   {
-    id: "affiliate-leadership",
+    id: "onlyplay-cm-video",
+    icon: Gamepad2,
+    iconLabel: "GAMING & COMMUNITY",
+    company: "ONLYPLAY",
+    period: "Current",
+    title: "Social Media & Community Manager & Video Editor",
+    description:
+      "Gestion et modération des communautés officielles Telegram, Discord et X. Production et montage de contenus vidéo courts pour les campagnes marketing. Participation aux sommets internationaux de l'industrie (SiGMA, iGaming Africa Summit, GTSA, AGE, SBWA+) et développement de partenariats stratégiques.",
+    meta: "Telegram • Discord • X (Twitter) • Video Editing • Short-Form Video • Summit Networking",
+  },
+  {
+    id: "tapbit-translator",
+    icon: Globe,
+    iconLabel: "CRYPTO & LOCALIZATION",
+    company: "Tapbit Crypto Exchange",
+    period: "Nov 2025 – Mar 2026",
+    title: "English–French Translator",
+    description:
+      "Traduction et localisation de contenus crypto (articles, annonces officielles, interfaces utilisateur et messages de support) de l'anglais vers le français pour les utilisateurs francophones d'Afrique et à l'international, en assurant la rigueur terminologique Web3.",
+    meta: "English–French Translation • Crypto Localization • Web3 • UI Texts • Support",
+  },
+  {
+    id: "onlyplay-ambassador-lead",
+    icon: Users,
+    iconLabel: "TEAM LEADERSHIP",
+    company: "ONLYPLAY",
+    period: "July 2025 – January 2026",
+    title: "Ambassador Team Lead",
+    description:
+      "Direction et coordination du programme international d'ambassadeurs. Recrutement, intégration et encadrement des ambassadeurs régionaux, suivi des performances, et organisation d'activités promotionnelles pour accroître la notoriété de la marque.",
+    meta: "Ambassador Programs • Regional Ambassadors • Team Leadership • Community Growth",
+  },
+  {
+    id: "cjc-race-marketing",
+    icon: TrendingUp,
+    iconLabel: "MARKETING & GROWTH",
+    company: "CJC Race",
+    period: "2024 – 2025",
+    title: "Marketing Manager",
+    description:
+      "Élaboration et mise en œuvre des campagnes marketing digitales (réseaux sociaux, partenariats influenceurs, tournois et événements en ligne). Conception de supports visuels promotionnels et gestion du calendrier éditorial pour l'acquisition et la rétention des joueurs.",
+    meta: "Marketing Campaigns • Influencer Partnerships • Tournaments • Visual Creatives • Player Acquisition",
+  },
+  {
+    id: "1win-affiliate-lead",
     icon: Users,
     iconLabel: "AFFILIATE LEADERSHIP",
-    title: "Affiliate Management & Team Leadership — 1win & 1xBet",
+    company: "1win",
+    period: "February 2024 – July 2024",
+    title: "Affiliate Manager & Team Lead",
     description:
-      "Leading and coordinating teams of affiliate managers, recruiting top media buyers, structuring high-converting commission models, and optimizing player acquisition funnels.",
-    meta: "Team Lead • Media Buyers • Deal Negotiation • Revenue Growth",
-    imageRatio: 1024 / 680,
-    image: "/uploads/rodolphe_1xbet_summit.jpg",
-    imageAlt: "Rodolphe Salako Affiliate Team Leadership 1win and 1xBet",
+      "Supervision et coordination d'une équipe de gestionnaires d'affiliation. Recrutement de nouveaux affiliés et media buyers, négociation des deals et structures de commissions, suivi de la qualité du trafic, des conversions et de l'acquisition de joueurs.",
+    meta: "Team Lead • Media Buyers • Commission Structures • Traffic Quality • Conversion Optimization",
   },
   {
-    id: "summits-speaking",
-    icon: Award,
-    iconLabel: "EVENT COORDINATION",
-    title: "Event Coordination & Speaker — SiGMA Africa & SBWA+ Dakar",
+    id: "topgoal-cm",
+    icon: Gamepad2,
+    iconLabel: "COMMUNITY MANAGEMENT",
+    company: "TopGoal French",
+    period: "Jan 2024 – Jul 2024",
+    title: "Community Manager",
     description:
-      "Representing gaming brands at premier international conferences. Official Speaker at SBWA+ & GEFA in Dakar, networking with C-level executives, and building high-trust industry alliances.",
-    meta: "Official Speaker • SiGMA Africa Cape Town • SBWA+ Summit Dakar",
-    imageRatio: 1024 / 680,
-    image: "/uploads/rodolphe_sigma_africa.jpg",
-    imageAlt: "Rodolphe Salako Speaker at SiGMA Africa and SBWA+ Summit",
+      "Gestion et modération de la communauté francophone officielle sur Telegram. Support quotidien des utilisateurs, diffusion des annonces et informations du jeu, animation d'activités communautaires et collecte des retours d'expérience.",
+    meta: "Telegram Community • User Support • Game Updates • Community Insights",
   },
   {
-    id: "market-expansion-benin",
-    icon: Globe,
-    iconLabel: "MARKET EXPANSION",
-    title: "Exploring New Markets — Block-Scholars Africa Country Representative",
+    id: "1xbet-affiliate",
+    icon: TrendingUp,
+    iconLabel: "AFFILIATE MANAGEMENT",
+    company: "1xbet",
+    period: "2023 – 2024",
+    title: "Affiliate Manager",
     description:
-      "Spearheading regional expansion within Benin. Building institutional partnerships with universities, student communities, and organizations to scale iGaming, Web3 and digital technology adoption.",
-    meta: "Country Representative • Benin Republic • Campus Ambassador Network",
-    imageRatio: 1024 / 680,
-    image: "/uploads/rodolphe_meetup_speaker.jpg",
-    imageAlt: "Rodolphe Salako Block-Scholars Africa Benin Representative",
+      "Développement et gestion des relations avec les partenaires affiliés et communautés en ligne. Recrutement et intégration de nouveaux affiliés, mise à disposition des outils de tracking et visuels promotionnels, et suivi des conversions.",
+    meta: "Affiliate Onboarding • Tracking Links • Promotional Creatives • Revenue Optimization",
   },
   {
-    id: "marketing-management",
+    id: "yescoin-cm",
+    icon: Gamepad2,
+    iconLabel: "COMMUNITY MANAGEMENT",
+    company: "Yescoin - French",
+    period: "2023 – 2024",
+    title: "Community Manager",
+    description:
+      "Animation et modération de la communauté Telegram francophone. Réponses quotidiennes aux questions des utilisateurs, diffusion des annonces et mises à jour du projet, et organisation d'activités d'engagement.",
+    meta: "Telegram Moderation • Daily Support • Announcements • Engagement Events",
+  },
+  {
+    id: "chainmakers-marketing",
     icon: TrendingUp,
     iconLabel: "MARKETING MANAGEMENT",
-    title: "Marketing Management & Growth Strategy — CJC Race & Chainmakers",
+    company: "Leschainmakers",
+    period: "2022 – 2024",
+    title: "Marketing Manager",
     description:
-      "Developing integrated multi-channel marketing campaigns, managing marketing budgets, negotiating influencer collaborations, and delivering initiatives that drive user acquisition and engagement.",
-    meta: "Growth Strategy • Digital Campaigns • Influencer Partnerships • Tournaments",
-    imageRatio: 1024 / 680,
-    image: "/uploads/rodolphe_summit_table.jpg",
-    imageAlt: "Rodolphe Salako Marketing Management CJC Race and Chainmakers",
+      "Développement et exécution de stratégies marketing pour soutenir la croissance de la marque et l'acquisition d'utilisateurs. Mise en place de partenariats stratégiques, gestion des budgets marketing et analyse des tendances de marché.",
+    meta: "Marketing Strategies • User Acquisition • Marketing Budgets • Strategic Partnerships",
   },
   {
-    id: "social-media-community",
+    id: "nda-smm",
     icon: Gamepad2,
-    iconLabel: "COMMUNITY & SOCIAL MEDIA",
-    title: "Social Media, Community Management & Video Production — Onlyplay Club",
+    iconLabel: "SOCIAL MEDIA MANAGEMENT",
+    company: "NDA",
+    period: "2020 – 2023",
+    title: "Social Media Manager",
     description:
-      "Managing multi-channel community engagement across Telegram, Discord, and X. Hosting high-engagement AMAs, editing promotional video content, and turning player communities into sustainable growth engines.",
-    meta: "Community Operations • Interactive AMAs • Video Editing • Telegram & Discord",
-    imageRatio: 1024 / 680,
-    image: "/uploads/rodolphe_onlyplay_ama.jpg",
-    imageAlt: "Onlyplay Club Community AMAs and Player Operations",
+      "Gestion de la présence de la marque sur les réseaux sociaux. Création et publication de contenus dédiés aux paris sportifs, au gaming et aux promotions, interaction quotidienne avec les joueurs et soutien à l'acquisition et la fidélisation.",
+    meta: "Sports Betting • Content Publishing • Player Interactions • Acquisition & Retention",
   },
 ];
 
@@ -140,30 +167,6 @@ export function Projects({
   const { data } = usePortfolio();
   const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-  const [screenTier, setScreenTier] = useState<"mobile" | "tablet" | "desktop">("desktop");
-
-  useEffect(() => {
-    const updateTier = () => {
-      const w = window.innerWidth;
-      if (w < 640) {
-        setScreenTier("mobile");
-      } else if (w < 1024) {
-        setScreenTier("tablet");
-      } else {
-        setScreenTier("desktop");
-      }
-    };
-    updateTier();
-    window.addEventListener("resize", updateTier);
-    return () => window.removeEventListener("resize", updateTier);
-  }, []);
-
-  const getSafeImage = (img: string | undefined, defaultImg: string): string => {
-    if (!img || img.trim() === "" || img.startsWith("blob:")) {
-      return defaultImg;
-    }
-    return img;
-  };
 
   const projectsList: ProjectItem[] =
     data.projects && data.projects.length > 0
@@ -171,91 +174,23 @@ export function Projects({
       : PROJECTS.map((p, idx) => ({
           id: p.id,
           title: p.title,
+          company: p.company,
+          period: p.period,
           category: p.iconLabel,
           description: p.description,
           meta: p.meta,
-          image: p.image,
-          imageAlt: p.imageAlt,
           link: "https://www.linkedin.com/in/rodolphe-salako-578885334",
           order: idx + 1,
         }));
 
-  const additionalSummitItems: ProjectItem[] = [
-    {
-      id: "sbwa-certificate",
-      title: "SBWA+ & GEFA Official Speaker Honors — Dakar",
-      category: "Speaker Distinction",
-      meta: "Conference Speaker • Executive Certificate • Gaming Event Francophone Africa",
-      description:
-        "Official Speaker distinction at Sports Betting West Africa+ (SBWA+) & GEFA Summit in Dakar, Senegal. Honored for speaking contributions on African gaming and digital tech expansion.",
-      image: "/uploads/rodolphe_sbwa_certificate.jpg",
-      imageAlt: "SBWA+ Dakar Speaker Certificate",
-      link: "https://www.linkedin.com/in/rodolphe-salako-578885334",
-      order: 7,
-    },
-    {
-      id: "speaker-badge",
-      title: "SiGMA Africa & Global Summits Speaker Credentials",
-      category: "Summit Credentials",
-      meta: "SiGMA Africa Cape Town • Speaker Badge • VIP Delegate Access",
-      description:
-        "Official conference credentials and VIP speaker access across premier international iGaming and Web3 exhibitions.",
-      image: "/uploads/rodolphe_speaker_badge.jpg",
-      imageAlt: "SiGMA Africa Speaker Badge",
-      link: "https://www.linkedin.com/in/rodolphe-salako-578885334",
-      order: 8,
-    },
-  ];
-
-  const allItemsPool: ProjectItem[] = [...projectsList, ...additionalSummitItems];
-
-  const driftWallItems: DriftWallItem[] = Array.from({ length: 15 }, (_, i) => {
-    const item = allItemsPool[i % allItemsPool.length] ?? allItemsPool[0]!;
-    const fallback =
-      PROJECTS[i % PROJECTS.length]?.image ?? "/uploads/rodolphe_betconstruct.jpg";
-    return {
-      image: getSafeImage(item.image, fallback),
-      title: item.title,
-      projectRef: item,
-    };
-  });
-
-  const accordionItems: AccordionGalleryItem[] = allItemsPool.slice(0, 6).map((item) => {
-    const fallback =
-      PROJECTS.find((orig) => orig.id === item.id)?.image ??
-      "/uploads/rodolphe_betconstruct.jpg";
-    return {
-      image: getSafeImage(item.image, fallback),
-      label: item.title,
-      alt: item.imageAlt ?? item.title,
-      category: item.category,
-      projectRef: item,
-    };
-  });
-
-  const dynamicProjectsList: Project[] =
-    data.projects && data.projects.length > 0
-      ? data.projects.map((p, idx) => {
-          const defaultProj = PROJECTS.find((orig) => orig.id === p.id);
-          const icon = defaultProj?.icon || TrendingUp;
-          const fallback = defaultProj?.image || PROJECTS[idx % PROJECTS.length]?.image || "";
-          return {
-            id: p.id || `proj-${idx}`,
-            icon,
-            iconLabel: p.category ? p.category.toUpperCase() : "WEB3 PROJECT",
-            title: p.title,
-            description: p.description,
-            meta: p.meta,
-            imageRatio: 1024 / 680,
-            image: getSafeImage(p.image, fallback),
-            imageAlt: p.imageAlt || p.title,
-          };
-        })
-      : PROJECTS;
+  // On home page, display featured positions (top 6); on full page, display all 11
+  const displayedProjects = viewMoreVisible
+    ? projectsList.slice(0, 6)
+    : projectsList;
 
   return (
     <section className="relative w-full overflow-visible">
-      {/* Element de transition en haut (Progression depuis Hero) */}
+      {/* Top Transition Element */}
       {viewMoreVisible ? (
         <div className="flex flex-col items-center justify-center pt-2 pb-6">
           <div className="h-16 w-[1px] bg-gradient-to-b from-transparent via-foreground/20 to-foreground/50" />
@@ -268,125 +203,53 @@ export function Projects({
 
       {withHeadline ? (
         <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
-          <FadeIn className="flex flex-col items-center gap-4 text-center pb-4 sm:pb-6">
+          <FadeIn className="flex flex-col items-center gap-4 text-center pb-8 sm:pb-12">
             <h2 className="font-serif text-[2rem] sm:text-[2.75rem] md:text-[3rem] lg:text-[3.5rem] font-medium leading-[1.08] tracking-tight text-foreground">
               {t("projects.title")}
             </h2>
-            <p className="max-w-[38ch] text-[16px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[18px] md:text-[20px]">
+            <p className="max-w-[42ch] text-[16px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[18px] md:text-[20px]">
               {t("projects.subtitle")}
             </p>
-            {viewMoreVisible ? (
-              <div className="mt-2 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wider text-foreground/50">
-                <Sparkles className="h-3.5 w-3.5 text-foreground/60" />
-                <span>{t("projects.dragHint")}</span>
-              </div>
-            ) : null}
           </FadeIn>
         </div>
       ) : null}
 
-      {viewMoreVisible ? (
-        /* HOME PAGE: DriftWall 3D Perspective Wall */
-        <div className="relative w-full overflow-hidden">
-          {/* Masques de dégradé progressifs haut et bas pour un fondu fluide */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-background via-background/60 to-transparent"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-background via-background/60 to-transparent"
-          />
-
-          <div className="relative h-[520px] sm:h-[620px] md:h-[720px] w-full">
-            <DriftWall
-              items={driftWallItems}
-              columns={screenTier === "mobile" ? 3 : screenTier === "tablet" ? 4 : 5}
-              tileWidth={screenTier === "mobile" ? 150 : screenTier === "tablet" ? 185 : 220}
-              tileHeight={screenTier === "mobile" ? 100 : screenTier === "tablet" ? 122 : 145}
-              gap={screenTier === "mobile" ? 12 : screenTier === "tablet" ? 15 : 18}
-              tilt={screenTier === "mobile" ? 10 : 16}
-              turn={screenTier === "mobile" ? -8 : -14}
-              perspective={screenTier === "mobile" ? 850 : 1200}
-              depth={screenTier === "mobile" ? 80 : 120}
-              speed={38}
-              direction="up"
-              variance={0.45}
-              parallax={0.6}
-              lift={screenTier === "mobile" ? 32 : 64}
-              fade={0.6}
-              dim={0.65}
-              overlayColor="#060010"
-              onItemClick={(item) => {
-                if (item.projectRef) {
-                  setSelectedProject(item.projectRef as ProjectItem);
-                }
-              }}
-            />
+      {/* Grid of Verified Professional Positions & Projects (Strictly 0 Images) */}
+      <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
+        {!viewMoreVisible && (
+          <div className="mb-8 flex items-center justify-between border-b border-foreground/8 pb-4">
+            <div className="flex items-center gap-2.5">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-foreground/75">
+                {t("projects.allDetails")}
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-foreground/50">
+              {projectsList.length} {t("projects.itemsCount")}
+            </span>
           </div>
-        </div>
-      ) : (
-        /* PROJECTS PAGE (/projects): AccordionGallery en haut + détails en bas */
-        <div className="flex flex-col gap-10 sm:gap-16">
-          <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
-            <div className="relative w-full overflow-hidden rounded-2xl border border-foreground/8 bg-background/60 p-2 sm:p-3 shadow-2xl backdrop-blur-md">
-              <AccordionGallery
-                items={accordionItems}
-                defaultIndex={0}
-                expandRatio={screenTier === "mobile" ? 0.44 : 0.48}
-                trigger={screenTier === "mobile" ? "click" : "hover"}
-                height={screenTier === "mobile" ? 340 : screenTier === "tablet" ? 390 : 440}
-                gap={screenTier === "mobile" ? 8 : 12}
-                radius={14}
-                tilt={screenTier === "mobile" ? 3 : 6}
-                actionText={t("projects.viewDetails")}
-                onItemClick={(item) => {
-                  if (item.projectRef) {
-                    setSelectedProject(item.projectRef as ProjectItem);
-                  }
-                }}
+        )}
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+          {displayedProjects.map((project, index) => (
+            <div
+              key={project.id}
+              id={`project-${project.id}`}
+              className="scroll-mt-28"
+            >
+              <ProjectCard
+                project={project}
+                index={index}
+                onClick={() => setSelectedProject(project)}
               />
             </div>
-          </div>
-
-          <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
-            <div className="mb-8 flex items-center justify-between border-b border-foreground/8 pb-4">
-              <div className="flex items-center gap-2.5">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-foreground/75">
-                  {t("projects.allDetails")}
-                </h3>
-              </div>
-              <span className="text-xs font-mono text-foreground/50">
-                {dynamicProjectsList.length} {t("projects.itemsCount")}
-              </span>
-            </div>
-
-            <div className="columns-1 gap-6 md:columns-2 md:gap-7">
-              {dynamicProjectsList.map((project, index) => (
-                <div
-                  key={project.id}
-                  id={`project-${project.id}`}
-                  className="break-inside-avoid scroll-mt-28"
-                >
-                  <ProjectCard
-                    project={project}
-                    index={index}
-                    onClick={() => {
-                      const full = projectsList.find((p) => p.id === project.id);
-                      if (full) setSelectedProject(full);
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
 
       {viewMoreVisible ? (
         <div className="mx-auto w-full max-w-275 px-4 sm:px-10">
-          <div className="mt-6 flex justify-center sm:mt-10">
+          <div className="mt-8 flex justify-center sm:mt-12">
             <Link
               href="/projects"
               className="border border-foreground/8 focus-ring group inline-flex cursor-pointer items-center gap-2 rounded-xl bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5 shadow-sm"
@@ -399,7 +262,7 @@ export function Projects({
             </Link>
           </div>
 
-          {/* Element de transition en bas (Progression vers Contact) */}
+          {/* Bottom Transition to Contact */}
           <div className="mt-12 flex flex-col items-center justify-center">
             <div className="h-10 w-[1px] bg-gradient-to-b from-foreground/30 to-foreground/15" />
             <div className="my-2.5 flex items-center gap-2 rounded-full border border-foreground/10 bg-background/80 px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.2em] text-foreground/70 backdrop-blur-md shadow-xs">
@@ -424,34 +287,14 @@ function ProjectCard({
   index,
   onClick,
 }: {
-  project: Project;
+  project: ProjectItem;
   index: number;
   onClick?: () => void;
 }): ReactNode {
-  const Icon = project.icon;
-  const fallback =
-    PROJECTS.find((p) => p.id === project.id)?.image ||
-    "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1024&auto=format&fit=crop";
-
-  const initialSrc =
-    project.image && !project.image.startsWith("blob:")
-      ? project.image
-      : fallback;
-
-  const [imgSrc, setImgSrc] = useState(initialSrc);
-
-  useEffect(() => {
-    const valid =
-      project.image && !project.image.startsWith("blob:")
-        ? project.image
-        : fallback;
-    setImgSrc(valid);
-  }, [project.image, fallback]);
-
   return (
     <FadeIn
-      delay={Math.min(index * 0.06, 0.3)}
-      className="mb-6 break-inside-avoid md:mb-7"
+      delay={Math.min(index * 0.05, 0.25)}
+      className="h-full"
     >
       <article
         onClick={onClick}
@@ -463,52 +306,61 @@ function ProjectCard({
         }}
         tabIndex={0}
         role="button"
-        aria-label={`View details for ${project.title}`}
-        className="project-card focus-ring flex cursor-pointer flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5 transition-all hover:-translate-y-1 hover:shadow-lg"
+        aria-label={`Détails du poste : ${project.title}`}
+        className="project-card focus-ring flex h-full cursor-pointer flex-col justify-between rounded-3xl border border-foreground/8 bg-background/70 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg backdrop-blur-xs"
       >
-        <header className="flex items-center gap-2.5 px-1 pt-2">
-          <span className="border-foreground/10 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border bg-background">
-            <Icon className="h-3.5 w-3.5 text-foreground" aria-hidden="true" />
-          </span>
-          <span className="text-sm font-medium tracking-tight text-foreground">
-            {project.iconLabel}
-          </span>
-        </header>
-
-        <div
-          className="project-card__image ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
-          style={{ aspectRatio: project.imageRatio }}
-        >
-          <div className="project-card__image-inner">
-            <Image
-              src={imgSrc}
-              alt={project.imageAlt}
-              fill
-              unoptimized={imgSrc.startsWith("data:") || imgSrc.startsWith("blob:")}
-              onError={() => {
-                if (imgSrc !== fallback) {
-                  setImgSrc(fallback);
-                }
-              }}
-              sizes="(min-width: 1024px) 540px, (min-width: 768px) 45vw, 100vw"
-              className="object-cover object-top"
-              priority={index < 2}
-            />
+        <div className="flex flex-col gap-3.5">
+          {/* Header Badges */}
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              {project.company && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/12 bg-foreground/4 px-2.5 py-0.5 text-xs font-semibold text-foreground">
+                  <Briefcase className="h-3 w-3 text-foreground/60" />
+                  {project.company}
+                </span>
+              )}
+              {project.period && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-foreground/8 bg-background px-2 py-0.5 text-[11px] font-mono text-foreground/60">
+                  <Calendar className="h-2.5 w-2.5 text-foreground/40" />
+                  {project.period}
+                </span>
+              )}
+            </div>
+            <span className="inline-flex items-center gap-1 rounded-full border border-foreground/8 bg-background px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-foreground/50">
+              <Sparkles className="h-2.5 w-2.5 text-amber-500" />
+              {project.category}
+            </span>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-2.5 px-1 pb-1">
-          <h3 className="text-[20px] font-medium leading-[1.2] tracking-tight text-foreground sm:text-[22px]">
+          {/* Job Title */}
+          <h3 className="font-serif text-[18px] sm:text-[20px] font-medium leading-snug tracking-tight text-foreground">
             {project.title}
           </h3>
-          <p className="text-[14px] leading-normal tracking-tight text-foreground/65 sm:text-[15px]">
+
+          {/* Concise Description */}
+          <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-foreground/70 tracking-tight line-clamp-3">
             {project.description}
           </p>
         </div>
 
-        <p className="px-1 pb-2 text-[12px] tracking-tight text-foreground/50">
-          {project.meta}
-        </p>
+        {/* Footer Meta Skills */}
+        <div className="mt-4 pt-3.5 border-t border-foreground/6 flex items-center justify-between gap-2">
+          <div className="flex flex-wrap gap-1.5 overflow-hidden max-h-6">
+            {project.meta.split("•").slice(0, 3).map((tag, i) => (
+              <span
+                key={i}
+                className="rounded-md border border-foreground/8 bg-foreground/2 px-2 py-0.5 text-[10.5px] font-medium text-foreground/60"
+              >
+                {tag.trim()}
+              </span>
+            ))}
+          </div>
+
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-foreground/70 group-hover:text-foreground shrink-0">
+            <span>Détails</span>
+            <ArrowRight className="h-3 w-3" />
+          </span>
+        </div>
       </article>
     </FadeIn>
   );

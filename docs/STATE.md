@@ -68,6 +68,23 @@ Dernière mise à jour : 2026-11-05
   - Migration des photos base64 volumineuses existantes ayant fait chuter le volume JSON principal de 4,25 Mo à 232 Ko (-95%), éliminant l'erreur HTTP 413 "Request Entity Too Large" sur Vercel.
   - Sécurisation du gestionnaire `handleSave` dans `app/ZEKIHUB/page.tsx` avec lecture textuelle avant parsing pour éviter les erreurs `SyntaxError: JSON.parse: unexpected character at line 1 column 1`.
   - Mise à niveau du Service Worker `public/sw.js` en v3 avec gestion propre des réponses hors ligne et suppression des résidus de nommage.
+- F-20 : Refonte Typographique des Réalisations selon le CV & Suppression Totale des Images :
+  - Suppression impérative et totale de toutes les images de la section réalisations/projets (DriftWall, galeries d'images et `<Image>` retirés au profit d'un design typographique éditorial).
+  - Intégration des 11 postes professionnels vérifiés issus exclusivement du CV officiel (`SALAKO_CV.pdf`) :
+    1. Block-Scholars Africa : Country Representative – Benin Republic (2026 – Present)
+    2. ONLYPLAY : Social Media & Community Manager & Video Editor (Current)
+    3. Tapbit Crypto Exchange : English–French Translator (Nov 2025 – Mar 2026)
+    4. ONLYPLAY : Ambassador Team Lead (July 2025 – January 2026)
+    5. CJC Race : Marketing Manager (2024 – 2025)
+    6. 1win : Affiliate Manager & Team Lead (February 2024 – July 2024)
+    7. TopGoal French : Community Manager (Jan 2024 – Jul 2024)
+    8. 1xbet : Affiliate Manager (2023 – 2024)
+    9. Yescoin - French : Community Manager (2023 – 2024)
+    10. Leschainmakers : Marketing Manager (2022 – 2024)
+    11. NDA : Social Media Manager (2020 – 2023)
+  - Modale de détails `ProjectDetailModal` repensée avec en-tête typographique, badges d'entreprise, période, catégories et compétences clés (0 image).
+  - Synchronisation complète dans `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts` et dans la base Supabase Cloud (`portfolio_content` row `main`).
+  - Suite de tests portée à 56 tests unitaires passés avec succès, TypeScript sans erreur, build Turbopack 19/19 routes sans erreur.
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

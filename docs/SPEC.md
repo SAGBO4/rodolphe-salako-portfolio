@@ -16,6 +16,11 @@ Last change: 2026-11-05
 | F-07 | Sélecteur de Langue & Internationalisation (i18n FR / EN) | F-02, F-03, F-04, F-05, F-06 | approved |
 | F-08 | Remplacement de la sphère par DriftWall (React Bits) & Modal Détails Projets | F-01, F-04, F-07 | approved |
 
+| F-17 | Galerie des Sommets & Événements Internationaux (SiGMA, SBWA+, iGaming Afrika) | F-01, F-02, F-07 | approved |
+| F-18 | Système Universel de Téléversement Drag & Drop et Gestion Multi-Photos Galerie dans ZEKIHUB | F-11, F-17 | approved |
+| F-19 | Stockage Média Supabase Dédié & Résolution Définitive des Erreurs de Sauvegarde et Service Worker | F-11, F-18 | approved |
+| F-20 | Refonte Typographique des Réalisations selon le CV (Strictement 0 Image) | F-02, F-04, F-08 | approved |
+
 Status values: proposed, approved, in-progress, done, partial, blocked.
 
 ## Piliers stratégiques client
@@ -240,4 +245,18 @@ Acceptance:
 Scenarios: PS-01, PS-06, PS-11, PS-15, PS-20
 Data: `app/api/content/media/[id]/route.ts`, `app/api/admin/upload/route.ts`, `app/ZEKIHUB/page.tsx`, `public/sw.js`
 Out of scope: Migration vers un bucket S3 tiers payant
+Status: approved
+
+### F-20 Refonte Typographique des Réalisations selon le CV (Strictement 0 Image)
+Actor: Visiteur ou recruteur consultant les réalisations et postes professionnels de Rodolphe Salako
+Acceptance:
+  AC1 Suppression impérative et totale de toutes les images dans la section des projets/réalisations (aucun rendu d'image, aucun aspect ratio média)
+  AC2 Affichage précis et vérifié des 11 postes du CV avec intitulé exact, entreprise, période et brève description claire et concise
+  AC3 Données dérivées EXCLUSIVEMENT du CV officiel (`SALAKO_CV.pdf`) sans aucune invention ni extrapolation
+  AC4 Modale de détails `ProjectDetailModal` repensée en design typographique élégant avec badges d'entreprise, période, tags de compétences et liens sans image
+  AC5 Synchronisation bilatérale des 11 réalisations dans `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts` et Supabase `portfolio_content` row `main`
+  AC6 (negative) 56 tests unitaires au vert, 0 régression TypeScript, 0 erreur Turbopack build
+Scenarios: PS-01, PS-06, PS-11, PS-12, PS-20
+Data: `data/portfolio.json`, `lib/portfolio-data.ts`, `components/projects/projects.tsx`, `components/projects/project-detail-modal.tsx`, `lib/i18n/translations.ts`
+Out of scope: Ajout d'images ou d'expériences non mentionnées dans le CV
 Status: approved

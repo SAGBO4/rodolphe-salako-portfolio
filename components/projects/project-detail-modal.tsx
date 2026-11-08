@@ -2,8 +2,7 @@
 
 import { useLanguage } from "@/lib/i18n/context";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight, Sparkles, X } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, Briefcase, Calendar, Sparkles, X } from "lucide-react";
 import { useEffect, useCallback, type ReactNode } from "react";
 import type { ProjectItem } from "@/lib/portfolio-data";
 
@@ -39,9 +38,9 @@ export function ProjectDetailModal({
   }, [project, handleKeyDown]);
 
   const labels = {
-    categoryFallback: language === "fr" ? "PARTENARIAT STRATÉGIQUE" : "STRATEGIC PARTNERSHIP",
-    metaTitle: language === "fr" ? "Points clés & Activations" : "Key Highlights & Deliverables",
-    overviewTitle: language === "fr" ? "Vue d'ensemble & Réalisations" : "Overview & Achievements",
+    categoryFallback: language === "fr" ? "EXPÉRIENCE & PROJET" : "EXPERIENCE & PROJECT",
+    metaTitle: language === "fr" ? "Compétences & Domaines clés" : "Key Skills & Domains",
+    overviewTitle: language === "fr" ? "Description du poste" : "Role Description",
     openLink: language === "fr" ? "Voir le profil & réseau" : "View Profile & Network",
     close: language === "fr" ? "Fermer" : "Close",
   };
@@ -72,63 +71,61 @@ export function ProjectDetailModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background shadow-2xl"
+            className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background shadow-2xl"
           >
-            {/* Header / Media */}
-            <div className="relative aspect-[16/10] max-h-[320px] sm:max-h-[420px] w-full overflow-hidden bg-foreground/5">
-              <Image
-                src={project.image}
-                alt={project.imageAlt || project.title}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 680px"
-                className="object-cover object-top"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none"
-              />
+            {/* Header */}
+            <div className="relative border-b border-foreground/8 bg-foreground/3 p-5 sm:p-7">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.company && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/5 px-3 py-1 text-xs font-semibold text-foreground">
+                      <Briefcase className="h-3.5 w-3.5 text-foreground/70" />
+                      {project.company}
+                    </span>
+                  )}
+                  {project.period && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-background px-3 py-1 text-xs font-mono text-foreground/70">
+                      <Calendar className="h-3 w-3 text-foreground/50" />
+                      {project.period}
+                    </span>
+                  )}
+                  <span className="inline-flex items-center gap-1 rounded-full border border-foreground/10 bg-background px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider text-foreground/60">
+                    <Sparkles className="h-2.5 w-2.5 text-amber-500" />
+                    {project.category || labels.categoryFallback}
+                  </span>
+                </div>
 
-              {/* Category Pill */}
-              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-3 py-1 sm:px-3.5 text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-white backdrop-blur-md">
-                  <Sparkles className="h-3 w-3 text-amber-400" />
-                  {project.category || labels.categoryFallback}
-                </span>
+                {/* Close Button */}
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label={labels.close}
+                  className="focus-ring flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-foreground/10 bg-background text-foreground transition-transform hover:scale-105 hover:bg-foreground/5 cursor-pointer"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
 
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label={labels.close}
-                className="focus-ring absolute top-3 right-3 sm:top-4 sm:right-4 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white transition-transform hover:scale-105 hover:bg-black/80 backdrop-blur-md cursor-pointer"
+              <h3
+                id="modal-project-title"
+                className="mt-4 font-serif text-2xl sm:text-3xl font-medium tracking-tight text-foreground leading-snug"
               >
-                <X className="h-4 w-4" />
-              </button>
+                {project.title}
+              </h3>
             </div>
 
             {/* Scrollable Content */}
-            <div className="overflow-y-auto p-4 sm:p-8 space-y-5 sm:space-y-6">
-              <div>
-                <h3
-                  id="modal-project-title"
-                  className="font-serif text-xl sm:text-3xl font-medium tracking-tight text-foreground leading-snug"
-                >
-                  {project.title}
-                </h3>
-              </div>
-
+            <div className="overflow-y-auto p-5 sm:p-7 space-y-6">
               {project.meta && (
-                <div className="rounded-2xl border border-foreground/8 bg-foreground/3 p-3.5 sm:p-5">
-                  <span className="block text-xs font-semibold uppercase tracking-wider text-foreground/50 mb-2">
+                <div className="rounded-2xl border border-foreground/8 bg-foreground/2 p-4 sm:p-5">
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-foreground/50 mb-2.5">
                     {labels.metaTitle}
                   </span>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.meta.split("•").map((tag, i) => (
                       <span
                         key={i}
-                        className="rounded-full border border-foreground/10 bg-background px-2.5 py-1 text-[11px] sm:text-xs font-medium text-foreground/80"
+                        className="rounded-full border border-foreground/10 bg-background px-3 py-1 text-xs font-medium text-foreground/80 shadow-2xs"
                       >
                         {tag.trim()}
                       </span>
@@ -141,13 +138,13 @@ export function ProjectDetailModal({
                 <span className="block text-xs font-semibold uppercase tracking-wider text-foreground/50 mb-2">
                   {labels.overviewTitle}
                 </span>
-                <p className="text-[15px] sm:text-lg leading-relaxed text-foreground/75 tracking-tight">
+                <p className="text-[15px] sm:text-base leading-relaxed text-foreground/80 tracking-tight">
                   {project.description}
                 </p>
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 pt-4 border-t border-foreground/8">
+              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-foreground/8">
                 {project.link ? (
                   <a
                     href={project.link}
