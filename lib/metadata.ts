@@ -4,13 +4,13 @@ export const siteConfig = {
   name: "Rodolphe Salako",
   description:
     "Business Development and Sales professional with experience across iGaming, Web3, real estate, and financial services. Focused on B2B sales, strategic partnerships, affiliate leadership, exploring new markets, and driving growth.",
-  url: "https://rodolphe-salako.vercel.app",
-  ogImage: "/rodolphe-profile.png",
+  url: "https://www.rodolphesalako.com",
+  ogImage: "/rodolphe.webp",
   creator: "@ZekiZeki40",
   authors: [
     {
       name: "Rodolphe Salako",
-      url: "https://rodolphe-salako.vercel.app",
+      url: "https://www.rodolphesalako.com",
     },
   ],
   keywords: [
@@ -60,6 +60,11 @@ export const baseMetadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+    languages: {
+      "fr-FR": "https://www.rodolphesalako.com",
+      "en-US": "https://www.rodolphesalako.com",
+      "x-default": "https://www.rodolphesalako.com",
+    },
   },
   openGraph: {
     type: "website",
@@ -124,6 +129,11 @@ export function createMetadata({
     description,
     alternates: {
       canonical: path,
+      languages: {
+        "fr-FR": url,
+        "en-US": url,
+        "x-default": url,
+      },
     },
     openGraph: {
       title: title ?? siteConfig.name,

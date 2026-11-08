@@ -85,7 +85,13 @@ Dernière mise à jour : 2026-11-05
   - Modale de détails `ProjectDetailModal` repensée avec en-tête typographique, badges d'entreprise, période, catégories et compétences clés (0 image).
   - Couverture i18n intégrale bilingue (EN & FR) : création de `PORTFOLIO_ENGLISH_OVERLAY` et harmonisation de `PORTFOLIO_FRENCH_OVERLAY` couvrant 100% des 11 projets (titres, entreprises, périodes, catégories, descriptions et compétences), profil, expériences, formations et sommets, avec commutation instantanée et zéro texte résiduel non traduit.
   - Synchronisation complète dans `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts` et dans la base Supabase Cloud (`portfolio_content` row `main`).
-  - Suite de tests portée à 57 tests unitaires passés avec succès, TypeScript sans erreur, build Turbopack 19/19 routes sans erreur.
+  - Suite de tests portée à 58 tests unitaires passés avec succès, TypeScript sans erreur, build Turbopack 19/19 routes sans erreur.
+- F-21 : Perfectionnement SEO Avancé, Sitemap Multi-Pages & Données Structurées JSON-LD Schema.org :
+  - Domaine canonique aligné sur `https://www.rodolphesalako.com` dans `lib/metadata.ts` et balises OpenGraph/Twitter avec image de prévisualisation `/rodolphe.webp`.
+  - Balises `alternates.languages` (hreflang) configurées pour le français (`fr-FR`), l'anglais (`en-US`) et le repli global (`x-default`).
+  - Extension de la sitemap XML (`app/sitemap.ts`) indexant explicitement 4 routes prioritaires (`/` à 1.0 daily, `/projects` à 0.9 weekly, `/events` à 0.9 weekly, `/about` à 0.8 monthly).
+  - Données structurées Schema.org JSON-LD injectées via le composant `<JsonLd />` dans `app/layout.tsx` (`Person` avec organisations, réseaux sociaux, compétences BD/iGaming et `WebSite` avec éditeur lié).
+  - 58 tests unitaires passés avec succès, TypeScript 0 erreur, Turbopack 19/19 routes compilées.
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

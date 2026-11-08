@@ -85,6 +85,22 @@ test("F-02: Data Store & Metadata Consistency", async (t) => {
     assert.doesNotMatch(metaFile, /Guy Tibro/, "lib/metadata.ts must not mention Guy Tibro");
     assert.doesNotMatch(manifestFile, /Guy Tibro/, "app/manifest.ts must not mention Guy Tibro");
   });
+
+  await t.test("AC5: SEO & Canonical URL point to www.rodolphesalako.com with multi-page sitemap and JSON-LD schema", () => {
+    const metaFile = fs.readFileSync(path.join(ROOT, "lib", "metadata.ts"), "utf8");
+    const sitemapFile = fs.readFileSync(path.join(ROOT, "app", "sitemap.ts"), "utf8");
+    const jsonLdPath = path.join(ROOT, "components", "seo", "json-ld.tsx");
+    assert.match(metaFile, /https:\/\/www\.rodolphesalako\.com/);
+    assert.match(metaFile, /languages/);
+    assert.match(sitemapFile, /\/projects/);
+    assert.match(sitemapFile, /\/events/);
+    assert.match(sitemapFile, /\/about/);
+    assert.ok(fs.existsSync(jsonLdPath));
+    const jsonLdCode = fs.readFileSync(jsonLdPath, "utf8");
+    assert.match(jsonLdCode, /schema\.org/);
+    assert.match(jsonLdCode, /Person/);
+    assert.match(jsonLdCode, /WebSite/);
+  });
 });
 
 test("F-03: Hero Section & PortraitMorph Shader Integrity", async (t) => {

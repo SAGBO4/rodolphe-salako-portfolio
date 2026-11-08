@@ -2,6 +2,7 @@ import { Nav } from "@/components/layout/nav";
 import { PageBackdrop } from "@/components/layout/page-backdrop";
 import { Providers } from "@/components/layout/providers";
 import { SkipToContent } from "@/components/layout/skip-to-content";
+import { JsonLd } from "@/components/seo/json-ld";
 import { baseMetadata } from "@/lib/metadata";
 import type { Metadata, Viewport } from "next";
 
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        <JsonLd />
         <Providers>
           <div className="site-frame site-frame--top" aria-hidden="true" />
           <div className="site-frame site-frame--left" aria-hidden="true" />

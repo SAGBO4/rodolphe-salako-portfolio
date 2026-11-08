@@ -4,7 +4,7 @@
 
 - **Projet** : Portfolio de Rodolphe Salako (Business Development, Sales & Strategic Partnerships - iGaming & Web3)
 - **Features livrées** : 13/13 (F-01, F-02, F-03, F-04, F-05, F-06, F-07, F-08, F-09, F-10, F-11, F-12, F-13)
-- **Tests exécutés** : 56 passés, 0 échec (`npm test`)
+- **Tests exécutés** : 58 passés, 0 échec (`npm test`)
 - **Compilation Next.js** : Réussie (19/19 routes Turbopack)
 - **TypeScript** : 0 erreur (`npm run typecheck`)
 - **Contrôle documentaire** : `docs_check.py` : 0 erreur, 0 avertissement
@@ -174,4 +174,22 @@ Branche / commits : main, dev
 | F-20 AC5 (Préservation intégrale et intouchée de la section Events) | `tests/portfolio.test.mjs` F-17 | verified | 3 sommets et 19 photos d'événements préservés à 100% sans aucune modification |
 | F-20 AC6 (Synchronisation complète Supabase Cloud) | Script de vérification API Supabase | verified | `portfolio_content` row `main` mis à jour avec les 11 postes sans image ; Supabase connecté et actif |
 | F-20 AC7 (Non-régression globale) | `npm test`, `npm run typecheck`, `npm run build` | verified | 56 tests unitaires passés, 0 erreur TypeScript, 19/19 routes Turbopack compilées avec succès |
+
+---
+
+## F-21 : Perfectionnement SEO Avancé, Sitemap Multi-Pages & Données Structurées JSON-LD Schema.org (2026-11-08)
+
+Statut : done  
+Branche / commits : main, dev
+
+### Critères d'acceptation
+
+| Critère | Test | Statut | Preuve |
+|---|---|---|---|
+| F-21 AC1 (Domaine canonique www.rodolphesalako.com et OpenGraph/Twitter) | `tests/portfolio.test.mjs` "AC5: SEO & Canonical URL point to www.rodolphesalako.com" | verified | `siteConfig.url = "https://www.rodolphesalako.com"`, `ogImage = "/rodolphe.webp"`, `authors` et `metadataBase` configurés |
+| F-21 AC2 (Balises hreflang fr-FR, en-US et x-default) | `tests/portfolio.test.mjs` "AC5: SEO & Canonical URL point to www.rodolphesalako.com" | verified | `alternates.languages` injecté dans `baseMetadata` et dans `createMetadata` avec mapping multilingue |
+| F-21 AC3 (Sitemap XML multi-pages explicite) | `tests/portfolio.test.mjs` "AC5: SEO & Canonical URL point to www.rodolphesalako.com" | verified | 4 routes publiques indexées dans `app/sitemap.ts` (`/` daily 1.0, `/projects` weekly 0.9, `/events` weekly 0.9, `/about` monthly 0.8) |
+| F-21 AC4 (Données structurées Schema.org JSON-LD Person & WebSite) | `tests/portfolio.test.mjs` "AC5: SEO & Canonical URL point to www.rodolphesalako.com" | verified | Composant `<JsonLd />` dans `components/seo/json-ld.tsx` monté dans `app/layout.tsx` avec `@type: Person` et `@type: WebSite` |
+| F-21 AC5 (Non-régression globale) | `npm test`, `npm run typecheck`, `npm run build` | verified | 58 tests unitaires passés (0 échec), TypeScript 0 erreur, build Turbopack 19/19 routes |
+
 

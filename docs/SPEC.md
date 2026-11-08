@@ -20,6 +20,7 @@ Last change: 2026-11-05
 | F-18 | Système Universel de Téléversement Drag & Drop et Gestion Multi-Photos Galerie dans ZEKIHUB | F-11, F-17 | approved |
 | F-19 | Stockage Média Supabase Dédié & Résolution Définitive des Erreurs de Sauvegarde et Service Worker | F-11, F-18 | approved |
 | F-20 | Refonte Typographique des Réalisations selon le CV (Strictement 0 Image) | F-02, F-04, F-08 | approved |
+| F-21 | Perfectionnement SEO Avancé, Sitemap Multi-Pages & Données Structurées JSON-LD Schema.org | F-02, F-07 | approved |
 
 Status values: proposed, approved, in-progress, done, partial, blocked.
 
@@ -259,4 +260,17 @@ Acceptance:
 Scenarios: PS-01, PS-06, PS-11, PS-12, PS-20
 Data: `data/portfolio.json`, `lib/portfolio-data.ts`, `components/projects/projects.tsx`, `components/projects/project-detail-modal.tsx`, `lib/i18n/translations.ts`
 Out of scope: Ajout d'images ou d'expériences non mentionnées dans le CV
+Status: approved
+
+### F-21 Perfectionnement SEO Avancé, Sitemap Multi-Pages & Données Structurées JSON-LD Schema.org
+Actor: Moteurs de recherche (Google, Bing), réseaux sociaux (LinkedIn, X) et visiteurs
+Acceptance:
+  AC1 Alignement de l'URL canonique de production sur le domaine principal `https://www.rodolphesalako.com` dans `siteConfig` et métadonnées OpenGraph/Twitter
+  AC2 Balises `alternates.languages` (hreflang) configurées pour le français (`fr-FR`), l'anglais (`en-US`) et le repli global (`x-default`)
+  AC3 Extension de la sitemap XML (`app/sitemap.ts`) pour indexer explicitement toutes les routes publiques (`/`, `/projects`, `/events`, `/about`) avec fréquences et priorités optimisées
+  AC4 Données structurées JSON-LD Schema.org (`Person` et `WebSite`) injectées nativement dans le layout racine pour les rich snippets Google
+  AC5 (negative) 58 tests unitaires au vert, 0 régression TypeScript, 0 erreur Turbopack build
+Scenarios: PS-01, PS-06, PS-11, PS-19, PS-20
+Data: `lib/metadata.ts`, `app/sitemap.ts`, `components/seo/json-ld.tsx`, `app/layout.tsx`
+Out of scope: Indexation des routes d'administration `/ZEKIHUB` (protégées par `robots.ts`)
 Status: approved
