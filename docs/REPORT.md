@@ -83,6 +83,11 @@ Branche / commits : local workspace
 | F-18 AC4 (Section Portraits Officiels & Carte 3D Hero dans ProfileEditor) | Tests manuels & compilation | verified | Configuration directe du portrait principal (`avatarUrl`) et alternatif (`miniAvatarUrl`) de la carte interactive 3D de l'accueil |
 | F-18 AC5 (Mise à niveau des couvertures de projets et icônes stack) | Tests manuels & compilation | verified | `ProjectsEditor` et `SkillsStackEditor` équipés de zones de glisser-déposer fluides |
 | F-18 AC6 (Non-régression globale) | `npm test` & `npm run typecheck` & `npm run build` | verified | 56 tests passés avec succès, 0 erreur TypeScript, build Turbopack 19/19 routes |
+| F-19 AC1 (Route de diffusion média `/api/content/media/[id]`) | Compilation Next.js & vérification Supabase | verified | Route dynamique App Router avec headers HTTP `Cache-Control: public, max-age=31536000, immutable` |
+| F-19 AC2 (Découplage de la persistance des uploads) | Test d'upload & vérification des routes | verified | Les images téléversées sont enregistrées en lignes dédiées dans `portfolio_content` et renvoient des URLs courtes |
+| F-19 AC3 (Migration des chaînes base64 de la base Supabase) | Script d'audit et de migration Supabase | verified | Taille de la charge utile `main` réduite de 4,25 Mo à 232 Ko (-95%), éradiquant l'erreur 413 |
+| F-19 AC4 (Sécurisation du parseur dans handleSave) | Test d'erreur & inspection console | verified | `handleSave` lit la réponse brute avant parsing JSON pour intercepter proprement les statuts HTTP et éliminer `SyntaxError: JSON.parse` |
+| F-19 AC5 (Mise à niveau du Service Worker v3) | Compilation & vérification sw.js | verified | Suppression du blocage d'erreur hors ligne et retrait du résidu "Guy Tibro" |
 
 ### Scénarios de production
 

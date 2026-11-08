@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import { isAuthenticated } from "@/lib/auth";
+import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
@@ -44,19 +45,64 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json(
         {
           success: false,
-          error: "Format de fichier non supporté. Formats acceptés : JPG, PNG, WEBP, GIF, SVG.",
+          error: "Format de fichier non supporté. Formats acceptés : JPG, PNG, WEBP, GIF, SVG, PDF.",
         },
         { status: 400 }
       );
     }
 
-    // Generate safe, collision-resistant server-side filename
+    // Generate safe, collision-resistant server-side identifier
     const randomHex = crypto.randomBytes(6).toString("hex");
+    const mediaId = `media_${Date.now()}_${randomHex}`;
     const filename = `zeki_${Date.now()}_${randomHex}${ext}`;
 
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+    const mime = file.type || "image/jpeg";
+    const base64Data = buffer.toString("base64");
 
+    // 1. Primary storage: Supabase portfolio_content table
+    if (isSupabaseConfigured()) {
+      try {
+        const supabase = getSupabaseClient();
+        if (supabase) {
+          const { error: sbErr } = await supabase.from("portfolio_content").upsert({
+            id: mediaId,
+            data: {
+              mime,
+              base64: base64Data,
+              filename,
+              size: file.size,
+            },
+            updated_at: new Date().toISOString(),
+          });
+
+          if (!sbErr) {
+            // Also save to local uploads dir if writable (for local dev caching)
+            try {
+              const uploadDir = path.join(process.cwd(), "public", "uploads");
+              if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+              await fs.promises.writeFile(path.join(uploadDir, filename), buffer);
+            } catch {
+              // Read-only filesystem on Vercel is expected and safe
+            }
+
+            return NextResponse.json({
+              success: true,
+              url: `/api/content/media/${mediaId}`,
+              filename,
+              size: file.size,
+            });
+          } else {
+            console.warn("Supabase media upsert error:", sbErr);
+          }
+        }
+      } catch (sbEx) {
+        console.warn("Supabase media upload exception:", sbEx);
+      }
+    }
+
+    // 2. Local filesystem storage (if Supabase not reachable)
     try {
       const uploadDir = path.join(process.cwd(), "public", "uploads");
       if (!fs.existsSync(uploadDir)) {
@@ -73,10 +119,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         size: file.size,
       });
     } catch (fsErr) {
-      console.warn("Filesystem is read-only (Vercel lambda), returning base64 data URL fallback:", fsErr);
-      const mime = file.type || "image/jpeg";
-      const base64Url = `data:${mime};base64,${buffer.toString("base64")}`;
-
+      console.warn("Filesystem read-only and Supabase failed, fallback to data URL:", fsErr);
+      const base64Url = `data:${mime};base64,${base64Data}`;
       return NextResponse.json({
         success: true,
         url: base64Url,

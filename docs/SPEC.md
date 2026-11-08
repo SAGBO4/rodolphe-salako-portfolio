@@ -227,3 +227,17 @@ Scenarios: PS-01, PS-06, PS-11, PS-15, PS-19, PS-20
 Data: `app/ZEKIHUB/page.tsx`, `components/hero/hero.tsx`, `lib/portfolio-data.ts`, `data/portfolio.json`
 Out of scope: Traitement vidéo lourd côté client
 Status: approved
+
+### F-19 Stockage Média Supabase Dédié & Résolution Définitive des Erreurs de Sauvegarde et Service Worker
+Actor: Administrateur enregistrant des photos et données sans limitation de taille de payload ni erreur réseau
+Acceptance:
+  AC1 Route de diffusion média `/api/content/media/[id]` servant les images stockées dans Supabase avec mise en cache CDN permanente `max-age=31536000, immutable`
+  AC2 Persistance découplée dans `/api/admin/upload` enregistrant chaque image dans une ligne dédiée de `portfolio_content` et renvoyant une URL propre courte `/api/content/media/${mediaId}`
+  AC3 Migration des anciennes chaînes base64 volumineuses réduisant la charge utile principale de 4,25 Mo à 232 Ko (-95%)
+  AC4 Gestion sécurisée des erreurs de parsing dans `handleSave` (`app/ZEKIHUB/page.tsx`) protégeant contre les erreurs 413 et affichant des messages clairs
+  AC5 Service Worker `public/sw.js` mis à jour en v3 avec gestion propre des ressources hors ligne et exclusion des erreurs d'interception
+  AC6 (negative) 56 tests unitaires au vert, 0 erreur TypeScript, 0 erreur documentaire docs_check
+Scenarios: PS-01, PS-06, PS-11, PS-15, PS-20
+Data: `app/api/content/media/[id]/route.ts`, `app/api/admin/upload/route.ts`, `app/ZEKIHUB/page.tsx`, `public/sw.js`
+Out of scope: Migration vers un bucket S3 tiers payant
+Status: approved

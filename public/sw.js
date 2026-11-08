@@ -1,9 +1,10 @@
-const CACHE_NAME = 'guy-portfolio-cache-v1';
+const CACHE_NAME = 'rodolphe-salako-portfolio-v3';
 
 const STATIC_PRECACHE = [
   '/',
   '/about',
   '/projects',
+  '/events',
   '/icon.svg',
   '/icon-192.png',
   '/icon-512.png',
@@ -50,7 +51,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          if (response.status === 200) {
+          if (response && response.status === 200) {
             const copy = response.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           }
@@ -61,7 +62,7 @@ self.addEventListener('fetch', (event) => {
           if (cached) return cached;
           const fallbackHome = await caches.match('/');
           if (fallbackHome) return fallbackHome;
-          return new Response('Hors ligne - Guy Tibro Portfolio', {
+          return new Response('Hors ligne - Rodolphe Salako Portfolio', {
             headers: { 'Content-Type': 'text/plain; charset=utf-8' },
           });
         })
@@ -74,6 +75,8 @@ self.addEventListener('fetch', (event) => {
     url.pathname.startsWith('/_next/static/') ||
     url.pathname.startsWith('/icons/') ||
     url.pathname.startsWith('/uploads/') ||
+    url.pathname.startsWith('/events/') ||
+    url.pathname.endsWith('.webp') ||
     url.pathname.endsWith('.png') ||
     url.pathname.endsWith('.svg') ||
     url.pathname.endsWith('.woff2')
@@ -88,7 +91,7 @@ self.addEventListener('fetch', (event) => {
             }
             return networkResponse;
           })
-          .catch(() => cached);
+          .catch(() => cached || new Response('', { status: 404, statusText: 'Not Found' }));
 
         return cached || fetchPromise;
       })
@@ -100,12 +103,16 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(request)
       .then((response) => {
-        if (response.status === 200) {
+        if (response && response.status === 200) {
           const copy = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
         }
         return response;
       })
-      .catch(() => caches.match(request))
+      .catch(async () => {
+        const cached = await caches.match(request);
+        if (cached) return cached;
+        return new Response('', { status: 404, statusText: 'Not Found' });
+      })
   );
 });

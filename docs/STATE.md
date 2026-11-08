@@ -62,6 +62,12 @@ Dernière mise à jour : 2026-11-05
   - Gestion avancée des photos de sommets dans `EventsEditor` : ajout par lot, tag interactif au clic (📸 Photo, 🎙️ Speaker, 📱 Post), réordonnancement fluide (◀ / ▶) et suppression.
   - Ajout d'une section dédiée "Portraits Officiels & Carte 3D Hero" dans `ProfileEditor` permettant de remplacer le portrait principal (`avatarUrl`) et le portrait au survol (`miniAvatarUrl`) de la carte 3D de la page d'accueil.
   - Modernisation des téléverseurs dans `ProjectsEditor` (couvertures de projets) et `SkillsStackEditor` (icônes d'outils Matter.js).
+- F-19 : Stockage Média Supabase Dédié & Résolution Définitive des Erreurs de Sauvegarde et Service Worker :
+  - Création de la route `/api/content/media/[id]` diffusant les images stockées dans Supabase avec en-têtes HTTP de cache CDN (`max-age=31536000, immutable`).
+  - Découplage de la persistance dans `/api/admin/upload` : chaque média uploadé est enregistré comme entité dédiée dans Supabase et renvoie une URL courte (`/api/content/media/media_...`).
+  - Migration des photos base64 volumineuses existantes ayant fait chuter le volume JSON principal de 4,25 Mo à 232 Ko (-95%), éliminant l'erreur HTTP 413 "Request Entity Too Large" sur Vercel.
+  - Sécurisation du gestionnaire `handleSave` dans `app/ZEKIHUB/page.tsx` avec lecture textuelle avant parsing pour éviter les erreurs `SyntaxError: JSON.parse: unexpected character at line 1 column 1`.
+  - Mise à niveau du Service Worker `public/sw.js` en v3 avec gestion propre des réponses hors ligne et suppression des résidus de nommage.
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

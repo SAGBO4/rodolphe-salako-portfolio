@@ -94,14 +94,32 @@ export default function ZekiHubDashboardPage(): ReactNode {
     setSaving(true);
     setMessage(null);
     try {
+      const payloadString = JSON.stringify(data);
+      const payloadBytes = new Blob([payloadString]).size;
+
+      if (payloadBytes > 3.5 * 1024 * 1024) {
+        console.warn(`Large payload detected: ${(payloadBytes / (1024 * 1024)).toFixed(2)} MB`);
+      }
+
       const res = await fetch("/api/admin/data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: payloadString,
       });
-      const json = await res.json();
+
+      const responseText = await res.text();
+      let json: { success?: boolean; error?: string; supabaseConfigured?: boolean } = {};
+      try {
+        json = JSON.parse(responseText);
+      } catch {
+        if (res.status === 413) {
+          throw new Error("Taille des données trop volumineuse pour le serveur (413). Veuillez téléverser des images optimisées.");
+        }
+        throw new Error(`Erreur serveur (${res.status}): ${responseText.slice(0, 150)}`);
+      }
+
       if (!res.ok || !json.success) {
-        setMessage({ type: "error", text: json.error || "Failed to save data" });
+        setMessage({ type: "error", text: json.error || "Échec de l'enregistrement des données." });
       } else {
         setMessage({
           type: "success",
@@ -109,14 +127,15 @@ export default function ZekiHubDashboardPage(): ReactNode {
             ? "Enregistré et synchronisé avec succès sur Supabase Cloud !"
             : "Enregistré dans le cache local ! (Connectez Supabase pour synchroniser dans le cloud)",
         });
-        setSupabaseConfigured(json.supabaseConfigured);
+        setSupabaseConfigured(Boolean(json.supabaseConfigured));
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Save error:", err);
-      setMessage({ type: "error", text: "Erreur réseau lors de la sauvegarde." });
+      const errMessage = err instanceof Error ? err.message : "Erreur réseau lors de la sauvegarde.";
+      setMessage({ type: "error", text: errMessage });
     } finally {
       setSaving(false);
-      setTimeout(() => setMessage(null), 5000);
+      setTimeout(() => setMessage(null), 6000);
     }
   };
 
@@ -1872,7 +1891,7 @@ function TextareaGroup({
 /* CLIENT-SIDE UPLOAD & IMAGE OPTIMIZATION HELPERS                             */
 /* -------------------------------------------------------------------------- */
 
-async function compressImageToWebP(file: File, maxDim = 1600): Promise<{ file: File; dataUrl: string }> {
+async function compressImageToWebP(file: File, maxDim = 1280): Promise<{ file: File; dataUrl: string }> {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -1903,7 +1922,7 @@ async function compressImageToWebP(file: File, maxDim = 1600): Promise<{ file: F
           return;
         }
         ctx.drawImage(img, 0, 0, width, height);
-        const webpDataUrl = canvas.toDataURL("image/webp", 0.88);
+        const webpDataUrl = canvas.toDataURL("image/webp", 0.80);
         canvas.toBlob(
           (blob) => {
             if (blob) {
@@ -1918,7 +1937,7 @@ async function compressImageToWebP(file: File, maxDim = 1600): Promise<{ file: F
             }
           },
           "image/webp",
-          0.88
+          0.80
         );
       };
       img.onerror = () => resolve({ file, dataUrl });
