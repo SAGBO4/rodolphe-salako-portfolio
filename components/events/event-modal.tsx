@@ -26,7 +26,7 @@ type EventModalProps = {
 };
 
 export function EventModal({ photos, initialIndex = 0, event, onClose }: EventModalProps): ReactNode {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const photoList: NormalizedPhoto[] = photos
     ? photos.map((p) => ({
@@ -172,14 +172,14 @@ export function EventModal({ photos, initialIndex = 0, event, onClose }: EventMo
                 <button
                   onClick={handlePrev}
                   className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/10 backdrop-blur-sm transition-all hover:scale-105 cursor-pointer shadow-lg"
-                  aria-label="Photo précédente"
+                  aria-label={language === "fr" ? "Photo précédente" : "Previous photo"}
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
                 <button
                   onClick={handleNext}
                   className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/10 backdrop-blur-sm transition-all hover:scale-105 cursor-pointer shadow-lg"
-                  aria-label="Photo suivante"
+                  aria-label={language === "fr" ? "Photo suivante" : "Next photo"}
                 >
                   <ChevronRight className="h-6 w-6" />
                 </button>

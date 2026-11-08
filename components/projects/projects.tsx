@@ -275,7 +275,11 @@ export function Projects({
       ) : null}
 
       <ProjectDetailModal
-        project={selectedProject}
+        project={
+          selectedProject
+            ? projectsList.find((p) => p.id === selectedProject.id) || selectedProject
+            : null
+        }
         onClose={() => setSelectedProject(null)}
       />
     </section>
@@ -291,6 +295,8 @@ function ProjectCard({
   index: number;
   onClick?: () => void;
 }): ReactNode {
+  const { language } = useLanguage();
+
   return (
     <FadeIn
       delay={Math.min(index * 0.05, 0.25)}
@@ -306,7 +312,11 @@ function ProjectCard({
         }}
         tabIndex={0}
         role="button"
-        aria-label={`Détails du poste : ${project.title}`}
+        aria-label={
+          language === "fr"
+            ? `Détails du poste : ${project.title}`
+            : `View details for ${project.title}`
+        }
         className="project-card focus-ring flex h-full cursor-pointer flex-col justify-between rounded-3xl border border-foreground/8 bg-background/70 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg backdrop-blur-xs"
       >
         <div className="flex flex-col gap-3.5">
@@ -357,7 +367,7 @@ function ProjectCard({
           </div>
 
           <span className="inline-flex items-center gap-1 text-xs font-medium text-foreground/70 group-hover:text-foreground shrink-0">
-            <span>Détails</span>
+            <span>{language === "fr" ? "Détails" : "Details"}</span>
             <ArrowRight className="h-3 w-3" />
           </span>
         </div>

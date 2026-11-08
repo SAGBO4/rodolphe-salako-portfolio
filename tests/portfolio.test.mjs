@@ -222,6 +222,16 @@ test("F-07: Sélecteur de Langue & Internationalisation (i18n FR / EN)", async (
     assert.match(transFile, /hero\.viewProjects/);
     assert.match(transFile, /hero\.downloadCv/);
   });
+
+  await t.test("AC5: Full bilingual overlays (EN & FR) for all 11 projects and experiences", () => {
+    const transFile = fs.readFileSync(translationsPath, "utf8");
+    assert.match(transFile, /PORTFOLIO_ENGLISH_OVERLAY/);
+    assert.match(transFile, /PORTFOLIO_FRENCH_OVERLAY/);
+    assert.match(transFile, /block-scholars/);
+    assert.match(transFile, /onlyplay-cm-video/);
+    assert.match(transFile, /tapbit-translator/);
+    assert.match(transFile, /nda-smm/);
+  });
 });
 
 test("F-08: DriftWall 3D Perspective Animation & Modal Détails Projets", async (t) => {

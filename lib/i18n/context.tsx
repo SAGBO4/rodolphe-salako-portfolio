@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import {
+  PORTFOLIO_ENGLISH_OVERLAY,
   PORTFOLIO_FRENCH_OVERLAY,
   translations,
   type Language,
@@ -83,11 +84,11 @@ export function LanguageProvider({ children }: { children: ReactNode }): ReactNo
 
   const localizeData = useCallback(
     (baseData: PortfolioData): PortfolioData => {
-      if (language === "en" || !baseData) {
+      if (!baseData) {
         return baseData;
       }
 
-      const overlay = PORTFOLIO_FRENCH_OVERLAY;
+      const overlay = language === "fr" ? PORTFOLIO_FRENCH_OVERLAY : PORTFOLIO_ENGLISH_OVERLAY;
       return {
         ...baseData,
         profile: {
@@ -110,6 +111,8 @@ export function LanguageProvider({ children }: { children: ReactNode }): ReactNo
           return {
             ...proj,
             title: match.title,
+            company: match.company ?? proj.company,
+            period: match.period ?? proj.period,
             category: match.category,
             meta: match.meta,
             description: match.description,
@@ -135,6 +138,20 @@ export function LanguageProvider({ children }: { children: ReactNode }): ReactNo
             tag: match.tag,
           };
         }),
+        events: baseData.events
+          ? baseData.events.map((ev) => {
+              const match = overlay.events?.find((e) => e.id === ev.id);
+              if (!match) return ev;
+              return {
+                ...ev,
+                title: match.title ?? ev.title,
+                city: match.city ?? ev.city,
+                country: match.country ?? ev.country,
+                date: match.date ?? ev.date,
+                summary: match.summary ?? ev.summary,
+              };
+            })
+          : baseData.events,
         skills: overlay.skills && overlay.skills.length > 0 ? overlay.skills : baseData.skills,
       };
     },

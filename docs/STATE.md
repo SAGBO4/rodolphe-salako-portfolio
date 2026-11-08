@@ -83,8 +83,9 @@ Dernière mise à jour : 2026-11-05
     10. Leschainmakers : Marketing Manager (2022 – 2024)
     11. NDA : Social Media Manager (2020 – 2023)
   - Modale de détails `ProjectDetailModal` repensée avec en-tête typographique, badges d'entreprise, période, catégories et compétences clés (0 image).
+  - Couverture i18n intégrale bilingue (EN & FR) : création de `PORTFOLIO_ENGLISH_OVERLAY` et harmonisation de `PORTFOLIO_FRENCH_OVERLAY` couvrant 100% des 11 projets (titres, entreprises, périodes, catégories, descriptions et compétences), profil, expériences, formations et sommets, avec commutation instantanée et zéro texte résiduel non traduit.
   - Synchronisation complète dans `data/portfolio.json`, `lib/portfolio-data.ts`, `lib/i18n/translations.ts` et dans la base Supabase Cloud (`portfolio_content` row `main`).
-  - Suite de tests portée à 56 tests unitaires passés avec succès, TypeScript sans erreur, build Turbopack 19/19 routes sans erreur.
+  - Suite de tests portée à 57 tests unitaires passés avec succès, TypeScript sans erreur, build Turbopack 19/19 routes sans erreur.
 - Vérification documentaire `docs_check.py` : 0 erreur, 0 avertissement.
 - Build Next.js 16 validé sans erreur.
 

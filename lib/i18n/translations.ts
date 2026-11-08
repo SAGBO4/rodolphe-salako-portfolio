@@ -183,6 +183,316 @@ export const translations = {
 
 export type TranslationKey = keyof (typeof translations)["en"];
 
+// Localized portfolio content overlay for English
+export const PORTFOLIO_ENGLISH_OVERLAY = {
+  profile: {
+    role: "Business Development & Sales Professional",
+    greeting: "Hello! I'm Rodolphe Salako.",
+    heroIntro: "Hey 👋, I'm Rodolphe Salako",
+    heroTitle1: "Business Development &",
+    heroTitle2: "Strategic Partnerships",
+    heroDescription:
+      "Business Development and Sales professional with proven experience across the iGaming, Web3, real estate, and financial services industries. Expert in B2B dealmaking, strategic partnerships, lead generation, and commercial expansion across global markets.",
+    aboutTagline:
+      "Connecting People. Building Partnerships. Driving Growth. Dedicated to identifying business opportunities, developing strategic B2B partnerships, lead generation, affiliate team leadership, and international expansion across iGaming, Web3, real estate, and financial services.",
+    aboutParagraphs: [
+      "I am Rodolphe Salako, a Business Development and Sales professional with hands-on experience across the iGaming, Web3, real estate, and financial services industries.",
+      "My work focuses on identifying business opportunities, structuring strategic B2B partnerships, lead generation, commercial negotiation, and exploring new markets. I also bring proven expertise in affiliate network management, team leadership, international event coordination, social media, and community management.",
+      "I am passionate about connecting businesses, closing enduring strategic alliances, and scaling growth on an international level. Connecting People. Building Partnerships. Driving Growth.",
+    ],
+    mission: "Connecting People. Building Partnerships. Driving Growth.",
+    stats: [
+      { label: "Years Experience", value: "4+" },
+      { label: "Strategic Partners", value: "40+" },
+      { label: "Remote & Bilingual", value: "100%" },
+      { label: "Global Markets", value: "Africa & Global" },
+    ],
+    phone: "+229 40 79 72 62",
+    phoneRaw: "+22940797262",
+    location: "Porto-Novo, Benin",
+    availability: "Remote, on site and international events",
+  },
+  projects: [
+    {
+      id: "block-scholars",
+      title: "Country Representative – Benin Republic",
+      company: "Block-Scholars Africa",
+      period: "2026 – Present",
+      category: "Web3 & Digital Education",
+      meta: "Web3 • iGaming • Digital Education • Strategic Partnerships • Event Coordination",
+      description:
+        "Representing Block-Scholars Africa and developing its presence within the Beninese digital ecosystem. Building institutional partnerships with universities and organizations, coordinating regional ambassadors, and organizing workshops on emerging technologies.",
+    },
+    {
+      id: "onlyplay-cm-video",
+      title: "Social Media & Community Manager & Video Editor",
+      company: "ONLYPLAY",
+      period: "Current",
+      category: "Gaming & Community",
+      meta: "Telegram • Discord • X (Twitter) • Video Editing • Short-Form Video • Summit Networking",
+      description:
+        "Managing and moderating official communities on Telegram, Discord, and X. Producing and editing short-form video content for marketing campaigns. Attending premier international gaming summits (SiGMA, iGaming Africa Summit, GTSA, AGE, SBWA+) and building strategic partnerships.",
+    },
+    {
+      id: "tapbit-translator",
+      title: "English–French Translator",
+      company: "Tapbit Crypto Exchange",
+      period: "Nov 2025 – Mar 2026",
+      category: "Crypto & Localization",
+      meta: "English–French Translation • Crypto Localization • Web3 • UI Copy • Support",
+      description:
+        "Translating and localizing crypto documentation, market updates, official announcements, UI copy, and user support messages from English to French for francophone traders across Africa and internationally.",
+    },
+    {
+      id: "onlyplay-ambassador-lead",
+      title: "Ambassador Team Lead",
+      company: "ONLYPLAY",
+      period: "July 2025 – January 2026",
+      category: "Team Leadership",
+      meta: "Ambassador Programs • Regional Ambassadors • Team Leadership • Community Growth",
+      description:
+        "Directing and coordinating the international brand ambassador program. Recruiting, onboarding, and mentoring regional ambassadors, tracking performance milestones, and driving promotional activations to boost brand visibility.",
+    },
+    {
+      id: "cjc-race-marketing",
+      title: "Marketing Manager",
+      company: "CJC Race",
+      period: "2024 – 2025",
+      category: "Marketing & Growth",
+      meta: "Marketing Campaigns • Influencer Partnerships • Tournaments • Visual Creatives • Player Acquisition",
+      description:
+        "Developing and executing multi-channel digital marketing campaigns (social media, influencer collaborations, online tournaments, and events). Designing promotional visual assets and managing the editorial calendar to accelerate player acquisition and retention.",
+    },
+    {
+      id: "1win-affiliate-lead",
+      title: "Affiliate Manager & Team Lead",
+      company: "1win",
+      period: "February 2024 – July 2024",
+      category: "Affiliate Leadership",
+      meta: "Team Lead • Media Buyers • Commission Structures • Traffic Quality • Conversion Optimization",
+      description:
+        "Supervising and coordinating a team of affiliate managers. Recruiting new affiliates and media buyers, negotiating deals and commission structures, monitoring traffic quality, conversions, and player acquisition volume.",
+    },
+    {
+      id: "topgoal-cm",
+      title: "Community Manager",
+      company: "TopGoal French",
+      period: "Jan 2024 – Jul 2024",
+      category: "Community Management",
+      meta: "Telegram Community • User Support • Game Updates • Community Insights",
+      description:
+        "Managing and moderating the official French community on Telegram. Providing daily user support, publishing game updates and announcements, organizing community events, and gathering feedback for product teams.",
+    },
+    {
+      id: "1xbet-affiliate",
+      title: "Affiliate Manager",
+      company: "1xbet",
+      period: "2023 – 2024",
+      category: "Affiliate Management",
+      meta: "Affiliate Onboarding • Tracking Links • Promotional Creatives • Revenue Optimization",
+      description:
+        "Cultivating and managing relationships with affiliate partners and online communities. Onboarding new affiliates, providing tracking tools and promotional creatives, and optimizing traffic conversions.",
+    },
+    {
+      id: "yescoin-cm",
+      title: "Community Manager",
+      company: "Yescoin - French",
+      period: "2023 – 2024",
+      category: "Community Management",
+      meta: "Telegram Moderation • Daily Support • Announcements • Engagement Events",
+      description:
+        "Moderating and growing the French Telegram community. Providing daily user assistance, sharing project announcements and updates, and hosting community engagement activities.",
+    },
+    {
+      id: "chainmakers-marketing",
+      title: "Marketing Manager",
+      company: "Leschainmakers",
+      period: "2022 – 2024",
+      category: "Marketing Management",
+      meta: "Marketing Strategies • User Acquisition • Marketing Budgets • Strategic Partnerships",
+      description:
+        "Developing and executing marketing strategies to drive brand visibility and user acquisition. Structuring strategic partnerships, managing marketing budgets, and conducting competitive benchmarking.",
+    },
+    {
+      id: "nda-smm",
+      title: "Social Media Manager",
+      company: "NDA",
+      period: "2020 – 2023",
+      category: "Social Media Management",
+      meta: "Sports Betting • Content Publishing • Player Interactions • Acquisition & Retention",
+      description:
+        "Managing brand social media channels across sports betting and gaming. Producing promotional content, engaging daily with players, and supporting user acquisition and retention initiatives.",
+    },
+  ],
+  experiences: [
+    {
+      id: "block-scholars",
+      company: "Block-Scholars Africa",
+      role: "Country Representative – Benin Republic",
+      period: "2026 – Present",
+      description:
+        "Exploring new markets and developing presence across Benin. Building strategic partnerships with universities, student communities, and industry leaders; recruiting ambassador networks, and organizing digital technology and iGaming educational initiatives.",
+    },
+    {
+      id: "1win",
+      company: "1win",
+      role: "Affiliate Manager & Team Lead",
+      period: "Feb 2024 – Jul 2024",
+      description:
+        "Managed and coordinated a high-performing affiliate management team. Supervised partner onboarding, negotiated bespoke commission structures, monitored traffic quality, and scaled revenues.",
+    },
+    {
+      id: "onlyplay-ambassador",
+      company: "Onlyplay",
+      role: "Ambassador Team Lead",
+      period: "Jul 2025 – Jan 2026",
+      description:
+        "Recruited, trained, and led an international team of brand ambassadors across emerging markets. Defined content guidelines, supervised milestone execution, and built enduring professional relationships with creators.",
+    },
+    {
+      id: "cjc-race",
+      company: "CJC Race",
+      role: "Marketing Manager",
+      period: "2024 – 2025",
+      description:
+        "Executed integrated marketing campaigns (digital ads, influencer partnerships, online tournaments) that accelerated player acquisition, game visibility, and brand reach.",
+    },
+    {
+      id: "les-chainmakers",
+      company: "Les chainmakers",
+      role: "Marketing Manager",
+      period: "2022 – 2024",
+      description:
+        "Formulated marketing strategies to accelerate brand growth, negotiated partnership activations, and managed competitor benchmarking and audience communications.",
+    },
+    {
+      id: "1xbet",
+      company: "1xBet",
+      role: "Affiliate Manager",
+      period: "2023 – 2024",
+      description:
+        "Cultivated strategic affiliate relationships, onboarded new traffic sources, and coordinated promotional materials to drive user acquisition.",
+    },
+    {
+      id: "tapbit",
+      company: "Tapbit Crypto Exchange",
+      role: "English – French Translator & Community Support",
+      period: "Nov 2025 – Mar 2026",
+      description:
+        "Localized cryptocurrency documentation, market updates, and UI interfaces from English to French. Collaborated with marketing and community teams to engage francophone traders.",
+    },
+    {
+      id: "onlyplay-cm",
+      company: "Onlyplay",
+      role: "Social Media & Community Manager, Video Editor",
+      period: "Current",
+      description:
+        "Managing and moderating official communities on Telegram, Discord, and X. Gathering player feedback to refine games, producing short-form video campaigns, hosting AMAs, and representing Onlyplay at international industry summits.",
+    },
+    {
+      id: "topgoal",
+      company: "TopGoal French",
+      role: "Community Manager",
+      period: "Jan 2024 – Jul 2024",
+      description:
+        "Moderated the official French Telegram community, coordinated interactive events, and delivered community insights to product managers.",
+    },
+    {
+      id: "yescoin",
+      company: "Yescoin - French",
+      role: "Community Manager",
+      period: "2023 – 2024",
+      description:
+        "Fostered a thriving Telegram community, provided real-time user assistance, organized promotional contests, and maintained vigilant anti-scam protection.",
+    },
+    {
+      id: "nda-smm",
+      company: "NDA",
+      role: "Social Media Manager",
+      period: "2020 – 2023",
+      description:
+        "Managed and developed NDA's social media presence in sports betting and gaming. Created engaging promotional content, handled player interactions, and supported user retention and community growth.",
+    },
+  ],
+  education: [
+    {
+      id: "bachelor-translation",
+      school: "Adjarra University Center, Porto-Novo, Benin",
+      degree: "Bachelor in English Translation (English – French)",
+      period: "2025",
+      tag: "DEGREE",
+      brand: "#6366F1",
+    },
+    {
+      id: "diploma-computing",
+      school: "Professional Computing Institute",
+      degree: "Diploma in Administrative & Business Computing",
+      period: "2024",
+      tag: "TECH",
+      brand: "#0EA5E9",
+    },
+    {
+      id: "baccalaureate",
+      school: "National Baccalaureate Office",
+      degree: "High School Baccalaureate in General Education",
+      period: "2021 – 2022",
+      tag: "BAC",
+      brand: "#10B981",
+    },
+    {
+      id: "speaker-credentials",
+      school: "International Industry Conferences",
+      degree: "Speaker & Brand Ambassador (SiGMA Africa, SBWA+ Dakar, iGaming AFRIKA)",
+      period: "2026",
+      tag: "SUMMIT",
+      brand: "#F97316",
+    },
+  ],
+  events: [
+    {
+      id: "sbwa-dakar",
+      title: "Sports Betting West Africa+ (SBWA+) Summit — 11th Annual",
+      city: "Dakar",
+      country: "Senegal",
+      date: "August 2024",
+      summary:
+        "Official Speaker on African iGaming expansion, digital education, and partnership building across francophone African gaming markets.",
+    },
+    {
+      id: "sigma-africa",
+      title: "SiGMA Africa Summit — GrandWest Sun Exhibits",
+      city: "Cape Town",
+      country: "South Africa",
+      date: "March 2024",
+      summary:
+        "Representing ONLYPLAY and building strategic relationships with African and European casino and sports betting operators.",
+    },
+    {
+      id: "igaming-nairobi",
+      title: "iGaming AFRIKA Summit — Nairobi, Kenya",
+      city: "Nairobi",
+      country: "Kenya",
+      date: "May 2024",
+      summary:
+        "High-level networking with East African gaming executives, discussing regulatory developments and market entry strategies.",
+    },
+  ],
+  skills: [
+    "B2B Business Development & Sales (iGaming & Web3)",
+    "Strategic Partnerships & Deal Structuring",
+    "Exploring New Markets & Regional Expansion",
+    "Affiliate Team Leadership & Network Scaling",
+    "Event Coordination & International Summits",
+    "Official Conference Speaker & Brand Ambassador",
+    "Marketing Management & Multi-Channel Campaigns",
+    "English–French Translation & Localization",
+    "Game Studio & Betting Operator Relations",
+    "Social Media Strategy & Content Creation",
+    "Community Operations (Telegram, Discord, X)",
+    "Short-Form Video Production & Editing (CapCut, Premiere)",
+  ],
+};
+
 // Localized portfolio content overlays for French
 export const PORTFOLIO_FRENCH_OVERLAY = {
   profile: {
@@ -446,6 +756,35 @@ export const PORTFOLIO_FRENCH_OVERLAY = {
       period: "2026",
       tag: "SOMMET",
       brand: "#F97316",
+    },
+  ],
+  events: [
+    {
+      id: "sbwa-dakar",
+      title: "Sports Betting West Africa+ (SBWA+) Summit — 11ème Édition",
+      city: "Dakar",
+      country: "Sénégal",
+      date: "Août 2024",
+      summary:
+        "Intervenant officiel (Speaker) sur l'expansion de l'iGaming en Afrique, l'éducation numérique et les partenariats stratégiques francophones.",
+    },
+    {
+      id: "sigma-africa",
+      title: "SiGMA Africa Summit — GrandWest Sun Exhibits",
+      city: "Le Cap",
+      country: "Afrique du Sud",
+      date: "Mars 2024",
+      summary:
+        "Représentation de marques de jeux et développement d'alliances stratégiques avec des opérateurs de casino et de paris sportifs africains et européens.",
+    },
+    {
+      id: "igaming-nairobi",
+      title: "iGaming AFRIKA Summit — Nairobi, Kenya",
+      city: "Nairobi",
+      country: "Kenya",
+      date: "Mai 2024",
+      summary:
+        "Rencontres stratégiques avec les dirigeants de l'industrie du jeu en Afrique de l'Est, échanges sur les régulations et l'expansion commerciale.",
     },
   ],
   skills: [
